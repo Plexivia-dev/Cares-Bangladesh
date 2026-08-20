@@ -124,7 +124,7 @@ export default function PhilosophyValuesTabs() {
                       <div className={`w-12 h-12 rounded-2xl flex items-center justify-center ${v.color}`}>
                         <Icon className="w-6 h-6" />
                       </div>
-                      <h4 className="font-flavors text-2xl text-primary">{v.title}</h4>
+                      <h4 className="font-sans font-bold text-xl text-primary">{v.title}</h4>
                       <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans">{v.desc}</p>
                     </div>
                   );

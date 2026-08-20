@@ -45,18 +45,26 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1, h2 {
     font-family: var(--font-flavors), cursive;
+    color: #004460;
+  }
+
+  h3, h4, h5, h6 {
+    font-family: var(--font-montserrat), sans-serif;
     color: #004460;
   }
 }
 
 .font-flavors {
   font-family: var(--font-flavors), cursive;
+  font-weight: 400;
+  letter-spacing: 0.02em;
 }
 
 .font-sister {
   font-family: var(--font-sister), cursive;
+  font-weight: 400;
 }
 
 .font-sans {

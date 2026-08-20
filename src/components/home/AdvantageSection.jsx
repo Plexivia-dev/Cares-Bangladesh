@@ -63,7 +63,7 @@ export default function AdvantageSection() {
                 <div className="w-12 h-12 rounded-2xl bg-accent text-primary-dark flex items-center justify-center shadow-md">
                   <Icon className="w-6 h-6" />
                 </div>
-                <h3 className="font-flavors text-2xl text-accent">{adv.title}</h3>
+                <h3 className="font-sans font-bold text-xl text-accent">{adv.title}</h3>
                 <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans">
                   {adv.desc}
                 </p>

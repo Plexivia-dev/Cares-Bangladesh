@@ -4,8 +4,6 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, Sparkles, Mic, Activity, Brain, Palette, BookOpen, GraduationCap, Compass } from 'lucide-react';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import programs from '@/data/programs.json';
 
@@ -22,7 +20,7 @@ const iconMap = {
 
 export default function ProgramsGrid() {
   return (
-    <section className="py-20 bg-gradient-to-b from-sky-50/60 to-white relative">
+    <section className="py-20 bg-gradient-to-b from-sky-50/50 via-white to-sky-50/30 relative">
       <div className="container mx-auto px-4">
         
         {/* Section Header */}
@@ -42,63 +40,66 @@ export default function ProgramsGrid() {
         </div>
 
         {/* Programs Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {programs.map((prog, idx) => {
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-7">
+          {programs.map((prog) => {
             const IconComponent = iconMap[prog.icon] || Sparkles;
 
             return (
-              <Card
+              <div
                 key={prog.id}
-                className="group relative overflow-hidden bg-white border border-slate-100 rounded-3xl hover:shadow-xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1.5"
+                className="group relative bg-white border border-slate-100/90 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1.5"
               >
                 <div>
                   {/* Banner Image Preview */}
-                  <div className="relative h-44 w-full bg-slate-100 overflow-hidden">
+                  <div className="relative h-48 w-full bg-slate-50 overflow-hidden">
                     <Image
                       src={prog.bannerImage}
                       alt={prog.title}
                       fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent" />
                     
                     {/* Badge */}
-                    <div className="absolute bottom-3 left-3">
-                      <Badge variant="accent" className="bg-accent text-primary-dark font-bold shadow-xs">
+                    <div className="absolute top-3 left-3">
+                      <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-bold bg-white/95 text-primary shadow-sm backdrop-blur-xs font-sans">
                         {prog.badge}
-                      </Badge>
+                      </span>
                     </div>
                   </div>
 
-                  <CardHeader className="p-5 pb-2">
-                    <div className="flex items-center space-x-2.5 mb-2">
-                      <div className="w-8 h-8 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-white transition-colors">
+                  {/* Card Content */}
+                  <div className="p-6 pb-2 space-y-3">
+                    <div className="flex items-start space-x-3">
+                      <div className="w-9 h-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-white transition-colors mt-0.5 shadow-2xs">
                         <IconComponent className="w-4 h-4" />
                       </div>
-                      <CardTitle className="font-flavors text-2xl text-primary group-hover:text-secondary transition-colors line-clamp-1">
+                      <h3 className="font-sans font-bold text-base sm:text-lg text-primary group-hover:text-secondary transition-colors leading-snug">
                         {prog.title}
-                      </CardTitle>
+                      </h3>
                     </div>
-                    <CardDescription className="text-xs text-slate-600 line-clamp-3 leading-relaxed font-sans">
+
+                    <p className="text-xs text-slate-600 line-clamp-3 leading-relaxed font-sans pl-12">
                       {prog.shortDescription}
-                    </CardDescription>
-                  </CardHeader>
+                    </p>
+                  </div>
                 </div>
 
-                <CardFooter className="p-5 pt-3">
-                  <Link href={`/${prog.slug}`} className="w-full">
+                {/* Card Action */}
+                <div className="p-6 pt-4">
+                  <Link href={`/${prog.slug}`} className="w-full block">
                     <Button
                       variant="outline"
                       size="sm"
-                      className="w-full rounded-xl text-xs font-bold group-hover:bg-primary group-hover:text-white transition-all flex items-center justify-between"
+                      className="w-full rounded-full text-xs font-bold border-slate-200 text-primary group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all flex items-center justify-between px-5 h-10 shadow-2xs"
                     >
                       <span>Explore Details</span>
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                     </Button>
                   </Link>
-                </CardFooter>
-              </Card>
+                </div>
+              </div>
             );
           })}
         </div>

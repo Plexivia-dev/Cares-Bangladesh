@@ -45,7 +45,7 @@ export default function LatestNews() {
                 </div>
 
                 <Link href={`/${post.slug}`}>
-                  <h3 className="font-flavors text-2xl text-primary group-hover:text-secondary transition-colors line-clamp-2">
+                  <h3 className="font-sans font-bold text-lg text-primary group-hover:text-secondary transition-colors line-clamp-2 leading-snug">
                     {post.title}
                   </h3>
                 </Link>
