@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import PageHeader from '@/components/shared/PageHeader';
 import { Button } from '@/components/ui/button';
-import { Sparkles, Calendar, Heart } from 'lucide-react';
+import { Sparkles, Calendar, ChevronDown, Filter } from 'lucide-react';
 import team from '@/data/team.json';
 
 const categories = [
@@ -45,15 +45,15 @@ export default function TeamPage() {
             </p>
           </div>
 
-          {/* Authentic Filter Tabs */}
-          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 mb-14 border-b border-slate-100 pb-6">
+          {/* Desktop Filter Tabs */}
+          <div className="hidden md:flex flex-wrap items-center justify-center gap-3 mb-14 border-b border-slate-100 pb-6">
             {categories.map((cat, idx) => {
               const isActive = activeCategory === cat;
               return (
                 <button
                   key={idx}
                   onClick={() => setActiveCategory(cat)}
-                  className={`px-4 sm:px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold font-sans transition-all duration-200 cursor-pointer ${
+                  className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold font-sans transition-all duration-200 cursor-pointer ${
                     isActive
                       ? 'bg-primary text-white shadow-md shadow-primary/20 scale-105'
                       : 'text-slate-600 hover:text-primary hover:bg-slate-100'
@@ -65,21 +65,49 @@ export default function TeamPage() {
             })}
           </div>
 
-          {/* Clinical Staff Grid (Clean Cards, No Extra Buttons) */}
+          {/* Mobile Filter Dropdown */}
+          <div className="block md:hidden mb-10 max-w-sm mx-auto">
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-primary">
+                <Filter className="w-4 h-4" />
+              </div>
+              <select
+                value={activeCategory}
+                onChange={(e) => setActiveCategory(e.target.value)}
+                aria-label="Filter Therapists by Category"
+                className="w-full pl-11 pr-10 py-3.5 rounded-full bg-slate-50 border-2 border-primary/20 text-primary font-bold text-sm focus:outline-hidden focus:border-primary appearance-none shadow-sm cursor-pointer"
+              >
+                {categories.map((cat, idx) => (
+                  <option key={idx} value={cat}>
+                    {cat}
+                  </option>
+                ))}
+              </select>
+              <div className="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none text-primary">
+                <ChevronDown className="w-4 h-4" />
+              </div>
+            </div>
+            <div className="text-center mt-2 text-xs text-slate-500 font-sans">
+              Showing {filteredTeam.length} specialists
+            </div>
+          </div>
+
+          {/* Clinical Staff Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-7">
             {filteredTeam.map((member) => (
               <div
                 key={member.id}
                 className="bg-slate-50/60 rounded-3xl p-6 border border-slate-200/80 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-start text-center group hover:-translate-y-1.5 h-full"
               >
-                {/* Avatar Photo Frame */}
-                <div className="relative w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-amber-300 shadow-md bg-white group-hover:scale-105 transition-transform shrink-0 mb-4">
+                {/* Avatar Photo Frame with Loading Skeleton Placeholder */}
+                <div className="relative w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-amber-300 shadow-md bg-slate-200 group-hover:scale-105 transition-transform shrink-0 mb-4">
                   <Image
                     src={member.image}
                     alt={member.name}
                     fill
                     sizes="128px"
                     className="object-cover"
+                    loading="lazy"
                   />
                 </div>
 
