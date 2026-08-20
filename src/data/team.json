@@ -1,37 +1,215 @@
 [
   {
+    "id": "omer-faruk",
+    "name": "Md. Omer Faruk",
+    "role": "Chairman & Consultant Speech and Language Therapist",
+    "bio": "Founder and Chairman, CARES Point Bangladesh. Over 8 years of clinical expertise in speech, language, OPT, PROMPT, and feeding therapy.",
+    "image": "/uploads/2024/09/omer-faruk.jpeg",
+    "specialties": [
+      "Speech & Language Therapy",
+      "Oral Placement Therapy",
+      "Feeding Therapy"
+    ],
+    "isLeadership": true
+  },
+  {
     "id": "lukhy-akter",
     "name": "Lukhy Akter",
-    "designation": "Managing Director & Co-founder",
-    "bio": "Dedicated healthcare leader and therapist committed to empowering children and families through personalized therapy, early intervention, and inclusive special education.",
-    "image": "/uploads/2025/03/WhatsApp-Image-2025-03-26-at-11.13.02-AM.jpeg",
-    "social": {
-      "facebook": "#",
-      "linkedin": "#"
-    }
+    "role": "Managing Director & Co-founder, Speech and Language Therapist",
+    "bio": "Managing Director and Co-founder of CARES Bangladesh. Over 8 years of clinical experience, certified in Oral Placement Therapy.",
+    "image": "/uploads/2025/03/lukhy-akter.jpeg",
+    "specialties": [
+      "Speech Therapy",
+      "Oral Placement Therapy",
+      "Early Childhood Intervention"
+    ],
+    "isLeadership": true
   },
   {
-    "id": "senior-speech-therapist",
-    "name": "Senior Speech-Language Pathologist",
-    "designation": "Lead Speech & Language Therapist",
-    "bio": "Specialist in child articulation, phonology, language delays, and augmentative communication systems with years of clinical experience.",
-    "image": "/assets/img/user.svg",
-    "social": {}
+    "id": "1189",
+    "name": "Iskander Hossain",
+    "role": "Speech and Language Therapist",
+    "bio": "B.Sc. – CRP",
+    "image": "/uploads/2019/09/Iskander-Hossain.jpg",
+    "specialties": [
+      "Speech and Language Therapist"
+    ],
+    "isLeadership": false
   },
   {
-    "id": "senior-ot-therapist",
-    "name": "Senior Occupational Therapist",
-    "designation": "Lead Occupational & Sensory Therapist",
-    "bio": "Expert in sensory integration, pediatric motor skill development, and daily living skills training.",
-    "image": "/assets/img/user.svg",
-    "social": {}
+    "id": "1190",
+    "name": "Nurul Islam Nahid",
+    "role": "Speech and Language Therapist",
+    "bio": "BSS and MSS – DU",
+    "image": "/uploads/2019/09/Nurul-Islam-Nahid.jpg",
+    "specialties": [
+      "Speech and Language Therapist"
+    ],
+    "isLeadership": false
   },
   {
-    "id": "lead-behavior-analyst",
-    "name": "Behavior Intervention Specialist",
-    "designation": "Lead ABA & Behavioral Therapist",
-    "bio": "Specialized in applied behavior analysis, autism support, positive behavioral support, and social skills development.",
-    "image": "/assets/img/user.svg",
-    "social": {}
+    "id": "1193",
+    "name": "Iftekharul Islam Shuvo",
+    "role": "Senior Occupational Therapist",
+    "bio": "B.Sc. – CRP",
+    "image": "/uploads/2019/09/Iftekharul-Islam-Shuvo.jpg",
+    "specialties": [
+      "Senior Occupational Therapist"
+    ],
+    "isLeadership": false
+  },
+  {
+    "id": "1194",
+    "name": "Al-Imran Chowdhury (Auporbo)",
+    "role": "Senior Occupational Therapist & In Charge",
+    "bio": "B.Sc in OT (CRP, DU) CPT in OPT-1, ABA, SI-1 (BOTA) Sensory Motor: Master of Swing (Canada) BOTA reg. No. A453",
+    "image": "/uploads/2024/09/apurbo.jpeg",
+    "specialties": [
+      "Senior Occupational Therapist & In Charge"
+    ],
+    "isLeadership": false
+  },
+  {
+    "id": "1197",
+    "name": "Israt Jahan Sara",
+    "role": "ABA/ Behavior Therapist",
+    "bio": "B.Sc. and MS in Psychology  Dhaka University",
+    "image": "/uploads/2019/09/Israt-Jahan-Sara.jpg",
+    "specialties": [
+      "ABA/ Behavior Therapist"
+    ],
+    "isLeadership": false
+  },
+  {
+    "id": "1553",
+    "name": "Sum Hui Ting",
+    "role": "Speech and Language Therapy Supervisor",
+    "bio": "Bachelor's Degree (Hons) in Speech Pathology from La Trobe University 16 years' experience and Registered Speech and Language Therapist: Professionals Council (Singapore)",
+    "image": "/uploads/2024/09/WhatsApp-Image-2024-09-05-at-1.53.11-PM.jpeg",
+    "specialties": [
+      "Speech and Language Therapy Supervisor"
+    ],
+    "isLeadership": false
+  },
+  {
+    "id": "1555",
+    "name": "Kai Li khaw",
+    "role": "Applied Behaviour Analysis Supervisor",
+    "bio": "Masters in Special Needs from University of (Nottingham Campus) 11 years' experience Director The Proud kids Care Centre, Kualampur, Malaysia",
+    "image": "/uploads/2024/09/WhatsApp-Image-2024-09-05-at-1.53.11-PM-1.jpeg",
+    "specialties": [
+      "Applied Behaviour Analysis Supervisor"
+    ],
+    "isLeadership": false
+  },
+  {
+    "id": "1557",
+    "name": "Guo Hua",
+    "role": "Occupational Therapy Supervisor",
+    "bio": "M.Sc in Occupational Therapy from Queen Margar University Edinburgh 13 years' experience  Registered: Allied Health Professionals Council, Singapore Clinical Director at Coo Hua Therapy and Consultation Centre, Singapore",
+    "image": "/uploads/2024/09/photo_2024-09-05_14-37-36.png",
+    "specialties": [
+      "Occupational Therapy Supervisor"
+    ],
+    "isLeadership": false
+  },
+  {
+    "id": "2090",
+    "name": "Shahriar Supto",
+    "role": "Clinical Speech and Language Therapist",
+    "bio": "B.Sc in Speech and language therapy(BHPI,CRP) SSLT reg. No.-160.",
+    "image": "/uploads/2025/03/staff-2.jpeg",
+    "specialties": [
+      "Clinical Speech and Language Therapist"
+    ],
+    "isLeadership": false
+  },
+  {
+    "id": "2097",
+    "name": "Md Mohibbullah Al Maruf",
+    "role": "Behavior Therapist",
+    "bio": "B.Ed., M.Sp.Ed  University of Dhaka",
+    "image": "/uploads/2025/03/staff-1.jpeg",
+    "specialties": [
+      "Behavior Therapist"
+    ],
+    "isLeadership": false
+  },
+  {
+    "id": "2302",
+    "name": "Shakila shova",
+    "role": "Speech and language pathologist",
+    "bio": "BSS in DU MSS in DU",
+    "image": "/uploads/2025/09/WhatsApp-Image-2025-09-16-at-8.21.33-PM.jpeg",
+    "specialties": [
+      "Speech and language pathologist"
+    ],
+    "isLeadership": false
+  },
+  {
+    "id": "2309",
+    "name": "Arefa Aktar",
+    "role": "Occupational therapist (OT)",
+    "bio": "BHPI , CRP , University of Dhaka",
+    "image": "/uploads/2025/09/WhatsApp-Image-2025-09-16-at-8.21.32-PM.jpeg",
+    "specialties": [
+      "Occupational therapist (OT)"
+    ],
+    "isLeadership": false
+  },
+  {
+    "id": "2310",
+    "name": "Hasin Esrak Mahi",
+    "role": "Occupational Therapist (DOT)",
+    "bio": "BHPI,CRP BOTA reg.no: A 604/2025",
+    "image": "/uploads/2025/09/WhatsApp-Image-2025-09-16-at-3.29.02-PM.jpeg",
+    "specialties": [
+      "Occupational Therapist (DOT)"
+    ],
+    "isLeadership": false
+  },
+  {
+    "id": "2314",
+    "name": "Amit Das",
+    "role": "Clinical Speech & Language Therapist",
+    "bio": "B.Sc. in Speech &amp; Language Therapy, BHPI, CRP",
+    "image": "/uploads/2025/09/WhatsApp-Image-2025-09-16-at-2.12.06-PM.jpeg",
+    "specialties": [
+      "Clinical Speech & Language Therapist"
+    ],
+    "isLeadership": false
+  },
+  {
+    "id": "2315",
+    "name": "Md.Tahmid Majumdar",
+    "role": "Speech & Language Therapist",
+    "bio": "B.Sc.- CRP",
+    "image": "/uploads/2025/09/WhatsApp-Image-2025-09-16-at-2.12.05-PM.jpeg",
+    "specialties": [
+      "Speech & Language Therapist"
+    ],
+    "isLeadership": false
+  },
+  {
+    "id": "2316",
+    "name": "Shuvo Datta",
+    "role": "Occupational Therapist (DOT)",
+    "bio": "DOT,CRP,SMF Reg.No: A 605 (BOTA)",
+    "image": "/uploads/2025/09/WhatsApp-Image-2025-09-16-at-2.10.50-PM.jpeg",
+    "specialties": [
+      "Occupational Therapist (DOT)"
+    ],
+    "isLeadership": false
+  },
+  {
+    "id": "2318",
+    "name": "Sabekun Naher Athila",
+    "role": "Audiologist & Speech Language Pathologist",
+    "bio": "Specially trained from CMH, Proyash, BMU, NIENT",
+    "image": "/uploads/2025/10/WhatsApp-Image-2025-10-14-at-12.40.01-PM.jpeg",
+    "specialties": [
+      "Audiologist & Speech Language Pathologist"
+    ],
+    "isLeadership": false
   }
 ]

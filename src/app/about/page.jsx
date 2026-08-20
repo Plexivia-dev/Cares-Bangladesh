@@ -71,34 +71,52 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Leadership Section */}
+      {/* Leadership & Team Section */}
       <section className="py-20 bg-slate-50/70">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="text-center max-w-2xl mx-auto mb-14 space-y-3">
             <h2 className="font-flavors text-4xl text-primary">Our Dedicated Leadership & Team</h2>
-            <p className="text-xs sm:text-sm text-slate-600 font-sans">
-              Passionate professionals working together to bring out the best in every child.
+            <p className="text-sm text-slate-600 font-sans">
+              Passionate, qualified clinical professionals working together to bring out the best in every child.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {team.map((member) => (
-              <div key={member.id} className="bg-white rounded-3xl p-6 border border-slate-100 shadow-sm text-center space-y-4">
-                <div className="relative w-28 h-28 mx-auto rounded-full overflow-hidden border-4 border-accent/30 shadow-md">
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    sizes="112px"
-                    className="object-cover"
-                  />
-                </div>
-                <div>
-                  <h3 className="font-flavors text-2xl text-primary">{member.name}</h3>
-                  <div className="text-xs font-bold text-secondary mb-2">{member.designation}</div>
-                  <p className="text-xs text-slate-600 font-sans leading-relaxed line-clamp-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7 max-w-6xl mx-auto">
+            {team.slice(0, 8).map((member) => (
+              <div
+                key={member.id}
+                className="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-sm hover:shadow-lg transition-all text-center flex flex-col justify-between h-full group hover:-translate-y-1"
+              >
+                <div className="space-y-3.5">
+                  <div className="relative w-28 h-28 mx-auto rounded-full overflow-hidden border-4 border-amber-300 shadow-md bg-slate-100 shrink-0 group-hover:scale-105 transition-transform">
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      sizes="112px"
+                      className="object-cover"
+                    />
+                  </div>
+                  
+                  <div className="space-y-1">
+                    <h3 className="font-sans font-bold text-base text-primary group-hover:text-secondary transition-colors min-h-[2.6rem] flex items-center justify-center leading-snug">
+                      {member.name}
+                    </h3>
+                    <div className="text-xs font-bold text-amber-700 font-sister min-h-[2.2rem] flex items-center justify-center leading-tight">
+                      {member.role}
+                    </div>
+                  </div>
+
+                  <p className="text-xs text-slate-600 font-sans leading-relaxed line-clamp-3 min-h-[3rem] flex items-center justify-center">
                     {member.bio}
                   </p>
+                </div>
+
+                <div className="pt-4 border-t border-slate-100 mt-4">
+                  <Link href="/speech-language-therapy-therapist" className="text-xs font-bold text-secondary hover:text-primary transition-colors flex items-center justify-center space-x-1">
+                    <span>View Profile</span>
+                    <span>&rarr;</span>
+                  </Link>
                 </div>
               </div>
             ))}
@@ -106,8 +124,8 @@ export default function AboutPage() {
 
           <div className="text-center mt-12">
             <Link href="/speech-language-therapy-therapist">
-              <Button variant="default" size="default" className="font-semibold shadow-md">
-                <span>View Full Clinical Team</span>
+              <Button variant="default" size="lg" className="rounded-full font-bold px-8 shadow-md">
+                <span>View All 19 Clinical Specialists</span>
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>
