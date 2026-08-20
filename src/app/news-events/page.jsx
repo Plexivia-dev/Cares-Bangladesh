@@ -30,21 +30,21 @@ export default function NewsEventsPage() {
         breadcrumb={[{ name: 'News & Events' }]}
       />
 
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+      <section className="py-20 bg-slate-50/50">
+        <div className="container mx-auto px-4 sm:px-6">
           
           {/* Search bar */}
-          <div className="max-w-md mx-auto mb-12 relative">
+          <div className="max-w-md mx-auto mb-14 relative">
             <Search className="w-5 h-5 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2" />
             <Input
               type="text"
-              placeholder="Search therapy articles..."
+              placeholder="Search therapy articles & guides..."
               value={search}
               onChange={(e) => {
                 setSearch(e.target.value);
                 setPage(1);
               }}
-              className="pl-12 h-12 rounded-full border-slate-200 shadow-sm"
+              className="pl-12 h-12 rounded-full border-slate-200 shadow-sm bg-white font-sans text-sm focus-visible:ring-primary"
             />
           </div>
 
@@ -54,16 +54,16 @@ export default function NewsEventsPage() {
                 {currentPosts.map((post) => (
                   <div
                     key={post.id}
-                    className="bg-slate-50/70 rounded-3xl p-6 border border-slate-100 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group"
+                    className="bg-white rounded-3xl p-7 border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1.5 h-full"
                   >
-                    <div className="space-y-3">
-                      <div className="flex items-center space-x-2 text-xs text-slate-500">
-                        <Calendar className="w-3.5 h-3.5 text-accent" />
+                    <div className="space-y-3.5">
+                      <div className="flex items-center space-x-2 text-xs text-amber-700 font-semibold font-sister">
+                        <Calendar className="w-3.5 h-3.5 text-amber-500" />
                         <span>{post.date}</span>
                       </div>
 
-                      <Link href={`/${post.slug}`}>
-                        <h3 className="font-flavors text-2xl text-primary group-hover:text-secondary transition-colors line-clamp-2">
+                      <Link href={`/${post.slug}`} className="block">
+                        <h3 className="font-sans font-bold text-lg text-primary group-hover:text-secondary transition-colors line-clamp-2 leading-snug">
                           {post.title}
                         </h3>
                       </Link>
@@ -73,13 +73,13 @@ export default function NewsEventsPage() {
                       </p>
                     </div>
 
-                    <div className="pt-4 border-t border-slate-200/60 mt-4">
+                    <div className="pt-5 border-t border-slate-100 mt-5">
                       <Link
                         href={`/${post.slug}`}
-                        className="inline-flex items-center text-xs font-bold text-secondary hover:text-primary transition-colors"
+                        className="inline-flex items-center text-xs font-bold text-secondary hover:text-primary transition-colors group/link"
                       >
                         <span>Read Full Guide</span>
-                        <ArrowRight className="w-3.5 h-3.5 ml-1 group-hover:translate-x-1 transition-transform" />
+                        <ArrowRight className="w-3.5 h-3.5 ml-1.5 group-hover/link:translate-x-1 transition-transform" />
                       </Link>
                     </div>
                   </div>
@@ -94,6 +94,7 @@ export default function NewsEventsPage() {
                     size="sm"
                     disabled={page === 1}
                     onClick={() => setPage(page - 1)}
+                    className="rounded-full px-5"
                   >
                     Previous
                   </Button>
@@ -105,6 +106,7 @@ export default function NewsEventsPage() {
                     size="sm"
                     disabled={page === totalPages}
                     onClick={() => setPage(page + 1)}
+                    className="rounded-full px-5"
                   >
                     Next
                   </Button>

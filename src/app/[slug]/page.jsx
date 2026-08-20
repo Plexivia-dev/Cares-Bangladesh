@@ -1,28 +1,70 @@
 import React from 'react';
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
 import PageHeader from '@/components/shared/PageHeader';
 import ContactWidget from '@/components/shared/ContactWidget';
 import { Button } from '@/components/ui/button';
-import { Calendar, User, ArrowRight, ArrowLeft, Share2, Sparkles, BookOpen } from 'lucide-react';
+import { Calendar, User, ArrowRight, ArrowLeft, BookOpen, AlertCircle } from 'lucide-react';
 import posts from '@/data/posts.json';
 import seoMetadata from '@/data/seoMetadata.json';
 import siteConfig from '@/data/siteConfig.json';
 
+function getPost(slugParam) {
+  if (!slugParam) return null;
+  const raw = String(slugParam).trim();
+  let decoded = raw;
+  try {
+    decoded = decodeURIComponent(raw);
+  } catch (e) {
+    decoded = raw;
+  }
+
+  return posts.find((p) => {
+    let pDecoded = p.slug;
+    try {
+      pDecoded = decodeURIComponent(p.slug);
+    } catch (e) {
+      pDecoded = p.slug;
+    }
+    return (
+      p.slug.toLowerCase() === raw.toLowerCase() ||
+      p.slug.toLowerCase() === decoded.toLowerCase() ||
+      pDecoded.toLowerCase() === decoded.toLowerCase() ||
+      pDecoded.toLowerCase() === raw.toLowerCase()
+    );
+  });
+}
+
 export async function generateStaticParams() {
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
+  const params = [];
+  const seen = new Set();
+
+  for (const post of posts) {
+    if (!seen.has(post.slug)) {
+      params.push({ slug: post.slug });
+      seen.add(post.slug);
+    }
+    try {
+      const decoded = decodeURIComponent(post.slug);
+      if (decoded !== post.slug && !seen.has(decoded)) {
+        params.push({ slug: decoded });
+        seen.add(decoded);
+      }
+    } catch (e) {
+      // ignore
+    }
+  }
+
+  return params;
 }
 
 export async function generateMetadata({ params }) {
-  const { slug } = params;
-  const post = posts.find((p) => p.slug === slug);
+  const post = getPost(params?.slug);
+  const slug = params?.slug || '';
   const seo = seoMetadata[slug] || (post ? post.seo : null);
 
   if (!post && !seo) {
     return {
-      title: 'Article Not Found | Cares Bangladesh',
+      title: 'Article | Cares Bangladesh',
     };
   }
 
@@ -63,14 +105,41 @@ export async function generateMetadata({ params }) {
 }
 
 export default function BlogPostPage({ params }) {
-  const { slug } = params;
-  const post = posts.find((p) => p.slug === slug);
+  const post = getPost(params?.slug);
 
   if (!post) {
-    notFound();
+    return (
+      <>
+        <PageHeader
+          title="Article Not Found"
+          subtitle="The requested blog post could not be found."
+          breadcrumb={[
+            { name: 'News & Articles', href: '/news-events' },
+            { name: 'Not Found' },
+          ]}
+        />
+        <section className="py-20 bg-white text-center">
+          <div className="container mx-auto px-4 max-w-lg space-y-6">
+            <div className="w-16 h-16 mx-auto rounded-full bg-amber-100 text-amber-600 flex items-center justify-center">
+              <AlertCircle className="w-8 h-8" />
+            </div>
+            <h2 className="font-flavors text-3xl text-primary">Article Not Found</h2>
+            <p className="text-slate-600 text-sm font-sans">
+              This article may have been moved or updated. Please browse our latest guides and articles below.
+            </p>
+            <Link href="/news-events">
+              <Button variant="accent" size="lg" className="rounded-full font-bold px-8 bg-amber-500 hover:bg-amber-600 text-white">
+                <span>View All Articles</span>
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </Link>
+          </div>
+        </section>
+      </>
+    );
   }
 
-  const recentPosts = posts.filter((p) => p.slug !== slug).slice(0, 4);
+  const recentPosts = posts.filter((p) => p.slug !== post.slug).slice(0, 4);
 
   // Schema.org Article JSON-LD
   const jsonLd = {
@@ -123,11 +192,11 @@ export default function BlogPostPage({ params }) {
               {/* Meta Info */}
               <div className="flex items-center space-x-4 text-xs text-slate-500 pb-4 border-b border-slate-100">
                 <div className="flex items-center space-x-1.5">
-                  <Calendar className="w-4 h-4 text-accent" />
+                  <Calendar className="w-4 h-4 text-amber-500" />
                   <span>{post.date}</span>
                 </div>
                 <div className="flex items-center space-x-1.5">
-                  <User className="w-4 h-4 text-accent" />
+                  <User className="w-4 h-4 text-amber-500" />
                   <span>Cares Bangladesh Clinical Team</span>
                 </div>
               </div>
@@ -139,16 +208,16 @@ export default function BlogPostPage({ params }) {
               />
 
               {/* Navigation Back */}
-              <div className="pt-8 border-t border-slate-100 flex items-center justify-between">
-                <Link href="/news-events">
-                  <Button variant="outline" size="sm" className="font-semibold">
+              <div className="pt-8 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <Link href="/news-events" className="w-full sm:w-auto">
+                  <Button variant="outline" size="sm" className="w-full sm:w-auto rounded-full font-bold px-6">
                     <ArrowLeft className="w-4 h-4 mr-1.5" />
                     <span>Back to Articles</span>
                   </Button>
                 </Link>
 
-                <Link href="/book-a-tour">
-                  <Button variant="accent" size="sm" className="font-bold">
+                <Link href="/book-a-tour" className="w-full sm:w-auto">
+                  <Button variant="accent" size="sm" className="w-full sm:w-auto rounded-full font-bold px-6 bg-amber-500 hover:bg-amber-600 text-white shadow-md">
                     <span>Book A Consultation</span>
                     <ArrowRight className="w-4 h-4 ml-1.5" />
                   </Button>
