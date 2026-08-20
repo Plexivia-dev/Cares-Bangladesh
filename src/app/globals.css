@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 197 100% 19%; /* #004460 */
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 191 100% 28%; /* #007791 */
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 38 92% 50%; /* #f59e0b */
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 197 100% 19%;
+
+    --radius: 1rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-flavors), cursive;
+    color: #004460;
+  }
+}
+
+.font-flavors {
+  font-family: var(--font-flavors), cursive;
+}
+
+.font-sister {
+  font-family: var(--font-sister), cursive;
+}
+
+.font-sans {
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+/* Authentic theme wave & cloud shapes */
+.bg-wave-pattern {
+  background-image: url('/assets/img/blue-wave-1.svg');
+  background-repeat: repeat-x;
+  background-position: bottom;
+  background-size: contain;
+}
+
+.bg-cloud-pattern {
+  background-image: url('/assets/img/cloud.svg');
+  background-repeat: no-repeat;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #007791;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #004460;
+}
