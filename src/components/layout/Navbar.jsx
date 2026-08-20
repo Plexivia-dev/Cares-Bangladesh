@@ -74,27 +74,32 @@ export default function Navbar({ onOpenBookTour }) {
                     <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
                   </Link>
 
-                  {/* Dropdown Menu */}
-                  <div className="absolute top-full left-0 w-80 bg-white rounded-2xl shadow-xl border border-slate-100 p-3 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 z-50">
-                    <div className="text-xs font-bold text-slate-400 uppercase px-3 py-1.5 font-sans">
-                      Specialized Therapy & Programs
+                  {/* Compact 2-Column Dropdown Menu */}
+                  <div className="absolute top-full left-0 w-[520px] bg-white rounded-2xl shadow-2xl border border-slate-100 p-3 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 z-50">
+                    <div className="flex items-center justify-between px-2.5 py-1 mb-1 border-b border-slate-100">
+                      <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider font-sans">
+                        Therapy & Programs
+                      </span>
+                      <Link
+                        href="/our-programs-child-care-in-dhaka-bangladesh"
+                        className="text-[11px] font-bold text-secondary hover:text-primary transition-colors flex items-center space-x-1"
+                      >
+                        <span>View All</span>
+                        <span>&rarr;</span>
+                      </Link>
                     </div>
-                    <div className="space-y-1">
+
+                    <div className="grid grid-cols-2 gap-1 pt-1">
                       {programs.map((prog) => (
                         <Link
                           key={prog.id}
                           href={`/${prog.slug}`}
-                          className="flex items-start space-x-3 p-2.5 rounded-xl hover:bg-primary/5 transition-colors group/item"
+                          className="flex items-center space-x-2.5 px-3 py-2 rounded-xl hover:bg-primary/5 text-slate-700 hover:text-primary transition-colors group/item"
                         >
-                          <div className="w-2 h-2 rounded-full bg-accent mt-2 group-hover/item:scale-150 transition-transform" />
-                          <div>
-                            <div className="text-xs font-bold text-slate-800 group-hover/item:text-primary transition-colors">
-                              {prog.title}
-                            </div>
-                            <div className="text-[11px] text-slate-500 line-clamp-1">
-                              {prog.shortDescription}
-                            </div>
-                          </div>
+                          <div className="w-1.5 h-1.5 rounded-full bg-accent group-hover/item:scale-125 group-hover/item:bg-primary transition-all shrink-0" />
+                          <span className="text-xs font-semibold leading-tight line-clamp-1">
+                            {prog.title}
+                          </span>
                         </Link>
                       ))}
                     </div>
