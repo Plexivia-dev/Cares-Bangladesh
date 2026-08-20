@@ -3,108 +3,85 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Sparkles, Calendar, ArrowRight, Heart, ShieldCheck, Award, Users } from 'lucide-react';
+import { Calendar, ArrowRight, ShieldCheck, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export default function HeroSlider() {
   return (
-    <section className="relative bg-gradient-to-b from-sky-50/70 via-white to-sky-50/40 pt-12 pb-20 md:pt-16 md:pb-28 overflow-hidden">
-      {/* Decorative Wave & Cloud Assets */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl -z-10 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-accent/15 rounded-full blur-3xl -z-10 pointer-events-none" />
-
+    <section className="relative bg-gradient-to-b from-sky-100/60 via-amber-50/40 to-white pt-12 pb-24 md:pt-16 md:pb-32 overflow-hidden">
+      
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           
-          {/* Left Column: Content */}
-          <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-            <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-accent/15 text-accent-orange text-xs sm:text-sm font-bold shadow-xs">
-              <Sparkles className="w-4 h-4 text-accent" />
-              <span>Leading Child Care & Therapy Center in Dhaka</span>
+          {/* Left: Floating Cloud Card on Hero */}
+          <div className="lg:col-span-6 relative z-10 space-y-6 text-center lg:text-left">
+            <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-amber-100 text-amber-800 text-xs font-bold font-sister shadow-xs">
+              <span>Dedicated & Compassionate</span>
             </div>
 
-            <h1 className="font-flavors text-4xl sm:text-5xl md:text-6xl xl:text-7xl text-primary leading-[1.15] tracking-wide">
-              Empowering Children to <span className="text-secondary underline decoration-accent decoration-wavy decoration-2">Thrive</span> with Love & Care
+            <h1 className="font-flavors text-4xl sm:text-5xl md:text-6xl text-primary leading-tight">
+              Will Your Child <span className="text-secondary">Be Safe?</span>
             </h1>
 
-            <p className="text-base sm:text-lg text-slate-600 font-sans leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              Welcome to <strong>Cares Bangladesh</strong>. We offer world-class Speech & Language Therapy, Occupational Therapy, ABA Therapy, and specialized early learning tailored to your child's unique developmental journey.
+            <p className="text-slate-600 text-base sm:text-lg font-sans leading-relaxed max-w-xl mx-auto lg:mx-0">
+              At <strong>Cares Bangladesh</strong>, we provide a warm, loving, and evidence-based environment where children with developmental, speech, and motor challenges achieve confidence and joy.
             </p>
 
-            {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
               <Link href="/book-a-tour">
-                <Button variant="accent" size="lg" className="font-bold shadow-lg hover:shadow-xl flex items-center space-x-2 h-13 px-8 text-base">
-                  <Calendar className="w-5 h-5" />
-                  <span>Book A Free Consultation</span>
+                <Button variant="accent" size="lg" className="rounded-full font-bold shadow-lg hover:shadow-xl px-8 h-13 text-base bg-amber-500 hover:bg-amber-600 text-white">
+                  <Calendar className="w-5 h-5 mr-2" />
+                  <span>Schedule a Tour</span>
                 </Button>
               </Link>
 
               <Link href="/our-programs-child-care-in-dhaka-bangladesh">
-                <Button variant="outline" size="lg" className="h-13 px-8 text-base flex items-center space-x-2 font-semibold bg-white/80">
-                  <span>Explore Programs</span>
-                  <ArrowRight className="w-4 h-4" />
+                <Button variant="outline" size="lg" className="rounded-full h-13 px-8 text-base font-semibold border-2 border-primary text-primary hover:bg-primary hover:text-white bg-white/90">
+                  <span>Our Programs</span>
+                  <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
             </div>
-
-            {/* Trust Highlights */}
-            <div className="pt-6 grid grid-cols-3 gap-4 border-t border-slate-200/80 max-w-lg mx-auto lg:mx-0">
-              <div className="text-center lg:text-left">
-                <div className="font-flavors text-2xl sm:text-3xl text-primary">100%</div>
-                <div className="text-xs text-slate-500 font-medium">Individualized Care</div>
-              </div>
-              <div className="text-center lg:text-left">
-                <div className="font-flavors text-2xl sm:text-3xl text-secondary">Expert</div>
-                <div className="text-xs text-slate-500 font-medium">Certified Therapists</div>
-              </div>
-              <div className="text-center lg:text-left">
-                <div className="font-flavors text-2xl sm:text-3xl text-accent-orange">Uttara</div>
-                <div className="text-xs text-slate-500 font-medium">Dhaka Center</div>
-              </div>
-            </div>
           </div>
 
-          {/* Right Column: Hero Visuals */}
-          <div className="lg:col-span-5 relative">
-            <div className="relative mx-auto max-w-md lg:max-w-none">
-              {/* Main Image Container */}
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white aspect-[4/3]">
+          {/* Right: Authentic Child Playing Visual */}
+          <div className="lg:col-span-6 relative">
+            <div className="relative mx-auto max-w-lg">
+              {/* Playful Orange/Yellow Blob Background */}
+              <div className="absolute -inset-4 bg-gradient-to-tr from-amber-300 to-orange-400 rounded-[3rem] rotate-3 opacity-80 blur-xs -z-10" />
+              
+              <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white aspect-[4/3] bg-white">
                 <Image
                   src="/assets/img/values.jpg"
-                  alt="Cares Bangladesh Child Therapy"
+                  alt="Cares Bangladesh Child Learning"
                   fill
                   priority
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
-                  className="object-cover hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover"
                 />
               </div>
 
-              {/* Floating Badge 1 */}
-              <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 flex items-center space-x-3 animate-bounce duration-1000 hidden sm:flex">
-                <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center text-accent-orange">
-                  <Heart className="w-6 h-6 fill-accent-orange" />
+              {/* Floating Badge */}
+              <div className="absolute -bottom-6 -left-4 bg-white/95 backdrop-blur-xs p-4 rounded-2xl shadow-xl border-2 border-amber-200 flex items-center space-x-3 hidden sm:flex">
+                <div className="w-11 h-11 rounded-full bg-amber-500 text-white flex items-center justify-center font-flavors text-xl font-bold">
+                  ★
                 </div>
                 <div>
-                  <div className="text-xs font-bold text-slate-800">Accept. Understand. Love</div>
-                  <div className="text-[11px] text-slate-500">Every child is extraordinary</div>
-                </div>
-              </div>
-
-              {/* Floating Badge 2 */}
-              <div className="absolute -top-6 -right-6 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 flex items-center space-x-3 hidden sm:flex">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
-                  <Award className="w-6 h-6" />
-                </div>
-                <div>
-                  <div className="text-xs font-bold text-slate-800">Proven Results</div>
-                  <div className="text-[11px] text-slate-500">Holistic Therapy & Growth</div>
+                  <div className="text-xs font-bold text-slate-800">100% Individualized Care</div>
+                  <div className="text-[11px] text-slate-500 font-sister">Accept. Understand. Love</div>
                 </div>
               </div>
             </div>
           </div>
 
         </div>
+      </div>
+
+      {/* Authentic Wave Separator */}
+      <div className="absolute bottom-0 left-0 right-0 h-12 w-full overflow-hidden leading-none pointer-events-none">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-12 text-white fill-current">
+          <path d="M0,0 C150,90 350,-40 500,60 C650,160 900,10 1200,40 L1200,120 L0,120 Z"></path>
+        </svg>
       </div>
     </section>
   );

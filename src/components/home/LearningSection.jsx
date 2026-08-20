@@ -2,34 +2,18 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { Palette, Music, Sparkles, BookOpen, Smile, Activity } from 'lucide-react';
+import Link from 'next/link';
+import { ArrowRight, Sparkles } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 export default function LearningSection() {
-  const activities = [
-    {
-      title: 'Sensory & Motor Play',
-      desc: 'Enhancing tactile awareness, balance, and spatial coordination through structured movement games.',
-      icon: Activity,
-      color: 'bg-orange-50 text-orange-600 border-orange-100',
-    },
-    {
-      title: 'Art & Expressive Craft',
-      desc: 'Exploring colors, textures, and shapes to foster emotional self-expression and fine motor dexterity.',
-      icon: Palette,
-      color: 'bg-pink-50 text-pink-600 border-pink-100',
-    },
-    {
-      title: 'Music & Rhythmic Speech',
-      desc: 'Utilizing rhythm and vocal play to stimulate speech patterns, language rhythm, and auditory processing.',
-      icon: Music,
-      color: 'bg-purple-50 text-purple-600 border-purple-100',
-    },
-    {
-      title: 'Social & Communication Play',
-      desc: 'Interactive peer activities that teach turn-taking, shared attention, and empathetic communication.',
-      icon: Smile,
-      color: 'bg-teal-50 text-teal-600 border-teal-100',
-    },
+  const subjects = [
+    { name: 'Art Therapy', icon: '/assets/img/childit_icons/art.svg', color: 'bg-pink-100 text-pink-600' },
+    { name: 'Music Therapy', icon: '/assets/img/childit_icons/music.svg', color: 'bg-purple-100 text-purple-600' },
+    { name: 'Math & Logic', icon: '/assets/img/childit_icons/math.svg', color: 'bg-sky-100 text-sky-600' },
+    { name: 'Literacy & Speech', icon: '/assets/img/childit_icons/literacy.svg', color: 'bg-amber-100 text-amber-600' },
+    { name: 'Outdoor Play', icon: '/assets/img/childit_icons/outdoor.svg', color: 'bg-emerald-100 text-emerald-600' },
+    { name: 'Sport & Motor', icon: '/assets/img/childit_icons/sport.svg', color: 'bg-orange-100 text-orange-600' },
   ];
 
   return (
@@ -37,47 +21,53 @@ export default function LearningSection() {
       <div className="container mx-auto px-4">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-5 space-y-6">
-            <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-accent/15 text-accent-orange text-xs font-bold">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Holistic Child Development</span>
+          {/* Left Text */}
+          <div className="lg:col-span-6 space-y-5">
+            <div className="text-xs font-bold text-secondary uppercase tracking-wider font-sister">
+              — Dynamic Learning Experiences
             </div>
 
-            <h2 className="font-flavors text-4xl sm:text-5xl text-primary leading-tight">
-              Learning Through Creative Play & Engagement
+            <h2 className="font-flavors text-3xl sm:text-4xl md:text-5xl text-primary leading-tight">
+              Foundations of Learning. <span className="text-secondary">Dedicated to Excellence</span>
             </h2>
 
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-sans">
-              Play is the primary way children learn about themselves and the world around them. Our multidisciplinary therapeutic activities combine scientific developmental benchmarks with playful joy.
+              Child development is our main concern. Our multidisciplinary programs are developed by an experienced clinical team to enhance speech, fine and gross motor skills, sensory integration, and emotional resilience.
             </p>
 
-            <div className="p-4 rounded-2xl bg-sky-50 border border-sky-100 flex items-center space-x-4">
-              <div className="w-12 h-12 rounded-xl bg-secondary text-white flex items-center justify-center shrink-0 shadow-sm">
-                <BookOpen className="w-6 h-6" />
-              </div>
-              <div>
-                <h4 className="text-sm font-bold text-primary">Individualized Learning Pace</h4>
-                <p className="text-xs text-slate-600">Every session is customized around the child's strengths.</p>
-              </div>
+            <div className="pt-2">
+              <Link href="/book-a-tour">
+                <Button variant="accent" size="default" className="rounded-full font-bold px-7 bg-amber-500 hover:bg-amber-600 text-white shadow-md">
+                  <span>Learn More</span>
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </Link>
             </div>
           </div>
 
-          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {activities.map((act, idx) => {
-              const Icon = act.icon;
-              return (
+          {/* Right: Circular Icon Hub matching original theme */}
+          <div className="lg:col-span-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+              {subjects.map((sub, idx) => (
                 <div
                   key={idx}
-                  className={`p-6 rounded-3xl border shadow-xs hover:shadow-md transition-all ${act.color}`}
+                  className="bg-slate-50/80 p-5 rounded-3xl border border-slate-100 text-center hover:bg-white hover:shadow-lg hover:-translate-y-1 transition-all group"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-white shadow-xs flex items-center justify-center mb-3">
-                    <Icon className="w-5 h-5" />
+                  <div className={`w-14 h-14 mx-auto rounded-2xl ${sub.color} p-3 flex items-center justify-center mb-3 shadow-2xs group-hover:scale-110 transition-transform`}>
+                    <Image
+                      src={sub.icon}
+                      alt={sub.name}
+                      width={32}
+                      height={32}
+                      className="w-8 h-8 object-contain"
+                    />
                   </div>
-                  <h3 className="font-sans font-bold text-xl text-slate-800 mb-1">{act.title}</h3>
-                  <p className="text-xs text-slate-600 leading-relaxed font-sans">{act.desc}</p>
+                  <h4 className="font-sans font-bold text-xs text-slate-800 group-hover:text-primary">
+                    {sub.name}
+                  </h4>
                 </div>
-              );
-            })}
+              ))}
+            </div>
           </div>
         </div>
 
