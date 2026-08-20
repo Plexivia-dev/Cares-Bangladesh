@@ -88,6 +88,7 @@ export default function PhilosophyValuesTabs() {
                     src="/assets/img/values.jpg"
                     alt="Our Philosophy"
                     fill
+                    sizes="(max-width: 768px) 100vw, 40vw"
                     className="object-cover"
                   />
                 </div>

@@ -75,6 +75,7 @@ export default function HeroSlider() {
                   alt="Cares Bangladesh Child Therapy"
                   fill
                   priority
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
                   className="object-cover hover:scale-105 transition-transform duration-500"
                 />
               </div>

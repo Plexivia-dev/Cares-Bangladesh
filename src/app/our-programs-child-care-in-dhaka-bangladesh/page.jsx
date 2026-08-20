@@ -46,6 +46,7 @@ export default function ProgramsOverviewPage() {
                     src={prog.bannerImage}
                     alt={prog.title}
                     fill
+                    sizes="(max-width: 768px) 100vw, 40vw"
                     className="object-cover"
                   />
                   <div className="absolute top-3 left-3">

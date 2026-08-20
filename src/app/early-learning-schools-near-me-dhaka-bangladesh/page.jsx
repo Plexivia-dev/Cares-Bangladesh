@@ -56,6 +56,7 @@ export default function ServicePage() {
                   alt={prog.title}
                   fill
                   priority
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 800px"
                   className="object-cover"
                 />
                 <div className="absolute top-4 left-4">

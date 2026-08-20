@@ -27,6 +27,7 @@ export default function AboutSection() {
                 src="/assets/img/children-food.jpg"
                 alt="About Cares Bangladesh"
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
               />
             </div>
