@@ -24,13 +24,13 @@ export default function Footer() {
           {/* Brand Info */}
           <div className="space-y-4">
             <Link href="/" className="flex items-center space-x-3">
-              <div className="bg-white p-2.5 rounded-2xl shadow-sm">
+              <div className="bg-white/90 p-2 rounded-2xl shadow-sm inline-block">
                 <Image
-                  src="/assets/img/logo.svg"
-                  alt="Cares Bangladesh"
-                  width={150}
-                  height={42}
-                  className="h-9 w-auto object-contain"
+                  src="/uploads/2024/09/CARES-Bangladesh-Logo-5__1_-removebg-preview.png"
+                  alt="Cares Bangladesh Logo"
+                  width={160}
+                  height={48}
+                  className="h-10 w-auto object-contain"
                 />
               </div>
             </Link>

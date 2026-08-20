@@ -41,23 +41,15 @@ export default function Navbar({ onOpenBookTour }) {
       <div className="container mx-auto px-4 flex justify-between items-center">
         {/* Brand Logo */}
         <Link href="/" className="flex items-center space-x-3 group py-1">
-          <div className="relative h-10 sm:h-12 w-auto flex items-center">
+          <div className="relative h-12 w-auto flex items-center">
             <Image
-              src="/assets/img/logo.svg"
-              alt="Cares Bangladesh"
-              width={160}
-              height={46}
+              src="/uploads/2024/09/CARES-Bangladesh-Logo-5__1_-removebg-preview.png"
+              alt="Cares Bangladesh Logo"
+              width={180}
+              height={55}
               priority
-              className="h-9 sm:h-11 w-auto object-contain group-hover:scale-105 transition-transform"
+              className="h-11 sm:h-12 w-auto object-contain group-hover:scale-105 transition-transform"
             />
-          </div>
-          <div className="hidden sm:block border-l-2 border-slate-200 pl-3">
-            <span className="font-flavors text-xl sm:text-2xl text-primary font-bold tracking-wide block leading-none">
-              Cares Bangladesh
-            </span>
-            <span className="font-sister text-[11px] text-secondary tracking-wider block mt-0.5 font-medium">
-              Accept. Understand. Love
-            </span>
           </div>
         </Link>
 
