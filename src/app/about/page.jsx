@@ -111,13 +111,6 @@ export default function AboutPage() {
                     {member.bio}
                   </p>
                 </div>
-
-                <div className="pt-4 border-t border-slate-100 mt-4">
-                  <Link href="/speech-language-therapy-therapist" className="text-xs font-bold text-secondary hover:text-primary transition-colors flex items-center justify-center space-x-1">
-                    <span>View Profile</span>
-                    <span>&rarr;</span>
-                  </Link>
-                </div>
               </div>
             ))}
           </div>

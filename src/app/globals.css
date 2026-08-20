@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Flavors&family=Love+Ya+Like+A+Sister&family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -41,34 +43,35 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground antialiased font-sans;
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-montserrat), 'Montserrat', system-ui, -apple-system, sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
   h1, h2 {
-    font-family: var(--font-flavors), cursive;
+    font-family: var(--font-flavors), 'Flavors', cursive, sans-serif;
     color: #004460;
   }
 
   h3, h4, h5, h6 {
-    font-family: var(--font-montserrat), sans-serif;
+    font-family: var(--font-montserrat), 'Montserrat', system-ui, -apple-system, sans-serif;
     color: #004460;
   }
 }
 
 .font-flavors {
-  font-family: var(--font-flavors), cursive;
+  font-family: var(--font-flavors), 'Flavors', cursive, sans-serif;
   font-weight: 400;
   letter-spacing: 0.02em;
 }
 
 .font-sister {
-  font-family: var(--font-sister), cursive;
+  font-family: var(--font-sister), 'Love Ya Like A Sister', cursive, sans-serif;
   font-weight: 400;
 }
 
 .font-sans {
-  font-family: var(--font-montserrat), sans-serif;
+  font-family: var(--font-montserrat), 'Montserrat', system-ui, -apple-system, sans-serif;
 }
 
 /* Authentic theme wave & cloud shapes */

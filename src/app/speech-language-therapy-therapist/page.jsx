@@ -146,7 +146,7 @@ export default function TeamPage() {
                         size="sm"
                         className="w-full h-10 rounded-full text-xs font-bold border-amber-400 text-amber-800 hover:bg-amber-500 hover:text-white transition-all"
                       >
-                        <span>Consult Therapist</span>
+                        <span>Book Consultation</span>
                         <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
                       </Button>
                     </Link>

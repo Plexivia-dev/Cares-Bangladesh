@@ -60,9 +60,9 @@ module.exports = {
         },
       },
       fontFamily: {
-        flavors: ['var(--font-flavors)', 'cursive'],
-        sister: ['var(--font-sister)', 'cursive'],
-        sans: ['var(--font-montserrat)', 'sans-serif'],
+        flavors: ['var(--font-flavors)', 'Flavors', 'cursive', 'sans-serif'],
+        sister: ['var(--font-sister)', 'Love Ya Like A Sister', 'cursive', 'sans-serif'],
+        sans: ['var(--font-montserrat)', 'Montserrat', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
       },
       keyframes: {
         'accordion-down': {
