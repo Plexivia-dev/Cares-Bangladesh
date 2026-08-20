@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Menu, X, ChevronDown, Heart, Calendar, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -39,15 +40,22 @@ export default function Navbar({ onOpenBookTour }) {
     <header className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-md py-2.5' : 'bg-white py-4 shadow-sm'}`}>
       <div className="container mx-auto px-4 flex justify-between items-center">
         {/* Brand Logo */}
-        <Link href="/" className="flex items-center space-x-3 group">
-          <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
-            <Heart className="w-6 h-6 text-accent fill-accent animate-pulse" />
+        <Link href="/" className="flex items-center space-x-3 group py-1">
+          <div className="relative h-10 sm:h-12 w-auto flex items-center">
+            <Image
+              src="/assets/img/logo.svg"
+              alt="Cares Bangladesh"
+              width={160}
+              height={46}
+              priority
+              className="h-9 sm:h-11 w-auto object-contain group-hover:scale-105 transition-transform"
+            />
           </div>
-          <div>
-            <span className="font-flavors text-2xl md:text-3xl text-primary font-bold tracking-wide block leading-none">
+          <div className="hidden sm:block border-l-2 border-slate-200 pl-3">
+            <span className="font-flavors text-xl sm:text-2xl text-primary font-bold tracking-wide block leading-none">
               Cares Bangladesh
             </span>
-            <span className="font-sister text-xs text-secondary-dark tracking-wider block mt-0.5 font-medium">
+            <span className="font-sister text-[11px] text-secondary tracking-wider block mt-0.5 font-medium">
               Accept. Understand. Love
             </span>
           </div>

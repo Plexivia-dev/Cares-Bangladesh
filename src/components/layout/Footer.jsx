@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Heart, Phone, Mail, MapPin, Clock, ArrowRight, Facebook, Youtube, Instagram, Linkedin } from 'lucide-react';
 import siteConfig from '@/data/siteConfig.json';
 import programs from '@/data/programs.json';
@@ -14,8 +15,14 @@ export default function Footer() {
           {/* Brand Info */}
           <div className="space-y-4">
             <Link href="/" className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-2xl bg-accent flex items-center justify-center text-primary-dark shadow-md">
-                <Heart className="w-6 h-6 fill-primary-dark" />
+              <div className="bg-white p-2 rounded-2xl shadow-md">
+                <Image
+                  src="/assets/img/logo.svg"
+                  alt="Cares Bangladesh"
+                  width={140}
+                  height={40}
+                  className="h-8 w-auto object-contain"
+                />
               </div>
               <div>
                 <span className="font-flavors text-2xl text-white font-bold tracking-wide block leading-none">
