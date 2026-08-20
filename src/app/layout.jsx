@@ -32,7 +32,7 @@ const homeSeo = seoMetadata['home'] || seoMetadata['best-occupational-and-speech
 export const metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
   title: {
-    default: homeSeo.title || 'Cares Bangladesh | Occupational & Speech Therapy Center in Dhaka',
+    default: 'Cares Bangladesh | Occupational & Speech Therapy Center in Dhaka',
     template: '%s | Cares Bangladesh',
   },
   description: homeSeo.description || 'Best Occupational, Speech & Language Therapy, ABA & Early Childhood Learning center in Dhaka Bangladesh.',
