@@ -1,0 +1,11 @@
+node_modules/
+.next/
+out/
+u735895109_tc08b.json
+uploads/
+themes/
+.DS_Store
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

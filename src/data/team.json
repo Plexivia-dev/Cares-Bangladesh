@@ -1,0 +1,37 @@
+[
+  {
+    "id": "lukhy-akter",
+    "name": "Lukhy Akter",
+    "designation": "Managing Director & Co-founder",
+    "bio": "Dedicated healthcare leader and therapist committed to empowering children and families through personalized therapy, early intervention, and inclusive special education.",
+    "image": "/uploads/2025/03/WhatsApp-Image-2025-03-26-at-11.13.02-AM.jpeg",
+    "social": {
+      "facebook": "#",
+      "linkedin": "#"
+    }
+  },
+  {
+    "id": "senior-speech-therapist",
+    "name": "Senior Speech-Language Pathologist",
+    "designation": "Lead Speech & Language Therapist",
+    "bio": "Specialist in child articulation, phonology, language delays, and augmentative communication systems with years of clinical experience.",
+    "image": "/assets/img/user.svg",
+    "social": {}
+  },
+  {
+    "id": "senior-ot-therapist",
+    "name": "Senior Occupational Therapist",
+    "designation": "Lead Occupational & Sensory Therapist",
+    "bio": "Expert in sensory integration, pediatric motor skill development, and daily living skills training.",
+    "image": "/assets/img/user.svg",
+    "social": {}
+  },
+  {
+    "id": "lead-behavior-analyst",
+    "name": "Behavior Intervention Specialist",
+    "designation": "Lead ABA & Behavioral Therapist",
+    "bio": "Specialized in applied behavior analysis, autism support, positive behavioral support, and social skills development.",
+    "image": "/assets/img/user.svg",
+    "social": {}
+  }
+]

@@ -1,0 +1,187 @@
+[
+  {
+    "id": "speech-therapy",
+    "title": "Speech & Language Therapy",
+    "slug": "best-speech-language-therapy-dhaka-bangladesh",
+    "shortDescription": "Expert speech and language therapy to help individuals communicate effectively and overcome speech delays, articulation issues, and language disorders.",
+    "badge": "Communication & Speech",
+    "icon": "Mic",
+    "bannerImage": "/uploads/2025/01/Service-Banner_Speech-Therapy-01.png",
+    "features": [
+      "Individualized speech assessments and customized intervention plans",
+      "Articulation and pronunciation training for clear verbal communication",
+      "Expressive and receptive language skill development",
+      "Alternative and Augmentative Communication (AAC) support",
+      "Fluency / Stuttering therapy and voice modulation"
+    ],
+    "faqs": [
+      {
+        "question": "What is Speech and Language Therapy?",
+        "answer": "Speech and Language Therapy provides treatment, support and care for children and adults who have difficulties with communication, eating, drinking or swallowing."
+      },
+      {
+        "question": "When should a child start speech therapy?",
+        "answer": "Early intervention is key. If a child is not meeting speech milestones (such as not babbling by 12 months, or lack of words by 18-24 months), an evaluation should be scheduled immediately."
+      },
+      {
+        "question": "How long does speech therapy take?",
+        "answer": "The duration varies based on the individual needs and severity of the condition. Many children show remarkable progress within a few months of regular sessions."
+      }
+    ]
+  },
+  {
+    "id": "occupational-therapy",
+    "title": "Occupational Therapy (OT)",
+    "slug": "find-best-occupational-therapy-near-me-dhaka-bangladesh",
+    "shortDescription": "Helping children develop fine motor skills, sensory processing abilities, hand-eye coordination, and daily life independence.",
+    "badge": "Motor Skills & Independence",
+    "icon": "Activity",
+    "bannerImage": "/uploads/2025/01/Service-Banner_-Occupational-Therapy-01.png",
+    "features": [
+      "Fine and gross motor skills enhancement through therapeutic play",
+      "Sensory Integration Therapy for sensory processing challenges",
+      "Self-care training (dressing, feeding, grooming, writing)",
+      "Visual-spatial awareness and bilateral coordination exercises",
+      "Adaptive equipment recommendations and environmental modifications"
+    ],
+    "faqs": [
+      {
+        "question": "How does Occupational Therapy help my child?",
+        "answer": "Occupational Therapy helps children participate in the things they want and need to do through the therapeutic use of everyday activities (occupations)."
+      },
+      {
+        "question": "What is Sensory Integration?",
+        "answer": "Sensory integration is how our brain organizes and processes information from our senses (touch, movement, body awareness, sight, sound). OT helps children process sensory inputs effectively."
+      }
+    ]
+  },
+  {
+    "id": "aba-therapy",
+    "title": "ABA (Applied Behavior Analysis) Therapy",
+    "slug": "best-behavior-therapy-dhaka-bangladesh",
+    "shortDescription": "Evidence-based behavioral intervention to improve positive social behaviors, focus, communication, and reduce challenging behaviors.",
+    "badge": "Behavioral Intervention",
+    "icon": "Brain",
+    "bannerImage": "/uploads/2025/01/Service-Banner_ABA-Therapy-01.png",
+    "features": [
+      "Positive reinforcement techniques for learning new skills",
+      "Functional Behavior Assessments (FBA) to understand triggers",
+      "Social skills training and peer interaction programs",
+      "Parent and caregiver training for consistent home support",
+      "Targeted reduction of maladaptive behaviors"
+    ],
+    "faqs": [
+      {
+        "question": "What is ABA Therapy?",
+        "answer": "Applied Behavior Analysis (ABA) is a scientifically validated approach to understanding behavior and how it is affected by the environment."
+      },
+      {
+        "question": "Who benefits most from ABA therapy?",
+        "answer": "ABA therapy is particularly effective for individuals with Autism Spectrum Disorder (ASD), ADHD, and other developmental and behavioral challenges."
+      }
+    ]
+  },
+  {
+    "id": "art-therapy",
+    "title": "Art Therapy & Creative Expression",
+    "slug": "best-art-therapy-dhaka-in-bangladesh",
+    "shortDescription": "Therapeutic creative arts to foster emotional healing, self-expression, cognitive development, and stress relief in a nurturing space.",
+    "badge": "Creativity & Emotion",
+    "icon": "Palette",
+    "bannerImage": "/uploads/2025/01/Service-Banner_ART-Therapy.png",
+    "features": [
+      "Non-verbal emotional expression through painting, sculpting, and drawing",
+      "Boosts self-esteem, focus, and emotional regulation",
+      "Promotes fine motor dexterity and visual-spatial imagination",
+      "Therapeutic safe space guided by compassionate therapists"
+    ],
+    "faqs": [
+      {
+        "question": "Does my child need to be good at art for Art Therapy?",
+        "answer": "Not at all! Art therapy is about the creative process and emotional expression, not artistic skill or creating a masterpiece."
+      }
+    ]
+  },
+  {
+    "id": "early-learning",
+    "title": "Early Learning & Development",
+    "slug": "early-learning-schools-near-me-dhaka-bangladesh",
+    "shortDescription": "Play-based early childhood education designed to build cognitive, social, and emotional foundations for lifelong learning.",
+    "badge": "Early Education",
+    "icon": "BookOpen",
+    "bannerImage": "/assets/img/children-food.jpg",
+    "features": [
+      "Play-based curriculum stimulating curiosity and discovery",
+      "Language, literacy, and numeracy foundations",
+      "Social-emotional skill building in small group settings",
+      "Holistic physical and cognitive development"
+    ],
+    "faqs": [
+      {
+        "question": "What age group is Early Learning suitable for?",
+        "answer": "Our early learning programs are tailored for toddlers and young children aged 2 to 5 years."
+      }
+    ]
+  },
+  {
+    "id": "preschool",
+    "title": "Inclusive Preschool Program",
+    "slug": "best-preschool-occupational-therapy-dhaka-bangladesh",
+    "shortDescription": "Nurturing preschool environment integrating specialized care with standard developmental milestones.",
+    "badge": "Preschool & Socialization",
+    "icon": "GraduationCap",
+    "bannerImage": "/assets/img/values.jpg",
+    "features": [
+      "Structured daily routine with fun interactive activities",
+      "Inclusive classroom environment fostering empathy and friendship",
+      "School-readiness preparation for smooth school transitions"
+    ],
+    "faqs": [
+      {
+        "question": "How does Cares Preschool differ from regular preschools?",
+        "answer": "We provide specialized attention, lower student-to-teacher ratios, and integrated therapy support in an inclusive, warm atmosphere."
+      }
+    ]
+  },
+  {
+    "id": "special-education",
+    "title": "Special Education Program",
+    "slug": "best-special-education-near-me-dhaka-bangladesh",
+    "shortDescription": "Tailored educational curricula designed for neurodiverse learners, ensuring every child learns at their own pace.",
+    "badge": "Specialized Learning",
+    "icon": "Sparkles",
+    "bannerImage": "/uploads/2025/01/Service-Banner_ABA-Therapy-01.png",
+    "features": [
+      "Individualized Education Plans (IEP) customized for each learner",
+      "Multi-sensory teaching methodologies",
+      "Functional academic and practical life skills training",
+      "Close collaboration between special educators, therapists, and parents"
+    ],
+    "faqs": [
+      {
+        "question": "What is an IEP?",
+        "answer": "An Individualized Education Plan (IEP) is a personalized educational roadmap crafted for a specific child to target their unique learning goals and milestones."
+      }
+    ]
+  },
+  {
+    "id": "educational-consultancy",
+    "title": "Educational Consultancy & Guidance",
+    "slug": "educational-consutancy",
+    "shortDescription": "Comprehensive assessment, school placement advice, and parental guidance for children with special educational needs.",
+    "badge": "Consultancy & Guidance",
+    "icon": "Compass",
+    "bannerImage": "/assets/img/education-big.png",
+    "features": [
+      "Detailed developmental and educational assessments",
+      "School readiness and mainstream inclusion consultation",
+      "Parental counseling and home-support strategies"
+    ],
+    "faqs": [
+      {
+        "question": "Who should seek educational consultancy?",
+        "answer": "Parents looking for guidance on school readiness, specialized intervention, or selecting the right academic environment for their child."
+      }
+    ]
+  }
+]

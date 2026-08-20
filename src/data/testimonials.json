@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "name": "Dr. Tanveer Ahmed",
+    "role": "Parent",
+    "rating": 5,
+    "comment": "The speech therapy team at Cares Bangladesh is exceptional. Within 4 months, our son made unbelievable progress in his expressive speech and confidence. We are truly grateful!",
+    "date": "2 months ago"
+  },
+  {
+    "id": 2,
+    "name": "Farhana Rahman",
+    "role": "Parent",
+    "rating": 5,
+    "comment": "The sensory integration and occupational therapy provided here helped our daughter tremendously with her coordination and focus. The therapists are so caring and patient.",
+    "date": "3 months ago"
+  },
+  {
+    "id": 3,
+    "name": "Mohammad Hossain",
+    "role": "Parent",
+    "rating": 5,
+    "comment": "A warm, inclusive, and professional environment. Their ABA program and behavior therapy have made daily routines at home and school so much smoother.",
+    "date": "4 months ago"
+  },
+  {
+    "id": 4,
+    "name": "Nusrat Jahan",
+    "role": "Parent",
+    "rating": 5,
+    "comment": "Best therapy center in Uttara Dhaka. The staff genuinely care about each child’s individual growth. Highly recommended!",
+    "date": "5 months ago"
+  }
+]
