@@ -27,19 +27,19 @@ export default function HeroSlider() {
               At <strong>Cares Bangladesh</strong>, we provide a warm, loving, and evidence-based environment where children with developmental, speech, and motor challenges achieve confidence and joy.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
-              <Link href="/book-a-tour">
-                <Button variant="accent" size="lg" className="rounded-full font-bold shadow-lg hover:shadow-xl px-8 h-13 text-base bg-amber-500 hover:bg-amber-600 text-white">
-                  <Calendar className="w-5 h-5 mr-2" />
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-4 pt-3">
+              <Link href="/book-a-tour" className="group">
+                <button className="w-full sm:w-auto h-13 sm:h-14 px-8 rounded-full font-bold text-sm sm:text-base bg-gradient-to-r from-amber-500 via-orange-500 to-amber-500 bg-[length:200%_auto] hover:bg-[position:right_center] text-white shadow-lg shadow-orange-500/25 hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center space-x-2.5 cursor-pointer">
+                  <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-white/90" />
                   <span>Schedule a Tour</span>
-                </Button>
+                </button>
               </Link>
 
-              <Link href="/our-programs-child-care-in-dhaka-bangladesh">
-                <Button variant="outline" size="lg" className="rounded-full h-13 px-8 text-base font-semibold border-2 border-primary text-primary hover:bg-primary hover:text-white bg-white/90">
+              <Link href="/our-programs-child-care-in-dhaka-bangladesh" className="group">
+                <button className="w-full sm:w-auto h-13 sm:h-14 px-8 rounded-full font-bold text-sm sm:text-base bg-white text-primary hover:text-white hover:bg-primary border-2 border-primary/20 hover:border-primary shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center space-x-2 cursor-pointer">
                   <span>Our Programs</span>
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </button>
               </Link>
             </div>
           </div>

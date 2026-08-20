@@ -50,10 +50,10 @@ export default function AboutSection() {
 
             <div className="pt-2">
               <Link href="/about">
-                <Button variant="accent" size="default" className="rounded-full font-bold px-7 bg-amber-500 hover:bg-amber-600 text-white shadow-md">
+                <button className="h-12 px-7 rounded-full font-bold text-sm bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white shadow-md shadow-orange-500/20 hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-300 flex items-center space-x-2 cursor-pointer">
                   <span>Read More</span>
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
               </Link>
             </div>
           </div>
