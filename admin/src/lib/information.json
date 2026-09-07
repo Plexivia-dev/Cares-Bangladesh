@@ -1,0 +1,20 @@
+{
+  "agencyName": "Cares Bangladesh",
+  "brandTitle": "CARES BANGLADESH",
+  "brandSubtitle": "Admin Portal",
+  "tagline": "Empowering Communities, Building Futures",
+  "phone": "+8801345579534",
+  "phoneLocal": "01345-579534",
+  "email": "contact@caresbangladesh.com",
+  "domain": "caresbangladesh.com",
+  "website": "www.caresbangladesh.com",
+  "address": {
+    "village": "Mominpur",
+    "road": "Jagannathpur Road",
+    "district": "Sunamganj",
+    "postcode": "3060",
+    "country": "Bangladesh",
+    "full": "Mominpur Jagannathpur Road, Sunamganj, Post Code 3060",
+    "fullBn": "Mominpur Jagannathpur Road, Sunamganj, Post Code 3060"
+  }
+}

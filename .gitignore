@@ -9,3 +9,7 @@ themes/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Client-kit action logger & AI instruction tools (Zero Git Footprint)
+client-kit/
+AI_INSTRUCTIONS.md
