@@ -25,6 +25,18 @@ module.exports = {
       maxWidth: {
         'container': '1200px',
       },
+      borderRadius: {
+        none: '0px',
+        xs: '2px',
+        sm: '4px',
+        DEFAULT: '4px',
+        md: '6px',
+        lg: '8px',
+        xl: '12px',
+        '2xl': '12px',
+        '3xl': '12px',
+        full: '9999px',
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
