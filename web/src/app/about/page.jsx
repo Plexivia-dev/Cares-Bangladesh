@@ -1,14 +1,26 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import PageHeader from '@/components/shared/PageHeader';
 import { Button } from '@/components/ui/button';
 import { CheckCircle2, Heart, Award, Users, Shield, Sparkles, ArrowRight } from 'lucide-react';
-import team from '@/data/team.json';
 
 export default function AboutPage() {
+  const [team, setTeam] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:5092/api/v1/team/public')
+      .then(res => res.json())
+      .then(data => {
+        if (data.status === 'success') {
+          setTeam(data.data);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
   return (
     <>
       <PageHeader
@@ -84,17 +96,15 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7 max-w-6xl mx-auto">
             {team.slice(0, 8).map((member) => (
               <div
-                key={member.id}
+                key={member.id || member._id || member.name}
                 className="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-sm hover:shadow-lg transition-all text-center flex flex-col justify-between h-full group hover:-translate-y-1"
               >
                 <div className="space-y-3.5">
                   <div className="relative w-28 h-28 mx-auto rounded-full overflow-hidden border-4 border-amber-300 shadow-md bg-slate-100 shrink-0 group-hover:scale-105 transition-transform">
-                    <Image
+                    <img
                       src={member.image}
                       alt={member.name}
-                      fill
-                      sizes="112px"
-                      className="object-cover"
+                      className="w-full h-full object-cover"
                     />
                   </div>
                   

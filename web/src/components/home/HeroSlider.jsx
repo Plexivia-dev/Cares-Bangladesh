@@ -7,6 +7,25 @@ import { Calendar, ArrowRight, ShieldCheck, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export default function HeroSlider() {
+  const [slider, setSlider] = React.useState(null);
+
+  React.useEffect(() => {
+    fetch('http://localhost:5092/api/v1/home-slider/public')
+      .then(res => res.json())
+      .then(data => {
+        if (data.status === 'success' && data.data?.length > 0) {
+          setSlider(data.data[0]);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
+  const titleText = slider?.title || "Will Your Child";
+  const subtitleText = slider?.subtitle || "At Cares Bangladesh, we provide a warm, loving, and evidence-based environment where children with developmental, speech, and motor challenges achieve confidence and joy.";
+  const imgUrl = slider?.imageUrl || "/assets/img/values.jpg";
+  const btnTxt = slider?.buttonText || "Schedule a Tour";
+  const btnLnk = slider?.buttonLink || "/book-a-tour";
+
   return (
     <section className="relative bg-gradient-to-b from-sky-100/60 via-amber-50/40 to-white pt-12 pb-24 md:pt-16 md:pb-32 overflow-hidden">
       
@@ -20,18 +39,20 @@ export default function HeroSlider() {
             </div>
 
             <h1 className="font-flavors text-4xl sm:text-5xl md:text-6xl text-primary leading-tight">
-              Will Your Child <span className="text-secondary">Be Safe?</span>
+              {titleText.split(' ').map((word, i, arr) => 
+                i === arr.length - 1 || i === arr.length - 2 ? <span key={i} className="text-secondary">{word} </span> : <span key={i}>{word} </span>
+              )}
             </h1>
 
             <p className="text-slate-600 text-base sm:text-lg font-sans leading-relaxed max-w-xl mx-auto lg:mx-0">
-              At <strong>Cares Bangladesh</strong>, we provide a warm, loving, and evidence-based environment where children with developmental, speech, and motor challenges achieve confidence and joy.
+              {subtitleText}
             </p>
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-4 pt-3">
-              <Link href="/book-a-tour" className="group">
+              <Link href={btnLnk} className="group">
                 <button className="w-full sm:w-auto h-13 sm:h-14 px-8 rounded-full font-bold text-sm sm:text-base bg-gradient-to-r from-amber-500 via-orange-500 to-amber-500 bg-[length:200%_auto] hover:bg-[position:right_center] text-white shadow-lg shadow-orange-500/25 hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center space-x-2.5 cursor-pointer">
                   <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-white/90" />
-                  <span>Schedule a Tour</span>
+                  <span>{btnTxt}</span>
                 </button>
               </Link>
 
@@ -51,13 +72,10 @@ export default function HeroSlider() {
               <div className="absolute -inset-4 bg-gradient-to-tr from-amber-300 to-orange-400 rounded-[3rem] rotate-3 opacity-80 blur-xs -z-10" />
               
               <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white aspect-[4/3] bg-white">
-                <Image
-                  src="/assets/img/values.jpg"
+                <img
+                  src={imgUrl}
                   alt="Cares Bangladesh Child Learning"
-                  fill
-                  priority
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover"
+                  className="w-full h-full object-cover"
                 />
               </div>
 

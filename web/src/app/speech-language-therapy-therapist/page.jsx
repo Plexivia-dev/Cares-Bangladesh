@@ -1,12 +1,11 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import PageHeader from '@/components/shared/PageHeader';
 import { Button } from '@/components/ui/button';
 import { Sparkles, Calendar, ChevronDown, Filter } from 'lucide-react';
-import team from '@/data/team.json';
 
 const categories = [
   'All',
@@ -18,6 +17,18 @@ const categories = [
 
 export default function TeamPage() {
   const [activeCategory, setActiveCategory] = useState('All');
+  const [team, setTeam] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:5092/api/v1/team/public')
+      .then(res => res.json())
+      .then(data => {
+        if (data.status === 'success') {
+          setTeam(data.data);
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   const filteredTeam = activeCategory === 'All'
     ? team
@@ -101,12 +112,10 @@ export default function TeamPage() {
               >
                 {/* Avatar Photo Frame with Loading Skeleton Placeholder */}
                 <div className="relative w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-amber-300 shadow-md bg-slate-200 group-hover:scale-105 transition-transform shrink-0 mb-4">
-                  <Image
+                  <img
                     src={member.image}
                     alt={member.name}
-                    fill
-                    sizes="128px"
-                    className="object-cover"
+                    className="w-full h-full object-cover"
                     loading="lazy"
                   />
                 </div>

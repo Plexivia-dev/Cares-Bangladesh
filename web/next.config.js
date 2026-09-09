@@ -16,6 +16,14 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'secure.gravatar.com',
+      },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+      },
+      {
+        protocol: 'https',
+        hostname: 'via.placeholder.com',
       }
     ],
   },

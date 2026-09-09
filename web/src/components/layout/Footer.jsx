@@ -8,6 +8,19 @@ import siteConfig from '@/data/siteConfig.json';
 import programs from '@/data/programs.json';
 
 export default function Footer() {
+  const [logoUrl, setLogoUrl] = React.useState("/uploads/2024/09/CARES-Bangladesh-Logo-5__1_-removebg-preview.png");
+
+  React.useEffect(() => {
+    fetch('http://localhost:5092/api/v1/settings/public/branding')
+      .then(res => res.json())
+      .then(data => {
+        if (data.status === 'success' && data.data?.logoUrl) {
+          setLogoUrl(data.data.logoUrl);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
   return (
     <footer className="relative bg-[#fceee9] text-slate-800 pt-20 pb-10 overflow-hidden">
       
@@ -25,12 +38,10 @@ export default function Footer() {
           <div className="space-y-4">
             <Link href="/" className="flex items-center space-x-3">
               <div className="bg-white/90 p-2 rounded-2xl shadow-sm inline-block">
-                <Image
-                  src="/uploads/2024/09/CARES-Bangladesh-Logo-5__1_-removebg-preview.png"
+                <img
+                  src={logoUrl}
                   alt="Cares Bangladesh Logo"
-                  width={160}
-                  height={48}
-                  className="h-10 w-auto object-contain"
+                  style={{ height: '40px', width: 'auto', objectFit: 'contain' }}
                 />
               </div>
             </Link>

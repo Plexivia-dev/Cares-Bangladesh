@@ -14,11 +14,24 @@ export default function Navbar({ onOpenBookTour }) {
   const [programsDropdown, setProgramsDropdown] = useState(false);
   const pathname = usePathname();
 
+  const [logoUrl, setLogoUrl] = useState("/uploads/2024/09/CARES-Bangladesh-Logo-5__1_-removebg-preview.png");
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
+    
+    // Fetch branding logo
+    fetch('http://localhost:5092/api/v1/settings/public/branding')
+      .then(res => res.json())
+      .then(data => {
+        if (data.status === 'success' && data.data?.logoUrl) {
+          setLogoUrl(data.data.logoUrl);
+        }
+      })
+      .catch(() => {});
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -42,13 +55,11 @@ export default function Navbar({ onOpenBookTour }) {
         {/* Brand Logo */}
         <Link href="/" className="flex items-center space-x-3 group py-1">
           <div className="relative h-12 w-auto flex items-center">
-            <Image
-              src="/uploads/2024/09/CARES-Bangladesh-Logo-5__1_-removebg-preview.png"
+            <img
+              src={logoUrl}
               alt="Cares Bangladesh Logo"
-              width={180}
-              height={55}
-              priority
-              className="h-11 sm:h-12 w-auto object-contain group-hover:scale-105 transition-transform"
+              style={{ height: '44px', width: 'auto', objectFit: 'contain' }}
+              className="sm:h-12 group-hover:scale-105 transition-transform"
             />
           </div>
         </Link>

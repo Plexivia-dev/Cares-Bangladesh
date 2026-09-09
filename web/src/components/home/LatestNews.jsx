@@ -1,13 +1,23 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Calendar, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import posts from '@/data/posts.json';
 
 export default function LatestNews() {
-  const recentPosts = posts.slice(0, 3);
+  const [recentPosts, setRecentPosts] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:5092/api/v1/blogs/public')
+      .then(res => res.json())
+      .then(data => {
+        if (data.status === 'success') {
+          setRecentPosts(data.data.slice(0, 3));
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   return (
     <section className="py-20 bg-slate-50/60 relative">
@@ -31,7 +41,7 @@ export default function LatestNews() {
               <div className="space-y-3">
                 <div className="flex items-center space-x-2 text-xs text-slate-400 font-sans">
                   <Calendar className="w-3.5 h-3.5 text-amber-500" />
-                  <span>{post.date}</span>
+                  <span>{new Date(post.publishedAt || post.createdAt).toLocaleDateString()}</span>
                 </div>
 
                 <Link href={`/${post.slug}`}>
