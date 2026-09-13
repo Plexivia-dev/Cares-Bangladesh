@@ -1,5 +1,7 @@
 # Git Commit & Centralized Logging Standards
 
+# J:\My Drive\CLIENTS\Cares Bangladesh this is the docs folder, don't wrte docs or md file in the root
+
 ## 1. Commit Message Format
 Every commit message must strictly follow this structure:
 `<LogID>(<type>): <description>`
