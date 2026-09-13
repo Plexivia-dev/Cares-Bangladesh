@@ -1,4 +1,5 @@
 import { StoreSettingsModel } from "../models/storeSettings.model.js";
+import { BlogModel } from "../models/blog.model.js";
 const getMetaPixelConfig = async () => ({});
 const testMetaCapiConnection = async () => ({ success: false });
 const getTikTokPixelConfig = async () => ({});
@@ -364,13 +365,13 @@ export const getSeoSettings = async (req, res, next) => {
     const dbSeo = doc?.seo || {};
 
     const data = {
-      metaTitle: dbSeo.metaTitle || clientConfig?.brandName || "",
-      metaDescription: dbSeo.metaDescription || "",
-      keywords: Array.isArray(dbSeo.keywords) ? dbSeo.keywords : [],
-      ogImage: dbSeo.ogImage || clientConfig?.logoUrl || "",
-      siteName: dbSeo.siteName || clientConfig?.brandName || "",
-      twitterHandle: dbSeo.twitterHandle || "",
-      canonicalBaseUrl: dbSeo.canonicalBaseUrl || (clientConfig?.domain ? `https://${clientConfig.domain}` : ""),
+      metaTitle: dbSeo.metaTitle || clientConfig?.brandName || "Cares Bangladesh | Occupational & Speech Therapy Center in Dhaka",
+      metaDescription: dbSeo.metaDescription || "Best Occupational, Speech & Language Therapy, ABA & Early Childhood Learning center in Dhaka Bangladesh.",
+      keywords: Array.isArray(dbSeo.keywords) && dbSeo.keywords.length ? dbSeo.keywords : ["Occupational Therapy", "Speech Therapy", "ABA Therapy", "Child Development", "Dhaka"],
+      ogImage: dbSeo.ogImage || clientConfig?.logoUrl || "/uploads/2024/09/CARES-Bangladesh-Logo-5__1_-removebg-preview.png",
+      siteName: dbSeo.siteName || clientConfig?.brandName || "Cares Bangladesh",
+      twitterHandle: dbSeo.twitterHandle || "@caresbangladesh",
+      canonicalBaseUrl: dbSeo.canonicalBaseUrl || (clientConfig?.domain ? `https://${clientConfig.domain}` : "https://caresbangladesh.com"),
       robotsTxt: dbSeo.robotsTxt || "User-agent: *\nAllow: /\nDisallow: /dashboard/\nDisallow: /api/",
       gscVerificationCode: dbSeo.gscVerificationCode || "",
       isPersistedInDb: Boolean(doc?.seo?.metaTitle),
@@ -379,6 +380,58 @@ export const getSeoSettings = async (req, res, next) => {
     return res.json({
       status: "success",
       data,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Retrieves SEO metadata for a specific route slug with fallback to global SEO
+export const getSlugSeoSettings = async (req, res, next) => {
+  try {
+    const slug = (req.params.slug || "").trim();
+    const blog = await BlogModel.findOne({ slug, isActive: true }).lean();
+    const doc = await StoreSettingsModel.findOne({ key: "default" }).lean();
+    const globalSeo = doc?.seo || {};
+
+    if (blog && (blog.seo?.title || blog.title)) {
+      return res.json({
+        status: "success",
+        data: {
+          title: blog.seo?.title || blog.title,
+          description: blog.seo?.description || blog.excerpt || globalSeo.metaDescription || "",
+          canonical: blog.seo?.canonical || `${globalSeo.canonicalBaseUrl || "https://caresbangladesh.com"}/${slug}`,
+          focusKeyword: blog.seo?.focusKeyword || "",
+          ogTitle: blog.seo?.ogTitle || blog.seo?.title || blog.title,
+          ogDescription: blog.seo?.ogDescription || blog.seo?.description || blog.excerpt || "",
+          ogImage: blog.seo?.ogImage || blog.coverImage || globalSeo.ogImage || "",
+          twitterTitle: blog.seo?.twitterTitle || blog.seo?.title || blog.title,
+          twitterDescription: blog.seo?.twitterDescription || blog.seo?.description || "",
+          twitterImage: blog.seo?.twitterImage || blog.coverImage || globalSeo.ogImage || "",
+          isRobotsNoindex: Boolean(blog.seo?.isRobotsNoindex),
+        },
+      });
+    }
+
+    const title = slug
+      .replace(/-/g, " ")
+      .replace(/\b\w/g, (c) => c.toUpperCase());
+
+    return res.json({
+      status: "success",
+      data: {
+        title: `${title} | ${globalSeo.siteName || "Cares Bangladesh"}`,
+        description: globalSeo.metaDescription || "Best Occupational, Speech & Language Therapy, ABA & Early Childhood Learning center in Dhaka Bangladesh.",
+        canonical: `${globalSeo.canonicalBaseUrl || "https://caresbangladesh.com"}/${slug}`,
+        focusKeyword: "",
+        ogTitle: `${title} | ${globalSeo.siteName || "Cares Bangladesh"}`,
+        ogDescription: globalSeo.metaDescription || "",
+        ogImage: globalSeo.ogImage || "/uploads/2024/09/CARES-Bangladesh-Logo-5__1_-removebg-preview.png",
+        twitterTitle: `${title} | ${globalSeo.siteName || "Cares Bangladesh"}`,
+        twitterDescription: globalSeo.metaDescription || "",
+        twitterImage: globalSeo.ogImage || "/uploads/2024/09/CARES-Bangladesh-Logo-5__1_-removebg-preview.png",
+        isRobotsNoindex: false,
+      },
     });
   } catch (error) {
     next(error);
@@ -444,8 +497,8 @@ export const getBrandingSettings = async (req, res, next) => {
     return res.json({
       status: "success",
       data: {
-        logoUrl: branding.logoUrl || "",
-        faviconUrl: branding.faviconUrl || "",
+        logoUrl: branding.logoUrl || "/uploads/2024/09/CARES-Bangladesh-Logo-5__1_-removebg-preview.png",
+        faviconUrl: branding.faviconUrl || "/uploads/2024/08/site_icon-removebg-preview.png",
       },
     });
   } catch (error) {

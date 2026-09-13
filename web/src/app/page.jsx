@@ -10,7 +10,8 @@ import AdvantageSection from '@/components/home/AdvantageSection';
 import ReviewsSection from '@/components/home/ReviewsSection';
 import LatestNews from '@/components/home/LatestNews';
 
-export default function HomePage() {
+// Main storefront homepage rendering interactive heroes, clinical programs, and latest news
+const HomePage = () => {
   return (
     <>
       <HeroSlider />
@@ -23,4 +24,6 @@ export default function HomePage() {
       <LatestNews />
     </>
   );
-}
+};
+
+export default HomePage;

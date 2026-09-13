@@ -1,6 +1,6 @@
 {
 	"name": "Backend",
-	"version": "0.0.2",
+	"version": "0.1.0",
 	"private": true,
 	"type": "module",
 	"engines": {
@@ -9,6 +9,7 @@
 	"scripts": {
 		"dev": "node --watch src/server.js",
 		"prod": "node src/server.js",
+		"seed": "node src/database/seed.js",
 		"img": "node scripts/check-img-urls.js",
 		"lint": "eslint .",
 		"format": "prettier --write ."

@@ -9,10 +9,52 @@ export const getBlogs = async (req, res, next) => {
   }
 };
 
+// Retrieves paginated and filtered list of active blogs for public storefront
 export const getActiveBlogs = async (req, res, next) => {
   try {
-    const blogs = await BlogModel.find({ isActive: true }).sort({ publishedAt: -1 });
-    res.json({ status: "success", data: blogs });
+    const page = Math.max(1, parseInt(req.query.page) || 1);
+    const limit = Math.max(1, Math.min(100, parseInt(req.query.limit) || 9));
+    const search = (req.query.search || "").trim();
+    const category = (req.query.category || "").trim();
+
+    const query = { isActive: true };
+    if (search) {
+      query.$or = [
+        { title: { $regex: search, $options: "i" } },
+        { excerpt: { $regex: search, $options: "i" } },
+      ];
+    }
+    if (category && category !== "All") {
+      query.categories = category;
+    }
+
+    const total = await BlogModel.countDocuments(query);
+    const blogs = await BlogModel.find(query)
+      .sort({ publishedAt: -1 })
+      .skip((page - 1) * limit)
+      .limit(limit)
+      .lean();
+
+    res.json({
+      status: "success",
+      data: blogs,
+      pagination: {
+        total,
+        page,
+        limit,
+        totalPages: Math.ceil(total / limit) || 1,
+      },
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Retrieves list of distinct categories from published blogs
+export const getBlogCategories = async (req, res, next) => {
+  try {
+    const categories = await BlogModel.distinct("categories", { isActive: true });
+    res.json({ status: "success", data: categories.filter(Boolean) });
   } catch (error) {
     next(error);
   }

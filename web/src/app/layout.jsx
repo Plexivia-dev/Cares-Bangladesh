@@ -29,15 +29,11 @@ const montserrat = Montserrat({
   display: 'swap',
 });
 
-const homeSeo = seoMetadata['home'] || seoMetadata['best-occupational-and-speech-therapists-in-dhaka'] || {};
+import { getBranding, getSeoConfig } from '@/lib/api';
 
-export async function generateMetadata() {
-  let branding = {};
-  try {
-    const res = await fetch('http://localhost:5092/api/v1/settings/public/branding', { next: { revalidate: 60 } });
-    const data = await res.json();
-    if (data.status === 'success') branding = data.data;
-  } catch (err) {}
+// Generates dynamic metadata for the storefront root layout
+export const generateMetadata = async () => {
+  const [branding, seo] = await Promise.all([getBranding(), getSeoConfig('home')]);
 
   const favicon = branding.faviconUrl || '/uploads/2024/08/site_icon-removebg-preview.png';
   const logo = branding.logoUrl || '/uploads/2024/09/CARES-Bangladesh-Logo-5__1_-removebg-preview.png';
@@ -45,24 +41,24 @@ export async function generateMetadata() {
   return {
     metadataBase: new URL(siteConfig.siteUrl),
     title: {
-      default: 'Cares Bangladesh | Occupational & Speech Therapy Center in Dhaka',
+      default: seo.metaTitle || 'Cares Bangladesh | Occupational & Speech Therapy Center in Dhaka',
       template: '%s | Cares Bangladesh',
     },
-    description: homeSeo.description || 'Best Occupational, Speech & Language Therapy, ABA & Early Childhood Learning center in Dhaka Bangladesh.',
+    description: seo.metaDescription || 'Best Occupational, Speech & Language Therapy, ABA & Early Childhood Learning center in Dhaka Bangladesh.',
     alternates: {
-      canonical: homeSeo.canonical || siteConfig.siteUrl,
+      canonical: seo.canonical || siteConfig.siteUrl,
     },
     openGraph: {
-      title: homeSeo.openGraphTitle || 'Cares Bangladesh',
-      description: homeSeo.openGraphDescription || 'Accept. Understand. Love',
+      title: seo.ogTitle || seo.metaTitle || 'Cares Bangladesh',
+      description: seo.ogDescription || seo.metaDescription || 'Accept. Understand. Love',
       url: siteConfig.siteUrl,
-      siteName: 'Cares Bangladesh',
+      siteName: seo.siteName || 'Cares Bangladesh',
       images: [
         {
-          url: homeSeo.openGraphImage || logo,
+          url: seo.ogImage || logo,
           width: 800,
           height: 600,
-          alt: 'Cares Bangladesh',
+          alt: seo.siteName || 'Cares Bangladesh',
         },
       ],
       locale: 'en_US',
@@ -70,9 +66,9 @@ export async function generateMetadata() {
     },
     twitter: {
       card: 'summary_large_image',
-      title: homeSeo.twitterTitle || 'Cares Bangladesh',
-      description: homeSeo.twitterDescription || 'Accept. Understand. Love',
-      images: [homeSeo.twitterImage || logo],
+      title: seo.twitterTitle || seo.metaTitle || 'Cares Bangladesh',
+      description: seo.twitterDescription || seo.metaDescription || 'Accept. Understand. Love',
+      images: [seo.twitterImage || seo.ogImage || logo],
     },
     icons: {
       icon: favicon,
@@ -80,16 +76,11 @@ export async function generateMetadata() {
       apple: favicon,
     },
   };
-}
+};
 
-export default async function RootLayout({ children }) {
-  let branding = {};
-  try {
-    const res = await fetch('http://localhost:5092/api/v1/settings/public/branding', { next: { revalidate: 60 } });
-    const data = await res.json();
-    if (data.status === 'success') branding = data.data;
-  } catch (err) {}
-
+// Root layout component providing theme fonts and global structure
+const RootLayout = async ({ children }) => {
+  const branding = await getBranding();
   const favicon = branding.faviconUrl || '/uploads/2024/08/site_icon-removebg-preview.png';
 
   return (
@@ -110,4 +101,6 @@ export default async function RootLayout({ children }) {
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;

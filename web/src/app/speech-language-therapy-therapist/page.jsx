@@ -1,11 +1,11 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import PageHeader from '@/components/shared/PageHeader';
 import { Button } from '@/components/ui/button';
-import { Sparkles, Calendar, ChevronDown, Filter } from 'lucide-react';
+import { Calendar, ChevronDown, Filter } from 'lucide-react';
+import { getTeam } from '@/lib/api';
 
 const categories = [
   'All',
@@ -15,19 +15,17 @@ const categories = [
   'Speech and Language Therapist',
 ];
 
-export default function TeamPage() {
+// Clinical team directory page showcasing specialists with category filters
+const TeamPage = () => {
   const [activeCategory, setActiveCategory] = useState('All');
   const [team, setTeam] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:5092/api/v1/team/public')
-      .then(res => res.json())
-      .then(data => {
-        if (data.status === 'success') {
-          setTeam(data.data);
-        }
-      })
-      .catch(() => {});
+    getTeam().then((data) => {
+      setTeam(data);
+      setIsLoading(false);
+    });
   }, []);
 
   const filteredTeam = activeCategory === 'All'
@@ -44,8 +42,6 @@ export default function TeamPage() {
 
       <section className="py-16 md:py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6">
-          
-          {/* Section Description */}
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-10">
             <h2 className="font-flavors text-3xl sm:text-4xl md:text-5xl text-primary tracking-wide">
               Skilled Professional Therapists & Educators
@@ -56,7 +52,6 @@ export default function TeamPage() {
             </p>
           </div>
 
-          {/* Desktop Filter Tabs */}
           <div className="hidden md:flex flex-wrap items-center justify-center gap-3 mb-14 border-b border-slate-100 pb-6">
             {categories.map((cat, idx) => {
               const isActive = activeCategory === cat;
@@ -76,7 +71,6 @@ export default function TeamPage() {
             })}
           </div>
 
-          {/* Mobile Filter Dropdown */}
           <div className="block md:hidden mb-10 max-w-sm mx-auto">
             <div className="relative">
               <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-primary">
@@ -103,14 +97,12 @@ export default function TeamPage() {
             </div>
           </div>
 
-          {/* Clinical Staff Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-7">
             {filteredTeam.map((member) => (
               <div
-                key={member.id}
+                key={member.id || member.name}
                 className="bg-slate-50/60 rounded-3xl p-6 border border-slate-200/80 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-start text-center group hover:-translate-y-1.5 h-full"
               >
-                {/* Avatar Photo Frame with Loading Skeleton Placeholder */}
                 <div className="relative w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-amber-300 shadow-md bg-slate-200 group-hover:scale-105 transition-transform shrink-0 mb-4">
                   <img
                     src={member.image}
@@ -120,17 +112,14 @@ export default function TeamPage() {
                   />
                 </div>
 
-                {/* Name */}
                 <h3 className="font-sans font-bold text-base sm:text-lg text-primary group-hover:text-secondary transition-colors tracking-wide min-h-[2.8rem] flex items-center justify-center leading-snug mb-1">
                   {member.name}
                 </h3>
 
-                {/* Role */}
                 <div className="text-xs font-bold text-amber-700 font-sister min-h-[2.4rem] flex items-center justify-center leading-tight mb-3 px-2">
                   {member.role}
                 </div>
 
-                {/* Qualification / Bio */}
                 <p className="text-xs text-slate-600 font-sans leading-relaxed flex-grow">
                   {member.bio}
                 </p>
@@ -138,7 +127,6 @@ export default function TeamPage() {
             ))}
           </div>
 
-          {/* Bottom Global Evaluation CTA */}
           <div className="mt-20 p-8 sm:p-12 rounded-[2.5rem] bg-gradient-to-r from-[#00364d] via-[#004460] to-[#002e42] text-white text-center space-y-5 shadow-2xl relative overflow-hidden">
             <h3 className="font-flavors text-3xl sm:text-4xl text-amber-300">
               Ready to Help Your Child Flourish?
@@ -159,9 +147,10 @@ export default function TeamPage() {
               </Link>
             </div>
           </div>
-
         </div>
       </section>
     </>
   );
-}
+};
+
+export default TeamPage;

@@ -1,6 +1,7 @@
 import siteConfig from '@/data/siteConfig.json';
 
-export default function robots() {
+// Generates dynamic robots.txt directives for search engine web crawlers
+const robots = () => {
   return {
     rules: {
       userAgent: '*',
@@ -9,4 +10,6 @@ export default function robots() {
     },
     sitemap: `${siteConfig.siteUrl}/sitemap.xml`,
   };
-}
+};
+
+export default robots;

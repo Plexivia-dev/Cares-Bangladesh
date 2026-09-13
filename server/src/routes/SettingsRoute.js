@@ -11,6 +11,7 @@ import {
   getGoogleAnalyticsSettings,
   updateGoogleAnalyticsSettings,
   getSeoSettings,
+  getSlugSeoSettings,
   updateSeoSettings,
   getBrandingSettings,
   updateBrandingSettings,
@@ -24,6 +25,10 @@ const settingsRouter = Router();
 
 // Public branding settings
 settingsRouter.get("/public/branding", getBrandingSettings);
+
+// Public SEO settings
+settingsRouter.get("/public/seo", getSeoSettings);
+settingsRouter.get("/public/seo/:slug", getSlugSeoSettings);
 
 // Public sanitized Meta Pixel configuration for customer storefront
 settingsRouter.get("/public/meta-pixel", getPublicMetaPixelConfig);

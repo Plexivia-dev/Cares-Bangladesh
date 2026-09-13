@@ -1,26 +1,41 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import PageHeader from '@/components/shared/PageHeader';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Calendar, ArrowRight, Search, Sparkles, BookOpen } from 'lucide-react';
-import posts from '@/data/posts.json';
+import { Calendar, ArrowRight, Search, BookOpen, Filter } from 'lucide-react';
+import { getBlogs, getBlogCategories } from '@/lib/api';
 
-export default function NewsEventsPage() {
+// News and articles archive page with API-driven pagination, categories, and keyword search
+const NewsEventsPage = () => {
   const [search, setSearch] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [categories, setCategories] = useState(['All']);
+  const [blogs, setBlogs] = useState([]);
   const [page, setPage] = useState(1);
-  const postsPerPage = 9;
+  const [totalPages, setTotalPages] = useState(1);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const filteredPosts = posts.filter(
-    (p) =>
-      p.title.toLowerCase().includes(search.toLowerCase()) ||
-      p.excerpt.toLowerCase().includes(search.toLowerCase())
-  );
+  useEffect(() => {
+    getBlogCategories().then((cats) => {
+      setCategories(cats);
+    });
+  }, []);
 
-  const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
-  const currentPosts = filteredPosts.slice((page - 1) * postsPerPage, page * postsPerPage);
+  useEffect(() => {
+    setIsLoading(true);
+    getBlogs({ page, limit: 9, search, category: selectedCategory })
+      .then((res) => {
+        setBlogs(res.blogs);
+        setTotalPages(res.pagination?.totalPages || 1);
+        setIsLoading(false);
+      })
+      .catch(() => {
+        setIsLoading(false);
+      });
+  }, [page, search, selectedCategory]);
 
   return (
     <>
@@ -32,34 +47,72 @@ export default function NewsEventsPage() {
 
       <section className="py-20 bg-slate-50/50">
         <div className="container mx-auto px-4 sm:px-6">
-          
-          {/* Search bar */}
-          <div className="max-w-md mx-auto mb-14 relative">
-            <Search className="w-5 h-5 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2" />
-            <Input
-              type="text"
-              placeholder="Search therapy articles & guides..."
-              value={search}
-              onChange={(e) => {
-                setSearch(e.target.value);
-                setPage(1);
-              }}
-              className="pl-12 h-12 rounded-full border-slate-200 shadow-sm bg-white font-sans text-sm focus-visible:ring-primary"
-            />
+          <div className="max-w-2xl mx-auto mb-10 space-y-4">
+            <div className="relative">
+              <Search className="w-5 h-5 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2" />
+              <Input
+                type="text"
+                placeholder="Search therapy articles & guides..."
+                value={search}
+                onChange={(e) => {
+                  setSearch(e.target.value);
+                  setPage(1);
+                }}
+                className="pl-12 h-12 rounded-full border-slate-200 shadow-sm bg-white font-sans text-sm focus-visible:ring-primary"
+              />
+            </div>
+
+            {categories.length > 1 && (
+              <div className="flex flex-wrap items-center justify-center gap-2 pt-2">
+                {categories.map((cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => {
+                      setSelectedCategory(cat);
+                      setPage(1);
+                    }}
+                    className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
+                      selectedCategory === cat
+                        ? 'bg-primary text-white shadow-sm'
+                        : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
-          {currentPosts.length > 0 ? (
+          {isLoading ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[1, 2, 3, 4, 5, 6].map((n) => (
+                <div key={n} className="bg-white rounded-3xl p-7 border border-slate-200/80 animate-pulse h-64 flex flex-col justify-between">
+                  <div className="space-y-3">
+                    <div className="h-4 bg-slate-200 rounded-md w-1/3"></div>
+                    <div className="h-6 bg-slate-200 rounded-md w-4/5"></div>
+                    <div className="h-4 bg-slate-200 rounded-md w-full"></div>
+                  </div>
+                  <div className="h-4 bg-slate-200 rounded-md w-1/4"></div>
+                </div>
+              ))}
+            </div>
+          ) : blogs.length > 0 ? (
             <>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {currentPosts.map((post) => (
+                {blogs.map((post) => (
                   <div
-                    key={post.id}
+                    key={post.id || post._id || post.slug}
                     className="bg-white rounded-3xl p-7 border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1.5 h-full"
                   >
                     <div className="space-y-3.5">
                       <div className="flex items-center space-x-2 text-xs text-amber-700 font-semibold font-sister">
                         <Calendar className="w-3.5 h-3.5 text-amber-500" />
-                        <span>{post.date}</span>
+                        <span>
+                          {post.publishedAt
+                            ? new Date(post.publishedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+                            : post.date || 'Recent'}
+                        </span>
                       </div>
 
                       <Link href={`/${post.slug}`} className="block">
@@ -86,7 +139,6 @@ export default function NewsEventsPage() {
                 ))}
               </div>
 
-              {/* Pagination */}
               {totalPages > 1 && (
                 <div className="flex justify-center items-center space-x-3 mt-14">
                   <Button
@@ -117,12 +169,13 @@ export default function NewsEventsPage() {
             <div className="text-center py-16 space-y-3">
               <BookOpen className="w-12 h-12 text-slate-300 mx-auto" />
               <h3 className="font-flavors text-2xl text-slate-700">No Articles Found</h3>
-              <p className="text-xs text-slate-500">Try searching for a different keyword.</p>
+              <p className="text-xs text-slate-500">Try searching for a different keyword or category.</p>
             </div>
           )}
-
         </div>
       </section>
     </>
   );
-}
+};
+
+export default NewsEventsPage;

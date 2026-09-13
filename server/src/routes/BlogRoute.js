@@ -3,6 +3,7 @@ import {
   getBlogs,
   getActiveBlogs,
   getBlogBySlug,
+  getBlogCategories,
   createBlog,
   updateBlog,
   deleteBlog,
@@ -13,6 +14,7 @@ const blogRouter = Router();
 
 // Public
 blogRouter.get("/public", getActiveBlogs);
+blogRouter.get("/public/categories", getBlogCategories);
 blogRouter.get("/public/:slug", getBlogBySlug);
 
 // Protected

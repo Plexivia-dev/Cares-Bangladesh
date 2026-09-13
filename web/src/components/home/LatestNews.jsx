@@ -3,29 +3,26 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Calendar, ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { getBlogs } from '@/lib/api';
 
-export default function LatestNews() {
+// Homepage news section highlighting latest articles and guides
+const LatestNews = () => {
   const [recentPosts, setRecentPosts] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5092/api/v1/blogs/public')
-      .then(res => res.json())
-      .then(data => {
-        if (data.status === 'success') {
-          setRecentPosts(data.data.slice(0, 3));
-        }
-      })
-      .catch(() => {});
+    getBlogs({ limit: 3 }).then((res) => {
+      if (res?.blogs) {
+        setRecentPosts(res.blogs.slice(0, 3));
+      }
+    });
   }, []);
 
   return (
     <section className="py-20 bg-slate-50/60 relative">
       <div className="container mx-auto px-4">
-        
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-14">
           <div className="text-xs font-bold text-secondary uppercase tracking-wider font-sister">
-            What's new
+            What&apos;s new
           </div>
           <h2 className="font-flavors text-4xl sm:text-5xl text-primary">
             Latest News
@@ -35,13 +32,17 @@ export default function LatestNews() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {recentPosts.map((post) => (
             <div
-              key={post.id}
+              key={post.id || post._id || post.slug}
               className="bg-white rounded-3xl p-7 border border-slate-100 shadow-sm hover:shadow-xl transition-all flex flex-col justify-between group"
             >
               <div className="space-y-3">
                 <div className="flex items-center space-x-2 text-xs text-slate-400 font-sans">
                   <Calendar className="w-3.5 h-3.5 text-amber-500" />
-                  <span>{new Date(post.publishedAt || post.createdAt).toLocaleDateString()}</span>
+                  <span>
+                    {post.publishedAt
+                      ? new Date(post.publishedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+                      : post.date || 'Recent'}
+                  </span>
                 </div>
 
                 <Link href={`/${post.slug}`}>
@@ -67,8 +68,9 @@ export default function LatestNews() {
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );
-}
+};
+
+export default LatestNews;

@@ -1,30 +1,26 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { Phone, Mail, MapPin, Clock, ArrowRight, Facebook, Youtube, Instagram, Linkedin } from 'lucide-react';
+import { Phone, MapPin, Clock, Facebook, Youtube, Instagram } from 'lucide-react';
 import siteConfig from '@/data/siteConfig.json';
 import programs from '@/data/programs.json';
+import { getBranding } from '@/lib/api';
 
-export default function Footer() {
-  const [logoUrl, setLogoUrl] = React.useState("/uploads/2024/09/CARES-Bangladesh-Logo-5__1_-removebg-preview.png");
+// Global footer component rendering organization contacts and brand navigation
+const Footer = () => {
+  const [logoUrl, setLogoUrl] = useState('/uploads/2024/09/CARES-Bangladesh-Logo-5__1_-removebg-preview.png');
 
-  React.useEffect(() => {
-    fetch('http://localhost:5092/api/v1/settings/public/branding')
-      .then(res => res.json())
-      .then(data => {
-        if (data.status === 'success' && data.data?.logoUrl) {
-          setLogoUrl(data.data.logoUrl);
-        }
-      })
-      .catch(() => {});
+  useEffect(() => {
+    getBranding().then((branding) => {
+      if (branding?.logoUrl) {
+        setLogoUrl(branding.logoUrl);
+      }
+    });
   }, []);
 
   return (
     <footer className="relative bg-[#fceee9] text-slate-800 pt-20 pb-10 overflow-hidden">
-      
-      {/* Pink Wave Top Border from Childit Theme */}
       <div className="absolute top-0 left-0 right-0 h-10 w-full overflow-hidden leading-none pointer-events-none">
         <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-10 text-white fill-current">
           <path d="M0,0 C150,90 350,-40 500,60 C650,160 900,10 1200,40 L1200,0 L0,0 Z"></path>
@@ -33,8 +29,6 @@ export default function Footer() {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-          
-          {/* Brand Info */}
           <div className="space-y-4">
             <Link href="/" className="flex items-center space-x-3">
               <div className="bg-white/90 p-2 rounded-2xl shadow-sm inline-block">
@@ -61,7 +55,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Quick Links */}
           <div>
             <h4 className="font-flavors text-2xl text-primary mb-4 tracking-wide">Overview</h4>
             <ul className="space-y-2 text-xs sm:text-sm text-slate-600 font-sans">
@@ -73,7 +66,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Therapy Programs */}
           <div>
             <h4 className="font-flavors text-2xl text-primary mb-4 tracking-wide">Our Services</h4>
             <ul className="space-y-2 text-xs sm:text-sm text-slate-600 font-sans">
@@ -87,7 +79,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contacts */}
           <div>
             <h4 className="font-flavors text-2xl text-primary mb-4 tracking-wide">Contacts</h4>
             <ul className="space-y-3 text-xs sm:text-sm text-slate-600 font-sans">
@@ -107,14 +98,14 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-
         </div>
 
-        {/* Bottom Bar */}
         <div className="border-t border-slate-200/80 pt-6 text-center text-xs text-slate-500 font-sans">
           <p>© {new Date().getFullYear()} Cares Bangladesh. All Rights Reserved.</p>
         </div>
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;

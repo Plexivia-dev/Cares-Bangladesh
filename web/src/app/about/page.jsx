@@ -5,20 +5,17 @@ import Image from 'next/image';
 import Link from 'next/link';
 import PageHeader from '@/components/shared/PageHeader';
 import { Button } from '@/components/ui/button';
-import { CheckCircle2, Heart, Award, Users, Shield, Sparkles, ArrowRight } from 'lucide-react';
+import { Sparkles, ArrowRight } from 'lucide-react';
+import { getTeam } from '@/lib/api';
 
-export default function AboutPage() {
+// About Us overview page detailing organization history, mission, and leadership team
+const AboutPage = () => {
   const [team, setTeam] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5092/api/v1/team/public')
-      .then(res => res.json())
-      .then(data => {
-        if (data.status === 'success') {
-          setTeam(data.data);
-        }
-      })
-      .catch(() => {});
+    getTeam().then((data) => {
+      setTeam(data);
+    });
   }, []);
 
   return (
@@ -83,7 +80,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Leadership & Team Section */}
       <section className="py-20 bg-slate-50/70">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="text-center max-w-2xl mx-auto mb-14 space-y-3">
@@ -137,4 +133,6 @@ export default function AboutPage() {
       </section>
     </>
   );
-}
+};
+
+export default AboutPage;

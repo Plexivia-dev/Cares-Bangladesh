@@ -1,11 +1,12 @@
 import posts from '@/data/posts.json';
 import programs from '@/data/programs.json';
 import siteConfig from '@/data/siteConfig.json';
+import { getBlogs } from '@/lib/api';
 
-export default async function sitemap() {
+// Generates dynamic XML sitemap entries for search engines
+const sitemap = async () => {
   const baseUrl = siteConfig.siteUrl;
 
-  // Static core routes
   const coreRoutes = [
     '',
     '/about',
@@ -24,7 +25,6 @@ export default async function sitemap() {
     priority: route === '' ? 1.0 : 0.8,
   }));
 
-  // Program routes
   const programRoutes = programs.map((prog) => ({
     url: `${baseUrl}/${prog.slug}`,
     lastModified: new Date().toISOString(),
@@ -32,13 +32,22 @@ export default async function sitemap() {
     priority: 0.9,
   }));
 
-  // Blog post routes
-  const postRoutes = posts.map((post) => ({
+  let allPosts = posts;
+  try {
+    const apiResult = await getBlogs({ limit: 100 });
+    if (apiResult?.blogs?.length) {
+      allPosts = apiResult.blogs;
+    }
+  } catch (err) {}
+
+  const postRoutes = allPosts.map((post) => ({
     url: `${baseUrl}/${post.slug}`,
-    lastModified: post.date ? new Date(post.date).toISOString() : new Date().toISOString(),
+    lastModified: post.publishedAt || (post.date ? new Date(post.date).toISOString() : new Date().toISOString()),
     changeFrequency: 'monthly',
     priority: 0.7,
   }));
 
   return [...coreRoutes, ...programRoutes, ...postRoutes];
-}
+};
+
+export default sitemap;
