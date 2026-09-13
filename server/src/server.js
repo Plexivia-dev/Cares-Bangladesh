@@ -20,15 +20,6 @@ const bootstrap = async () => {
     logger.info({ port, environment: env.NODE_ENV }, "Server listening");
   });
 
-  // Initialize Real-time Notification WebSocket Server
-  const wss = initWebSocketServer(server);
-
-  // Initialize Cloudflare R2 Sync & Orphan Image Cleanup Background Schedulers
-  initMediaSchedulers();
-
-  // Initialize Fleet Telemetry Heartbeat Scheduler
-  initHeartbeatScheduler();
-
   // Initialize Real-time IMAP Webmail Synchronizer
   if (env.IMAP_SYNC_ENABLED) {
     import("./services/imapSync.service.js")
@@ -43,10 +34,11 @@ const bootstrap = async () => {
   }
 
   const shutdown = (signal) => {
-    stopHeartbeatScheduler();
-    stopMediaSchedulers();
-    const handler = createShutdownHandler(server);
-    return handler(signal);
+    logger.info({ signal }, "Graceful shutdown initiated");
+    server.close(() => {
+      logger.info("HTTP server closed");
+      process.exit(0);
+    });
   };
 
   process.on("SIGINT", () => void shutdown("SIGINT"));
