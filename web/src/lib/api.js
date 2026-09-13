@@ -6,9 +6,9 @@ import siteConfig from '@/data/siteConfig.json';
 // Resolves base API URL based on runtime environment
 export const getApiBaseUrl = () => {
   if (typeof window !== 'undefined') {
-    return process.env.NEXT_PUBLIC_API_URL || (window.location.hostname === 'localhost' ? 'http://localhost:5092' : 'https://server.caresbd.com');
+    return process.env.NEXT_PUBLIC_API_URL || (window.location.hostname === 'localhost' ? 'http://localhost:5092' : '');
   }
-  return process.env.INTERNAL_API_URL || process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5092';
+  return process.env.INTERNAL_API_URL || process.env.NEXT_PUBLIC_API_URL || 'http://server:5092';
 };
 
 // Fetches public branding assets with fallback values
