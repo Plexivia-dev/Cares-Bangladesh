@@ -45,8 +45,12 @@ const seedBrandingAndSeo = async () => {
 
 // Seeds clinical team specialists into database
 const seedTeam = async () => {
-  const teamPath = path.resolve(__dirname, "../../../web/src/data/team.json");
-  if (!fs.existsSync(teamPath)) return;
+  const possiblePaths = [
+    path.resolve(__dirname, "../data/team.json"),
+    path.resolve(__dirname, "../../../web/src/data/team.json"),
+  ];
+  const teamPath = possiblePaths.find((p) => fs.existsSync(p));
+  if (!teamPath) return;
   const raw = fs.readFileSync(teamPath, "utf-8");
   const teamList = JSON.parse(raw);
 
@@ -72,10 +76,13 @@ const seedTeam = async () => {
 
 // Seeds published blog posts and associated SEO metadata into database
 const seedBlogs = async () => {
-  const postsPath = path.resolve(__dirname, "../../../backups/json_data/posts.json");
-  const fallbackPath = path.resolve(__dirname, "../../../web/src/data/posts.json");
-  const filePath = fs.existsSync(postsPath) ? postsPath : fallbackPath;
-  if (!fs.existsSync(filePath)) return;
+  const possiblePaths = [
+    path.resolve(__dirname, "../data/posts.json"),
+    path.resolve(__dirname, "../../../backups/json_data/posts.json"),
+    path.resolve(__dirname, "../../../web/src/data/posts.json"),
+  ];
+  const filePath = possiblePaths.find((p) => fs.existsSync(p));
+  if (!filePath) return;
 
   const raw = fs.readFileSync(filePath, "utf-8");
   const postList = JSON.parse(raw);
