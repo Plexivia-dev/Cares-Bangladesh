@@ -19,8 +19,8 @@ deploy:
 	@echo "🚀 Deploying Cares Bangladesh..."
 	git fetch --all
 	git reset --hard origin/master
-	mkdir -p /var/www/uploads
-	chmod -R 777 /var/www/uploads
+	mkdir -p /opt/www/uploads
+	chmod -R 777 /opt/www/uploads
 	$(COMPOSE) build
 	$(COMPOSE) up -d --remove-orphans
 	docker image prune -f

@@ -22,8 +22,8 @@ services:
       - PORT=5092
       - NODE_ENV=production
     volumes:
-      - /var/www/uploads:/app/uploads
-      - /var/www/uploads:/app/public/uploads
+      - /opt/www/uploads:/app/uploads
+      - /opt/www/uploads:/app/public/uploads
     ports:
       - "127.0.0.1:5092:5092"
     depends_on:

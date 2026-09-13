@@ -382,7 +382,7 @@ app.get("/api/system-stats", requireAuth, async (req, res) => {
       if (storageCache.data && now - storageCache.timestamp < 60000) {
         sendResponse(storageCache.data);
       } else {
-        exec("du -sh /var/www/uploads /var/www/documents 2>/dev/null", (duErr, duOut) => {
+        exec("du -sh /opt/www/uploads /opt/www/documents 2>/dev/null", (duErr, duOut) => {
           let uploadsSize = "N/A";
           let documentsSize = "N/A";
           if (!duErr && duOut) {

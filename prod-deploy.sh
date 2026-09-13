@@ -3,7 +3,7 @@ set -e
 
 echo "🚀 Starting Cares Bangladesh Production Deployment..."
 
-PROJECT_DIR="/opt/cares-bangladesh"
+PROJECT_DIR="/opt/live"
 cd $PROJECT_DIR
 
 echo "📥 Pulling latest code from GitHub..."
@@ -11,8 +11,8 @@ git fetch --all
 git reset --hard origin/master
 
 echo "📁 Ensuring upload and asset directories..."
-mkdir -p /var/www/uploads
-chmod -R 777 /var/www/uploads
+mkdir -p /opt/www/uploads
+chmod -R 777 /opt/www/uploads
 
 echo "🌐 Updating Nginx configuration..."
 if [ -f "nginx/cares.conf" ]; then
@@ -23,7 +23,7 @@ if [ -f "nginx/cares.conf" ]; then
 fi
 
 echo "🐳 Building and starting Docker containers..."
-docker compose up -d --build --remove-orphans
+docker compose -f docker-compose.prod.yml up -d --build --remove-orphans
 
 echo "🧹 Cleaning up dangling images..."
 docker image prune -f

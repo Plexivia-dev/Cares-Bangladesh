@@ -23,9 +23,9 @@ ufw allow 443/tcp
 echo "y" | ufw enable || true
 
 echo "=== 4. Creating deployment directories ==="
-mkdir -p /opt/cares-bangladesh
-mkdir -p /var/www/uploads
-chmod -R 777 /var/www/uploads
+mkdir -p /opt/live
+mkdir -p /opt/www/uploads
+chmod -R 777 /opt/www/uploads
 
 echo "=== 5. Verification ==="
 docker --version
