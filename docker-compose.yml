@@ -1,0 +1,67 @@
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: cares-mongodb
+    restart: always
+    ports:
+      - "127.0.0.1:27017:27017"
+    volumes:
+      - mongodb-data:/data/db
+    networks:
+      - cares-network
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: cares-server
+    restart: always
+    env_file:
+      - ./server/.env
+    environment:
+      - PORT=5092
+      - NODE_ENV=production
+    volumes:
+      - /var/www/uploads:/app/uploads
+      - /var/www/uploads:/app/public/uploads
+    ports:
+      - "127.0.0.1:5092:5092"
+    depends_on:
+      - mongodb
+    networks:
+      - cares-network
+
+  admin:
+    build:
+      context: ./admin
+      dockerfile: Dockerfile
+      args:
+        - VITE_API_BASE_URL=https://server.caresbd.com
+    container_name: cares-admin
+    restart: always
+    ports:
+      - "127.0.0.1:8005:8005"
+    networks:
+      - cares-network
+
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    container_name: cares-web
+    restart: always
+    environment:
+      - PORT=3000
+      - NODE_ENV=production
+    ports:
+      - "127.0.0.1:3000:3000"
+    networks:
+      - cares-network
+
+networks:
+  cares-network:
+    driver: bridge
+
+volumes:
+  mongodb-data:
+    driver: local
