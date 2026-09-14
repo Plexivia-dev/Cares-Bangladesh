@@ -87,6 +87,11 @@ const seedBlogs = async () => {
   const raw = fs.readFileSync(filePath, "utf-8");
   const postList = JSON.parse(raw);
 
+  const validSlugs = postList.map((p) => p.slug).filter(Boolean);
+  if (validSlugs.length > 0) {
+    await BlogModel.deleteMany({ slug: { $nin: validSlugs } });
+  }
+
   for (const p of postList) {
     if (!p.slug || !p.title) continue;
     const categories = Array.isArray(p.categories)

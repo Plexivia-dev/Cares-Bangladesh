@@ -5,6 +5,7 @@ import TopBar from '@/components/layout/TopBar';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import PagePreloader from '@/components/shared/PagePreloader';
+import ScrollToTop from '@/components/shared/ScrollToTop';
 import siteConfig from '@/data/siteConfig.json';
 import seoMetadata from '@/data/seoMetadata.json';
 
@@ -98,6 +99,7 @@ const RootLayout = async ({ children }) => {
           {children}
         </main>
         <Footer />
+        <ScrollToTop />
       </body>
     </html>
   );

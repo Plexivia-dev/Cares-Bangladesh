@@ -8,7 +8,8 @@ import { Textarea } from '@/components/ui/textarea';
 import { MapPin, Phone, Mail, Clock, Send, CheckCircle2, Sparkles } from 'lucide-react';
 import siteConfig from '@/data/siteConfig.json';
 
-export default function LocationPage() {
+// Specialized location and direct contact page with interactive inquiry form
+const LocationPage = () => {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({ name: '', phone: '', email: '', subject: '', message: '' });
@@ -34,7 +35,6 @@ export default function LocationPage() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             
-            {/* Contact Info & Details */}
             <div className="lg:col-span-5 space-y-6">
               <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-accent/15 text-accent-orange text-xs font-bold">
                 <Sparkles className="w-3.5 h-3.5" />
@@ -51,8 +51,8 @@ export default function LocationPage() {
 
               <div className="space-y-4 pt-2">
                 <div className="flex items-start space-x-4 p-4 rounded-2xl bg-slate-50 border border-slate-100">
-                  <div className="w-10 h-10 rounded-xl bg-primary text-white flex items-center justify-center shrink-0 shadow-sm">
-                    <MapPin className="w-5 h-5 text-accent" />
+                  <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-amber-400 to-amber-500 text-primary flex items-center justify-center shrink-0 shadow-xs">
+                    <MapPin className="w-5 h-5 text-primary" />
                   </div>
                   <div>
                     <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider">Address</h4>
@@ -61,8 +61,8 @@ export default function LocationPage() {
                 </div>
 
                 <div className="flex items-start space-x-4 p-4 rounded-2xl bg-slate-50 border border-slate-100">
-                  <div className="w-10 h-10 rounded-xl bg-primary text-white flex items-center justify-center shrink-0 shadow-sm">
-                    <Phone className="w-5 h-5 text-accent" />
+                  <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-amber-400 to-amber-500 text-primary flex items-center justify-center shrink-0 shadow-xs">
+                    <Phone className="w-5 h-5 text-primary" />
                   </div>
                   <div>
                     <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider">Phone & WhatsApp</h4>
@@ -73,8 +73,8 @@ export default function LocationPage() {
                 </div>
 
                 <div className="flex items-start space-x-4 p-4 rounded-2xl bg-slate-50 border border-slate-100">
-                  <div className="w-10 h-10 rounded-xl bg-primary text-white flex items-center justify-center shrink-0 shadow-sm">
-                    <Mail className="w-5 h-5 text-accent" />
+                  <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-amber-400 to-amber-500 text-primary flex items-center justify-center shrink-0 shadow-xs">
+                    <Mail className="w-5 h-5 text-primary" />
                   </div>
                   <div>
                     <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider">Email Support</h4>
@@ -85,8 +85,8 @@ export default function LocationPage() {
                 </div>
 
                 <div className="flex items-start space-x-4 p-4 rounded-2xl bg-slate-50 border border-slate-100">
-                  <div className="w-10 h-10 rounded-xl bg-primary text-white flex items-center justify-center shrink-0 shadow-sm">
-                    <Clock className="w-5 h-5 text-accent" />
+                  <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-amber-400 to-amber-500 text-primary flex items-center justify-center shrink-0 shadow-xs">
+                    <Clock className="w-5 h-5 text-primary" />
                   </div>
                   <div>
                     <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider">Visiting Hours</h4>
@@ -96,8 +96,7 @@ export default function LocationPage() {
               </div>
             </div>
 
-            {/* Interactive Form */}
-            <div className="lg:col-span-7 bg-slate-50/80 p-8 rounded-3xl border border-slate-100 shadow-sm">
+            <div className="lg:col-span-7 bg-slate-50/80 p-8 rounded-3xl border border-slate-100 shadow-xs">
               <h3 className="font-flavors text-3xl text-primary mb-2">Send Us a Message</h3>
               <p className="text-xs text-slate-600 mb-6">
                 Have questions or need to inquire about therapy slots? Send us a quick note.
@@ -176,8 +175,6 @@ export default function LocationPage() {
             </div>
 
           </div>
-
-          {/* Map Embed Container */}
           <div className="mt-16 rounded-3xl overflow-hidden border-2 border-slate-100 shadow-md h-96 w-full">
             <iframe
               title="Cares Bangladesh Location"
@@ -195,4 +192,6 @@ export default function LocationPage() {
       </section>
     </>
   );
-}
+};
+
+export default LocationPage;

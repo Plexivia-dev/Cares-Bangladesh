@@ -5,10 +5,11 @@ import Link from 'next/link';
 import PageHeader from '@/components/shared/PageHeader';
 import FaqAccordion from '@/components/shared/FaqAccordion';
 import { Button } from '@/components/ui/button';
-import { Sparkles, Calendar, HelpCircle, Phone } from 'lucide-react';
+import { Calendar, HelpCircle, Phone } from 'lucide-react';
 import siteConfig from '@/data/siteConfig.json';
 
-export default function FaqsPage() {
+// Interactive FAQ page displaying collapsible answers and direct counseling options
+const FaqsPage = () => {
   const faqList = [
     {
       question: 'What therapy services does Cares Bangladesh provide?',
@@ -56,20 +57,20 @@ export default function FaqsPage() {
 
           <FaqAccordion items={faqList} />
 
-          <div className="mt-14 p-8 rounded-3xl bg-slate-50 border border-slate-200/80 text-center space-y-4">
-            <h3 className="font-flavors text-2xl text-primary">Still Have Questions?</h3>
-            <p className="text-xs sm:text-sm text-slate-600">
-              Our clinical counseling team is here to guide you every step of the way.
+          <div className="mt-14 p-8 sm:p-10 rounded-3xl bg-gradient-to-tr from-amber-100/70 via-[#fff8eb] to-orange-100/60 border-2 border-amber-200/90 shadow-xs text-center space-y-4 relative overflow-hidden">
+            <h3 className="font-flavors text-2xl sm:text-3xl text-primary">Still Have Questions?</h3>
+            <p className="text-xs sm:text-sm text-slate-700 max-w-lg mx-auto font-medium">
+              Our clinical counseling team is here to guide you every step of the way. Reach out today.
             </p>
-            <div className="flex justify-center items-center gap-4 pt-2">
-              <a href={`tel:${siteConfig.phone}`}>
-                <Button variant="default" size="default" className="font-semibold">
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-3">
+              <a href={`tel:${siteConfig.phone}`} className="w-full sm:w-56">
+                <Button variant="default" size="lg" className="w-full h-12 rounded-full font-bold shadow-xs hover:shadow-md flex items-center justify-center text-sm">
                   <Phone className="w-4 h-4 mr-2" />
                   Call {siteConfig.phone}
                 </Button>
               </a>
-              <Link href="/book-a-tour">
-                <Button variant="accent" size="default" className="font-bold">
+              <Link href="/book-a-tour" className="w-full sm:w-56">
+                <Button variant="accent" size="lg" className="w-full h-12 rounded-full font-bold shadow-xs hover:shadow-md flex items-center justify-center text-sm">
                   <Calendar className="w-4 h-4 mr-2" />
                   Book A Tour
                 </Button>
@@ -80,4 +81,6 @@ export default function FaqsPage() {
       </section>
     </>
   );
-}
+};
+
+export default FaqsPage;

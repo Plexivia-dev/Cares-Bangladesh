@@ -20,7 +20,7 @@ const Footer = () => {
   }, []);
 
   return (
-    <footer className="relative bg-[#fceee9] text-slate-800 pt-20 pb-10 overflow-hidden">
+    <footer className="relative bg-[#fceee9] text-slate-800 pt-16 pb-4 overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-10 w-full overflow-hidden leading-none pointer-events-none">
         <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-10 text-white fill-current">
           <path d="M0,0 C150,90 350,-40 500,60 C650,160 900,10 1200,40 L1200,0 L0,0 Z"></path>
@@ -28,18 +28,22 @@ const Footer = () => {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-8">
           <div className="space-y-4">
             <Link href="/" className="flex items-center space-x-3">
-              <div className="bg-white/90 p-2 rounded-2xl shadow-sm inline-block">
+              <div className="bg-white/90 p-2 rounded-2xl shadow-xs inline-block">
                 <img
                   src={logoUrl}
                   alt="Cares Bangladesh Logo"
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = '/assets/img/logo.svg';
+                  }}
                   className="h-12 md:h-14 w-auto object-contain"
                 />
               </div>
             </Link>
-            <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-sans">
+            <p className="text-slate-800 text-xs sm:text-sm leading-relaxed font-semibold font-sans">
               We provide a caring and encouraging ambiance with some of the best occupational and speech therapists in Dhaka. Our main goal is to empower each child.
             </p>
             <div className="flex items-center space-x-3 pt-2">
@@ -57,7 +61,7 @@ const Footer = () => {
 
           <div>
             <h4 className="font-flavors text-2xl text-primary mb-4 tracking-wide">Overview</h4>
-            <ul className="space-y-2 text-xs sm:text-sm text-slate-600 font-sans">
+            <ul className="space-y-2 text-xs sm:text-sm text-slate-800 font-semibold font-sans">
               <li><Link href="/" className="hover:text-primary transition-colors">• Home</Link></li>
               <li><Link href="/about" className="hover:text-primary transition-colors">• About Us</Link></li>
               <li><Link href="/our-programs-child-care-in-dhaka-bangladesh" className="hover:text-primary transition-colors">• Our Programs</Link></li>
@@ -68,7 +72,7 @@ const Footer = () => {
 
           <div>
             <h4 className="font-flavors text-2xl text-primary mb-4 tracking-wide">Our Services</h4>
-            <ul className="space-y-2 text-xs sm:text-sm text-slate-600 font-sans">
+            <ul className="space-y-2 text-xs sm:text-sm text-slate-800 font-semibold font-sans">
               {programs.slice(0, 5).map((p) => (
                 <li key={p.id}>
                   <Link href={`/${p.slug}`} className="hover:text-primary transition-colors line-clamp-1">
@@ -81,14 +85,14 @@ const Footer = () => {
 
           <div>
             <h4 className="font-flavors text-2xl text-primary mb-4 tracking-wide">Contacts</h4>
-            <ul className="space-y-3 text-xs sm:text-sm text-slate-600 font-sans">
+            <ul className="space-y-3 text-xs sm:text-sm text-slate-800 font-semibold font-sans">
               <li className="flex items-start space-x-2.5">
                 <MapPin className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
                 <span>{siteConfig.address}</span>
               </li>
               <li className="flex items-center space-x-2.5">
                 <Phone className="w-4 h-4 text-amber-600 shrink-0" />
-                <a href={`tel:${siteConfig.phone}`} className="font-semibold text-primary hover:underline">
+                <a href={`tel:${siteConfig.phone}`} className="font-bold text-primary hover:underline">
                   {siteConfig.phone}
                 </a>
               </li>
@@ -100,7 +104,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-slate-200/80 pt-6 text-center text-xs text-slate-500 font-sans">
+        <div className="border-t border-slate-300/70 pt-4 pb-2 text-center text-xs text-slate-700 font-semibold font-sans">
           <p>© {new Date().getFullYear()} Cares Bangladesh. All Rights Reserved.</p>
         </div>
       </div>

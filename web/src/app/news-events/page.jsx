@@ -103,37 +103,59 @@ const NewsEventsPage = () => {
                 {blogs.map((post) => (
                   <div
                     key={post.id || post._id || post.slug}
-                    className="bg-white rounded-3xl p-7 border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1.5 h-full"
+                    className="bg-white rounded-3xl overflow-hidden border border-slate-200/80 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1.5 h-full"
                   >
-                    <div className="space-y-3.5">
-                      <div className="flex items-center space-x-2 text-xs text-amber-700 font-semibold font-sister">
-                        <Calendar className="w-3.5 h-3.5 text-amber-500" />
-                        <span>
-                          {post.publishedAt
-                            ? new Date(post.publishedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
-                            : post.date || 'Recent'}
-                        </span>
+                    <div>
+                      {post.coverImage && (
+                        <Link href={`/${post.slug}`} className="block relative w-full h-48 overflow-hidden bg-slate-100">
+                          <img
+                            src={post.coverImage}
+                            alt={post.title}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          />
+                        </Link>
+                      )}
+
+                      <div className="p-6 sm:p-7 space-y-3.5">
+                        <div className="flex items-center justify-between gap-2 text-xs">
+                          <div className="flex items-center space-x-1.5 text-amber-700 font-semibold font-sister">
+                            <Calendar className="w-3.5 h-3.5 text-amber-500" />
+                            <span>
+                              {post.publishedAt
+                                ? new Date(post.publishedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+                                : post.date || 'Recent'}
+                            </span>
+                          </div>
+
+                          {post.categories && post.categories[0] && (
+                            <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-amber-100/70 text-amber-800 border border-amber-200/60">
+                              {typeof post.categories[0] === 'string' ? post.categories[0] : post.categories[0].name || post.categories[0].slug}
+                            </span>
+                          )}
+                        </div>
+
+                        <Link href={`/${post.slug}`} className="block">
+                          <h3 className="font-sans font-bold text-lg text-primary group-hover:text-secondary transition-colors line-clamp-2 leading-snug">
+                            {post.title}
+                          </h3>
+                        </Link>
+
+                        <p className="text-xs text-slate-600 line-clamp-3 leading-relaxed font-sans">
+                          {post.excerpt}
+                        </p>
                       </div>
-
-                      <Link href={`/${post.slug}`} className="block">
-                        <h3 className="font-sans font-bold text-lg text-primary group-hover:text-secondary transition-colors line-clamp-2 leading-snug">
-                          {post.title}
-                        </h3>
-                      </Link>
-
-                      <p className="text-xs text-slate-600 line-clamp-3 leading-relaxed font-sans">
-                        {post.excerpt}
-                      </p>
                     </div>
 
-                    <div className="pt-5 border-t border-slate-100 mt-5">
-                      <Link
-                        href={`/${post.slug}`}
-                        className="inline-flex items-center text-xs font-bold text-secondary hover:text-primary transition-colors group/link"
-                      >
-                        <span>Read Full Guide</span>
-                        <ArrowRight className="w-3.5 h-3.5 ml-1.5 group-hover/link:translate-x-1 transition-transform" />
-                      </Link>
+                    <div className="p-6 sm:p-7 pt-0 border-t border-slate-100 mt-2">
+                      <div className="pt-4">
+                        <Link
+                          href={`/${post.slug}`}
+                          className="inline-flex items-center text-xs font-bold text-secondary hover:text-primary transition-colors group/link"
+                        >
+                          <span>Read Full Guide</span>
+                          <ArrowRight className="w-3.5 h-3.5 ml-1.5 group-hover/link:translate-x-1 transition-transform" />
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 ))}

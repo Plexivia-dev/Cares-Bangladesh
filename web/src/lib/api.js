@@ -148,7 +148,20 @@ export const getBlogBySlug = async (slug) => {
   } catch (err) {}
 
   const raw = String(slug).trim().toLowerCase();
-  const found = fallbackPosts.find((p) => p.slug && p.slug.toLowerCase() === raw);
+  let decoded = raw;
+  try {
+    decoded = decodeURIComponent(raw).toLowerCase();
+  } catch (e) {}
+
+  const found = fallbackPosts.find((p) => {
+    if (!p.slug) return false;
+    const s = p.slug.toLowerCase();
+    let sDecoded = s;
+    try {
+      sDecoded = decodeURIComponent(s).toLowerCase();
+    } catch (e) {}
+    return s === raw || s === decoded || sDecoded === raw || sDecoded === decoded;
+  });
   return found || null;
 };
 

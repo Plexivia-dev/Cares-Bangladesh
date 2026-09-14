@@ -170,6 +170,16 @@ const BlogPostPage = async ({ params }) => {
                 </div>
               </div>
 
+              {post.coverImage && (
+                <div className="rounded-3xl overflow-hidden shadow-xs border border-slate-100 max-h-[460px] w-full">
+                  <img
+                    src={post.coverImage}
+                    alt={post.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              )}
+
               <div
                 className="prose prose-slate max-w-none prose-headings:font-flavors prose-headings:text-primary prose-headings:font-normal prose-h2:text-3xl prose-h3:text-2xl prose-p:text-slate-600 prose-p:leading-relaxed prose-li:text-slate-600 prose-a:text-secondary prose-a:font-semibold hover:prose-a:underline"
                 dangerouslySetInnerHTML={{ __html: post.content }}

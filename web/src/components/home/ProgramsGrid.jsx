@@ -21,8 +21,17 @@ const iconMap = {
 // Renders responsive grid of clinical programs and specialized therapy services
 const ProgramsGrid = () => {
   return (
-    <section className="py-24 bg-gradient-to-b from-amber-50/40 via-white to-sky-50/40 relative">
-      <div className="container mx-auto px-4 sm:px-6">
+    <section className="py-24 relative overflow-hidden">
+      <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
+        <img
+          src="/assets/img/Home_our-programs-01-01-01.jpg"
+          alt="Programs background"
+          className="w-full h-full object-cover object-top opacity-35"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/85 via-white/65 to-white/90" />
+      </div>
+
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-18">
           <div>

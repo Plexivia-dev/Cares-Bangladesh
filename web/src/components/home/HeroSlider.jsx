@@ -28,8 +28,17 @@ const HeroSlider = () => {
   const btnLnk = slider?.buttonLink || "/book-a-tour";
 
   return (
-    <section className="relative bg-gradient-to-b from-sky-100/60 via-amber-50/40 to-white pt-6 pb-14 sm:pt-10 sm:pb-20 md:pt-16 md:pb-28 overflow-hidden">
-      <div className="container mx-auto px-4">
+    <section className="relative pt-6 pb-16 sm:pt-10 sm:pb-24 md:pt-16 md:pb-32 overflow-hidden">
+      <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
+        <img
+          src="/assets/img/General-Bg-01.jpg"
+          alt="Playful background landscape"
+          className="w-full h-full object-cover object-bottom opacity-30"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-sky-100/75 via-amber-50/60 to-white/90" />
+      </div>
+
+      <div className="container mx-auto px-4 relative z-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-10 items-center">
           <div className="lg:col-span-6 relative z-10 space-y-4 sm:space-y-6 text-center lg:text-left">
             <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-amber-100/90 text-amber-900 text-xs font-extrabold font-sans uppercase tracking-wider border border-amber-200/80 shadow-2xs">
@@ -90,10 +99,12 @@ const HeroSlider = () => {
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-10 sm:h-12 w-full overflow-hidden leading-none pointer-events-none">
-        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-10 sm:h-12 text-white fill-current">
-          <path d="M0,0 C150,90 350,-40 500,60 C650,160 900,10 1200,40 L1200,120 L0,120 Z"></path>
-        </svg>
+      <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none pointer-events-none z-10 opacity-70">
+        <img
+          src="/assets/img/slider-1.png"
+          alt="Playful hills landscape"
+          className="w-full h-auto object-cover min-h-[45px] max-h-[110px]"
+        />
       </div>
     </section>
   );

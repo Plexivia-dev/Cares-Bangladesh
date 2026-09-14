@@ -1,5 +1,6 @@
+'use client';
+
 import React from 'react';
-import Image from 'next/image';
 
 // Full screen loading indicator with animated brand logo and playful status pulses
 const Loading = () => {
@@ -12,15 +13,15 @@ const Loading = () => {
           <div className="absolute w-20 h-20 rounded-full border-2 border-secondary/40 animate-pulse" />
 
           <div className="relative w-16 h-16 rounded-full bg-white shadow-xl flex items-center justify-center p-2 border-2 border-amber-200">
-            <Image
+            <img
               src="/assets/img/logo.png"
               alt="Cares Bangladesh Loading"
-              width={56}
-              height={56}
-              className="object-contain animate-bounce"
+              onError={(e) => {
+                e.currentTarget.onerror = null;
+                e.currentTarget.src = '/assets/img/logo.svg';
+              }}
+              className="w-12 h-12 object-contain animate-bounce"
               style={{ animationDuration: '1.2s' }}
-              unoptimized
-              priority
             />
           </div>
         </div>

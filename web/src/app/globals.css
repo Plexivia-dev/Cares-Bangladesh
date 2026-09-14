@@ -95,9 +95,14 @@
   background: #f1f5f9;
 }
 ::-webkit-scrollbar-thumb {
-  background: #007791;
+  background: #004460;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #004460;
+  background: #002e42;
 }
+
+html {
+  scrollbar-color: #004460 #f1f5f9;
+}
+
