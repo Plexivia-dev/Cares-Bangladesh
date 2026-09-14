@@ -6,34 +6,32 @@ import Image from 'next/image';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-export default function AboutSection() {
+// Renders the about section showcasing center mission and child development care
+const AboutSection = () => {
   return (
-    <section className="py-20 bg-white relative">
+    <section className="py-16 sm:py-20 bg-white relative">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           
-          {/* Left: Playful Organic Shape & Image */}
-          <div className="lg:col-span-5 relative">
-            <div className="relative mx-auto max-w-md">
-              {/* Playful Yellow/Orange Organic Blob Shape from original theme */}
-              <div className="absolute -inset-4 bg-[#f5a623] rounded-[40%_60%_70%_30%/40%_50%_60%_50%] -z-10 shadow-lg" />
+          <div className="lg:col-span-6 relative order-2 lg:order-1">
+            <div className="relative mx-auto max-w-lg xl:max-w-xl">
+              <div className="absolute -inset-4 sm:-inset-6 bg-[#f5a623] rounded-[40%_60%_70%_30%/40%_50%_60%_50%] -z-10 shadow-xl opacity-90" />
 
-              <div className="relative rounded-3xl overflow-hidden border-4 border-white shadow-xl aspect-[4/3] bg-white">
+              <div className="relative rounded-3xl overflow-hidden border-4 border-white shadow-2xl aspect-[4/3] sm:aspect-[14/11] lg:aspect-[1/1] xl:aspect-[5/4] bg-white min-h-[320px] sm:min-h-[400px] lg:min-h-[440px]">
                 <Image
                   src="/assets/img/children-food.jpg"
                   alt="Cares Bangladesh for Child Development"
                   fill
-                  sizes="(max-width: 768px) 100vw, 40vw"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
                 />
               </div>
             </div>
           </div>
 
-          {/* Right: Exact WordPress Content */}
-          <div className="lg:col-span-7 space-y-5">
-            <div className="text-xs font-bold text-amber-600 uppercase tracking-wider font-sister">
-              — Where Care and Growth Unite
+          <div className="lg:col-span-6 space-y-5 order-1 lg:order-2">
+            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-amber-100/90 border border-amber-200 text-amber-900 text-xs font-extrabold uppercase tracking-widest font-sans shadow-2xs">
+              <span>Where Care & Growth Unite</span>
             </div>
 
             <h2 className="font-flavors text-3xl sm:text-4xl md:text-5xl text-primary leading-tight">
@@ -62,4 +60,6 @@ export default function AboutSection() {
       </div>
     </section>
   );
-}
+};
+
+export default AboutSection;

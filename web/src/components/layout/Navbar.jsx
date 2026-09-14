@@ -49,12 +49,11 @@ const Navbar = ({ onOpenBookTour }) => {
     <header className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-md py-2.5' : 'bg-white py-4 shadow-sm'}`}>
       <div className="container mx-auto px-4 flex justify-between items-center">
         <Link href="/" className="flex items-center space-x-3 group py-1">
-          <div className="relative h-12 w-auto flex items-center">
+          <div className="relative h-12 md:h-16 w-auto flex items-center">
             <img
               src={logoUrl}
               alt="Cares Bangladesh Logo"
-              style={{ height: '44px', width: 'auto', objectFit: 'contain' }}
-              className="sm:h-12 group-hover:scale-105 transition-transform"
+              className="h-12 md:h-16 w-auto object-contain group-hover:scale-105 transition-transform duration-200"
             />
           </div>
         </Link>

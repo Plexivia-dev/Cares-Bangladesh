@@ -35,7 +35,7 @@ const Footer = () => {
                 <img
                   src={logoUrl}
                   alt="Cares Bangladesh Logo"
-                  style={{ height: '40px', width: 'auto', objectFit: 'contain' }}
+                  className="h-12 md:h-14 w-auto object-contain"
                 />
               </div>
             </Link>

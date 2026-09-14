@@ -18,7 +18,8 @@ const iconMap = {
   Compass: Compass,
 };
 
-export default function ProgramsGrid() {
+// Renders responsive grid of clinical programs and specialized therapy services
+const ProgramsGrid = () => {
   return (
     <section className="py-24 bg-gradient-to-b from-amber-50/40 via-white to-sky-50/40 relative">
       <div className="container mx-auto px-4 sm:px-6">
@@ -106,10 +107,9 @@ export default function ProgramsGrid() {
           })}
         </div>
 
-        {/* Bottom CTA */}
         <div className="text-center mt-16">
           <Link href="/book-a-tour">
-            <Button variant="accent" size="lg" className="rounded-full font-bold shadow-lg hover:shadow-2xl px-9 py-6 text-base bg-amber-500 hover:bg-amber-600 text-white transition-all hover:scale-105">
+            <Button variant="accent" size="lg" className="rounded-full font-bold shadow-lg hover:shadow-2xl px-8 text-base bg-amber-500 hover:bg-amber-600 text-white transition-all hover:scale-105">
               <span>Book An Assessment For Your Child</span>
               <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
@@ -119,4 +119,6 @@ export default function ProgramsGrid() {
       </div>
     </section>
   );
-}
+};
+
+export default ProgramsGrid;

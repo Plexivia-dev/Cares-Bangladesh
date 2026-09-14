@@ -16,10 +16,10 @@ const buttonVariants = cva(
         link: 'text-primary underline-offset-4 hover:underline shadow-none',
       },
       size: {
-        default: 'h-11 px-6 py-2',
-        sm: 'h-9 px-4 text-xs',
-        lg: 'h-12 px-8 text-base font-semibold',
-        icon: 'h-10 w-10',
+        default: 'h-12 px-6 text-sm font-semibold',
+        sm: 'h-12 px-4 text-xs sm:text-sm font-medium',
+        lg: 'h-12 px-8 text-base font-bold',
+        icon: 'h-12 w-12',
       },
     },
     defaultVariants: {
@@ -29,6 +29,7 @@ const buttonVariants = cva(
   }
 );
 
+// Standardized reusable button component with uniform height across all variants
 const Button = React.forwardRef(({ className, variant, size, asChild = false, ...props }, ref) => {
   const Comp = asChild ? Slot : 'button';
   return (

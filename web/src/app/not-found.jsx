@@ -50,7 +50,7 @@ export default function NotFound() {
               <Button
                 variant="accent"
                 size="lg"
-                className="w-full sm:w-auto h-13 px-8 rounded-full font-bold text-base bg-gradient-to-r from-amber-500 via-orange-500 to-amber-500 text-white shadow-lg shadow-orange-500/25 hover:shadow-xl hover:scale-105 active:scale-95 transition-all cursor-pointer"
+                className="w-full sm:w-auto h-12 px-8 rounded-full font-bold text-base bg-gradient-to-r from-amber-500 via-orange-500 to-amber-500 text-white shadow-lg shadow-orange-500/25 hover:shadow-xl hover:scale-105 active:scale-95 transition-all cursor-pointer"
               >
                 <Home className="w-5 h-5 mr-2" />
                 <span>Return to Homepage</span>
@@ -61,7 +61,7 @@ export default function NotFound() {
               <Button
                 variant="outline"
                 size="lg"
-                className="w-full sm:w-auto h-13 px-8 rounded-full font-bold text-base bg-white text-primary hover:text-white hover:bg-primary border-2 border-primary/20 hover:border-primary shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all cursor-pointer"
+                className="w-full sm:w-auto h-12 px-8 rounded-full font-bold text-base bg-white text-primary hover:text-white hover:bg-primary border-2 border-primary/20 hover:border-primary shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all cursor-pointer"
               >
                 <Phone className="w-4 h-4 mr-2" />
                 <span>Book A Tour & Assessment</span>
