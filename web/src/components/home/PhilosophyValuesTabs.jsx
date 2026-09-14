@@ -4,7 +4,8 @@ import React from 'react';
 import Image from 'next/image';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 
-export default function PhilosophyValuesTabs() {
+// Tabbed information centre detailing organizational philosophy and core values
+const PhilosophyValuesTabs = () => {
   const philosophies = [
     {
       num: '01.',
@@ -47,12 +48,11 @@ export default function PhilosophyValuesTabs() {
   ];
 
   return (
-    <section className="py-20 bg-white relative">
+    <section className="py-20 bg-[#f4f9fc] border-y border-sky-100/60 relative">
       <div className="container mx-auto px-4">
-        
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-14">
-          <div className="text-xs font-bold text-secondary uppercase tracking-wider font-sister">
-            Learn more about our journey
+          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-sky-50 text-secondary border border-sky-200/80 text-xs font-extrabold uppercase tracking-wider font-sans shadow-2xs">
+            <span>Learn More About Our Journey</span>
           </div>
 
           <h2 className="font-flavors text-4xl sm:text-5xl text-primary">
@@ -73,7 +73,6 @@ export default function PhilosophyValuesTabs() {
               </TabsList>
             </div>
 
-            {/* Philosophy Tab */}
             <TabsContent value="philosophy">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {philosophies.map((p, idx) => (
@@ -81,7 +80,7 @@ export default function PhilosophyValuesTabs() {
                     key={idx}
                     className="bg-white p-7 rounded-3xl border border-slate-100 shadow-md hover:shadow-xl transition-all space-y-3"
                   >
-                    <div className="font-sister text-2xl text-secondary font-bold">
+                    <div className="font-flavors text-2xl text-secondary font-bold">
                       {p.num}
                     </div>
                     <h3 className="font-sans font-bold text-base text-primary">
@@ -95,7 +94,6 @@ export default function PhilosophyValuesTabs() {
               </div>
             </TabsContent>
 
-            {/* Values Tab */}
             <TabsContent value="values">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 {values.map((v, idx) => (
@@ -103,7 +101,7 @@ export default function PhilosophyValuesTabs() {
                     key={idx}
                     className="bg-white p-6 rounded-3xl border border-slate-100 shadow-md hover:shadow-xl transition-all space-y-3"
                   >
-                    <div className="font-sister text-2xl text-amber-500 font-bold">
+                    <div className="font-flavors text-2xl text-amber-500 font-bold">
                       {v.num}
                     </div>
                     <h3 className="font-sans font-bold text-base text-primary">
@@ -118,8 +116,9 @@ export default function PhilosophyValuesTabs() {
             </TabsContent>
           </Tabs>
         </div>
-
       </div>
     </section>
   );
-}
+};
+
+export default PhilosophyValuesTabs;

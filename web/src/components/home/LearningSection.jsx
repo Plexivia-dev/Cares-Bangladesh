@@ -6,7 +6,8 @@ import Link from 'next/link';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-export default function LearningSection() {
+// Multidisciplinary therapy hub highlighting early learning domains and individualized care
+const LearningSection = () => {
   const subjects = [
     { name: 'Art Therapy', icon: '/assets/img/childit_icons/art.svg', color: 'bg-pink-100 text-pink-600' },
     { name: 'Music Therapy', icon: '/assets/img/childit_icons/music.svg', color: 'bg-purple-100 text-purple-600' },
@@ -17,27 +18,47 @@ export default function LearningSection() {
   ];
 
   return (
-    <section className="py-20 bg-white relative">
+    <section className="py-20 bg-gradient-to-br from-[#fff7ed] via-[#fffbf5] to-[#f0f9ff] relative">
       <div className="container mx-auto px-4">
-        
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Left Text */}
-          <div className="lg:col-span-6 space-y-5">
-            <div className="text-xs font-bold text-secondary uppercase tracking-wider font-sister">
-              — Dynamic Learning Experiences
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          <div className="lg:col-span-6 space-y-6">
+            <div>
+              <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-sky-50 text-secondary border border-sky-200/80 text-xs font-extrabold uppercase tracking-wider font-sans shadow-2xs">
+                <Sparkles className="w-3.5 h-3.5 text-secondary" />
+                <span>Dynamic Learning Experiences</span>
+              </div>
             </div>
 
-            <h2 className="font-flavors text-3xl sm:text-4xl md:text-5xl text-primary leading-tight">
+            <h2 className="font-flavors text-3xl sm:text-4xl md:text-5xl text-primary leading-[1.2]">
               Foundations of Learning. <span className="text-secondary">Dedicated to Excellence</span>
             </h2>
 
-            <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-sans">
+            <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-sans">
               Child development is our main concern. Our multidisciplinary programs are developed by an experienced clinical team to enhance speech, fine and gross motor skills, sensory integration, and emotional resilience.
             </p>
 
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 text-slate-700 font-sans text-sm font-semibold">
+              <div className="flex items-center space-x-2.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-amber-500 shrink-0" />
+                <span>Individualized Care Plans</span>
+              </div>
+              <div className="flex items-center space-x-2.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-secondary shrink-0" />
+                <span>Certified Child Specialists</span>
+              </div>
+              <div className="flex items-center space-x-2.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 shrink-0" />
+                <span>Sensory-Enriched Therapy</span>
+              </div>
+              <div className="flex items-center space-x-2.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-orange-500 shrink-0" />
+                <span>Continuous Family Guidance</span>
+              </div>
+            </div>
+
             <div className="pt-2">
               <Link href="/book-a-tour">
-                <button className="h-12 px-7 rounded-full font-bold text-sm bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white shadow-md shadow-orange-500/20 hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-300 flex items-center space-x-2 cursor-pointer">
+                <button className="h-12 px-8 rounded-full font-bold text-sm bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white shadow-md shadow-orange-500/20 hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-300 flex items-center space-x-2 cursor-pointer">
                   <span>Learn More</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
@@ -45,7 +66,6 @@ export default function LearningSection() {
             </div>
           </div>
 
-          {/* Right: Circular Icon Hub matching original theme */}
           <div className="lg:col-span-6">
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
               {subjects.map((sub, idx) => (
@@ -70,8 +90,9 @@ export default function LearningSection() {
             </div>
           </div>
         </div>
-
       </div>
     </section>
   );
-}
+};
+
+export default LearningSection;

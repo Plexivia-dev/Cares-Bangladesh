@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 // Renders the about section showcasing center mission and child development care
 const AboutSection = () => {
   return (
-    <section className="py-16 sm:py-20 bg-white relative">
+    <section className="py-16 sm:py-20 bg-gradient-to-b from-[#fdfaf5] via-[#fffdfa] to-white relative">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           

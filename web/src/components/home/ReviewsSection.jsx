@@ -5,11 +5,10 @@ import Image from 'next/image';
 import { Star, Quote } from 'lucide-react';
 import testimonials from '@/data/testimonials.json';
 
-export default function ReviewsSection() {
+// Client testimonials showcase sharing feedback and stories from parents
+const ReviewsSection = () => {
   return (
     <section className="py-24 bg-[#fbf5e8] relative overflow-hidden">
-      
-      {/* Top Wave */}
       <div className="absolute top-0 left-0 right-0 h-10 w-full overflow-hidden leading-none pointer-events-none">
         <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-10 text-white fill-current">
           <path d="M0,0 C300,90 600,-40 900,60 L1200,0 L1200,0 L0,0 Z"></path>
@@ -22,13 +21,13 @@ export default function ReviewsSection() {
           <h2 className="font-flavors text-4xl sm:text-5xl text-primary">
             Testimonials
           </h2>
-          <p className="text-slate-600 text-xs sm:text-sm font-sister">
+          <p className="text-slate-600 text-sm sm:text-base font-sans font-medium">
             What parents say about their journey with Cares Bangladesh
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {testimonials.slice(0, 3).map((item, idx) => (
+          {testimonials.slice(0, 3).map((item) => (
             <div
               key={item.id}
               className="bg-white p-7 rounded-3xl border border-amber-200/70 shadow-sm hover:shadow-xl transition-all flex flex-col justify-between"
@@ -49,7 +48,7 @@ export default function ReviewsSection() {
               </div>
 
               <div className="border-t border-slate-100 pt-3 flex items-center space-x-3">
-                <div className="w-9 h-9 rounded-full bg-amber-100 text-amber-700 font-bold flex items-center justify-center text-xs font-sister">
+                <div className="w-9 h-9 rounded-full bg-amber-100 text-amber-700 font-bold flex items-center justify-center text-xs font-sans">
                   {item.name[0]}
                 </div>
                 <div>
@@ -63,7 +62,6 @@ export default function ReviewsSection() {
 
       </div>
 
-      {/* Bottom Wave */}
       <div className="absolute bottom-0 left-0 right-0 h-10 w-full overflow-hidden leading-none pointer-events-none">
         <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-10 text-white fill-current">
           <path d="M0,0 C150,90 350,-40 500,60 C650,160 900,10 1200,40 L1200,120 L0,120 Z"></path>
@@ -71,4 +69,6 @@ export default function ReviewsSection() {
       </div>
     </section>
   );
-}
+};
+
+export default ReviewsSection;

@@ -6,7 +6,8 @@ import Image from 'next/image';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-export default function AdvantageSection() {
+// Section presenting core organizational advantages, clinical expertise, and supportive environment
+const AdvantageSection = () => {
   const advantages = [
     {
       num: '01.',
@@ -48,13 +49,12 @@ export default function AdvantageSection() {
 
   return (
     <>
-      {/* Why Choose Us Grid */}
-      <section className="py-20 bg-white relative">
+      <section className="py-20 bg-gradient-to-b from-sky-50/50 via-white to-slate-50/70 relative">
         <div className="container mx-auto px-4">
-          
           <div className="text-center max-w-3xl mx-auto space-y-3 mb-16">
-            <div className="text-xs font-bold text-amber-700 uppercase tracking-wider font-sister">
-              Find Out What Makes Us Unique
+            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-amber-100/90 text-amber-900 border border-amber-200/80 text-xs font-extrabold uppercase tracking-wider font-sans shadow-2xs">
+              <Sparkles className="w-3.5 h-3.5 text-amber-600" />
+              <span>Find Out What Makes Us Unique</span>
             </div>
 
             <h2 className="font-flavors text-4xl sm:text-5xl text-primary">
@@ -68,7 +68,7 @@ export default function AdvantageSection() {
                 key={idx}
                 className={`p-7 rounded-[2rem] border shadow-xs hover:shadow-lg transition-all ${adv.bg}`}
               >
-                <div className="font-sister text-2xl text-amber-600 font-bold mb-2">
+                <div className="font-flavors text-2xl text-amber-600 font-bold mb-2">
                   {adv.num}
                 </div>
                 <h3 className="font-sans font-bold text-base text-slate-800 mb-2">
@@ -80,15 +80,12 @@ export default function AdvantageSection() {
               </div>
             ))}
           </div>
-
         </div>
       </section>
 
-      {/* Wide Banner: We Foster a Supportive Environment for Every Child */}
       <section className="relative py-24 bg-gradient-to-r from-[#00364d] via-[#004460] to-[#002b3d] text-white overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            
             <div className="lg:col-span-7 space-y-5">
               <h2 className="font-flavors text-3xl sm:text-4xl md:text-5xl text-accent leading-tight">
                 We Foster a Supportive Environment for Every Child
@@ -98,7 +95,7 @@ export default function AdvantageSection() {
               </p>
               <div className="pt-2">
                 <Link href="/book-a-tour">
-                  <Button variant="accent" size="lg" className="rounded-full font-bold px-8 bg-amber-500 hover:bg-amber-600 text-white shadow-lg">
+                  <Button variant="accent" size="default" className="rounded-full font-bold px-8 bg-amber-500 hover:bg-amber-600 text-white shadow-lg">
                     <span>Schedule a Visit Today</span>
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
@@ -117,10 +114,11 @@ export default function AdvantageSection() {
                 />
               </div>
             </div>
-
           </div>
         </div>
       </section>
     </>
   );
-}
+};
+
+export default AdvantageSection;

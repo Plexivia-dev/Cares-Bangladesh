@@ -96,24 +96,28 @@ const AboutPage = () => {
                 className="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-sm hover:shadow-lg transition-all text-center flex flex-col justify-between h-full group hover:-translate-y-1"
               >
                 <div className="space-y-3.5">
-                  <div className="relative w-28 h-28 mx-auto rounded-full overflow-hidden border-4 border-amber-300 shadow-md bg-slate-100 shrink-0 group-hover:scale-105 transition-transform">
+                  <div className="relative w-28 h-28 mx-auto rounded-full overflow-hidden border-4 border-amber-400 shadow-md bg-slate-100 shrink-0 group-hover:scale-105 transition-transform">
                     <img
                       src={member.image}
                       alt={member.name}
                       className="w-full h-full object-cover"
+                      onError={(e) => {
+                        e.currentTarget.onerror = null;
+                        e.currentTarget.src = '/assets/img/user.svg';
+                      }}
                     />
                   </div>
                   
                   <div className="space-y-1">
-                    <h3 className="font-sans font-bold text-base text-primary group-hover:text-secondary transition-colors min-h-[2.6rem] flex items-center justify-center leading-snug">
+                    <h3 className="font-sans font-bold text-base text-slate-900 group-hover:text-primary transition-colors min-h-[2.6rem] flex items-center justify-center leading-snug">
                       {member.name}
                     </h3>
-                    <div className="text-xs font-bold text-amber-700 font-sister min-h-[2.2rem] flex items-center justify-center leading-tight">
+                    <div className="text-xs font-semibold text-secondary min-h-[2.2rem] flex items-center justify-center leading-tight font-sans">
                       {member.role}
                     </div>
                   </div>
 
-                  <p className="text-xs text-slate-600 font-sans leading-relaxed line-clamp-3 min-h-[3rem] flex items-center justify-center">
+                  <p className="text-xs text-slate-700 font-sans leading-relaxed line-clamp-3 min-h-[3rem] flex items-center justify-center">
                     {member.bio}
                   </p>
                 </div>

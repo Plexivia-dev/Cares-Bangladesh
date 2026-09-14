@@ -32,7 +32,7 @@ const HeroSlider = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-10 items-center">
           <div className="lg:col-span-6 relative z-10 space-y-4 sm:space-y-6 text-center lg:text-left">
-            <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-amber-100 text-amber-800 text-xs font-bold font-sister shadow-xs">
+            <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-amber-100/90 text-amber-900 text-xs font-extrabold font-sans uppercase tracking-wider border border-amber-200/80 shadow-2xs">
               <span>Dedicated & Compassionate</span>
             </div>
 
@@ -48,40 +48,40 @@ const HeroSlider = () => {
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3 sm:gap-4 pt-1 sm:pt-2">
               <Link href={btnLnk} className="group">
-                <button className="w-full sm:w-auto h-12 px-7 rounded-full font-bold text-sm sm:text-base bg-gradient-to-r from-amber-500 via-orange-500 to-amber-500 bg-[length:200%_auto] hover:bg-[position:right_center] text-white shadow-lg shadow-orange-500/25 hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center space-x-2.5 cursor-pointer">
-                  <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-white/90" />
+                <Button variant="accent" size="default" className="w-full sm:w-auto font-bold px-8 shadow-md hover:shadow-lg transition-all duration-300">
                   <span>{btnTxt}</span>
-                </button>
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
               </Link>
 
-              <Link href="/our-programs-child-care-in-dhaka-bangladesh" className="group">
-                <button className="w-full sm:w-auto h-12 px-7 rounded-full font-bold text-sm sm:text-base bg-white text-primary hover:text-white hover:bg-primary border-2 border-primary/20 hover:border-primary shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center space-x-2 cursor-pointer">
-                  <span>Our Programs</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </button>
+              <Link href="/speech-language-therapy-therapist">
+                <Button variant="outline" size="default" className="w-full sm:w-auto font-bold px-8 border-2 border-primary text-primary hover:bg-primary/5 transition-all">
+                  Our Specialists
+                </Button>
               </Link>
             </div>
           </div>
 
-          <div className="lg:col-span-6 relative mt-1 sm:mt-0">
-            <div className="relative mx-auto max-w-lg">
-              <div className="absolute -inset-4 bg-gradient-to-tr from-amber-300 to-orange-400 rounded-[3rem] rotate-3 opacity-80 blur-xs -z-10" />
-              
-              <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white aspect-[4/3] bg-white">
-                <img
+          <div className="lg:col-span-6 relative">
+            <div className="relative mx-auto max-w-lg lg:max-w-none">
+              <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white aspect-[4/3] sm:aspect-[16/11]">
+                <Image
                   src={imgUrl}
-                  alt="Cares Bangladesh Child Learning"
-                  className="w-full h-full object-cover"
+                  alt={titleText}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover"
+                  priority
                 />
               </div>
 
-              <div className="absolute -bottom-6 -left-4 bg-white/95 backdrop-blur-xs p-4 rounded-2xl shadow-xl border-2 border-amber-200 flex items-center space-x-3 hidden sm:flex">
-                <div className="w-11 h-11 rounded-full bg-amber-500 text-white flex items-center justify-center font-flavors text-xl font-bold">
+              <div className="absolute -bottom-4 -left-4 sm:-bottom-6 sm:-left-6 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 flex items-center space-x-3">
+                <div className="w-10 h-10 rounded-xl bg-accent/20 flex items-center justify-center text-primary font-bold">
                   ★
                 </div>
                 <div>
-                  <div className="text-xs font-bold text-slate-800">100% Individualized Care</div>
-                  <div className="text-[11px] text-slate-500 font-sister">Accept. Understand. Love</div>
+                  <div className="text-xs font-bold text-slate-800 font-sans">Pediatric Excellence</div>
+                  <div className="text-[11px] text-slate-500 font-sans font-medium">Accept. Understand. Love</div>
                 </div>
               </div>
             </div>

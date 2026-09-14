@@ -9,7 +9,7 @@ import { getBranding } from '@/lib/api';
 
 // Global footer component rendering organization contacts and brand navigation
 const Footer = () => {
-  const [logoUrl, setLogoUrl] = useState('/uploads/2024/09/CARES-Bangladesh-Logo-5__1_-removebg-preview.png');
+  const [logoUrl, setLogoUrl] = useState('/assets/img/logo.png');
 
   useEffect(() => {
     getBranding().then((branding) => {

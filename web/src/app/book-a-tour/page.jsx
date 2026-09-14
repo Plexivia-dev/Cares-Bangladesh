@@ -9,7 +9,8 @@ import { Sparkles, Calendar, CheckCircle2, Phone, Mail, MapPin } from 'lucide-re
 import siteConfig from '@/data/siteConfig.json';
 import programs from '@/data/programs.json';
 
-export default function BookTourPage() {
+// Clinic visit booking page enabling parents to schedule an in-person assessment and consultation
+const BookTourPage = () => {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -41,62 +42,64 @@ export default function BookTourPage() {
       />
 
       <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 max-w-5xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
             
-            {/* Left Info Column */}
-            <div className="lg:col-span-5 space-y-6">
-              <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-accent/15 text-accent-orange text-xs font-bold">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>Visit Cares Bangladesh</span>
-              </div>
-
-              <h2 className="font-flavors text-4xl text-primary leading-tight">
-                Take the First Step Towards Your Child's Growth
-              </h2>
-
-              <p className="text-slate-600 text-sm leading-relaxed font-sans">
-                A clinic tour gives you the opportunity to view our therapy spaces, meet our clinical specialists, and understand how our individualized programs can support your child.
-              </p>
-
-              <div className="p-6 rounded-3xl bg-sky-50/70 border border-sky-100 space-y-4">
-                <h4 className="font-flavors text-2xl text-primary">What to Expect During Your Visit:</h4>
-                <ul className="space-y-2 text-xs sm:text-sm text-slate-700">
-                  <li className="flex items-center space-x-2">
-                    <CheckCircle2 className="w-4 h-4 text-accent shrink-0" />
-                    <span>Tour of sensory integration & therapy rooms</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <CheckCircle2 className="w-4 h-4 text-accent shrink-0" />
-                    <span>Informal discussion with lead therapists</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <CheckCircle2 className="w-4 h-4 text-accent shrink-0" />
-                    <span>Personalized guidance on assessments & timing</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="space-y-2 text-xs text-slate-600">
-                <div className="flex items-center space-x-2">
-                  <Phone className="w-4 h-4 text-secondary" />
-                  <span>Call us: {siteConfig.phone}</span>
+            <div className="lg:col-span-5 bg-slate-50/70 p-8 sm:p-10 rounded-3xl border border-slate-100 shadow-sm flex flex-col justify-between h-full">
+              <div className="space-y-6">
+                <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-amber-100/80 text-amber-800 text-xs font-bold font-sans">
+                  <Sparkles className="w-3.5 h-3.5 text-amber-600" />
+                  <span>Visit Cares Bangladesh</span>
                 </div>
-                <div className="flex items-center space-x-2">
-                  <MapPin className="w-4 h-4 text-secondary" />
-                  <span>{siteConfig.address}</span>
+
+                <h2 className="font-flavors text-4xl sm:text-5xl text-primary leading-tight">
+                  Take the First Step Towards Your Child's Growth
+                </h2>
+
+                <p className="text-slate-700 text-sm sm:text-base leading-relaxed font-sans">
+                  A clinic tour gives you the opportunity to view our therapy spaces, meet our clinical specialists, and understand how our individualized programs can support your child.
+                </p>
+
+                <div className="p-6 rounded-2xl bg-white border border-slate-200/80 shadow-xs space-y-4">
+                  <h4 className="font-flavors text-2xl text-primary">What to Expect During Your Visit:</h4>
+                  <ul className="space-y-2.5 text-xs sm:text-sm text-slate-700 font-sans">
+                    <li className="flex items-center space-x-2.5">
+                      <CheckCircle2 className="w-4 h-4 text-accent shrink-0" />
+                      <span>Tour of sensory integration & therapy rooms</span>
+                    </li>
+                    <li className="flex items-center space-x-2.5">
+                      <CheckCircle2 className="w-4 h-4 text-accent shrink-0" />
+                      <span>Informal discussion with lead therapists</span>
+                    </li>
+                    <li className="flex items-center space-x-2.5">
+                      <CheckCircle2 className="w-4 h-4 text-accent shrink-0" />
+                      <span>Personalized guidance on assessments & timing</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="pt-8 border-t border-slate-200/70 space-y-2.5 text-xs sm:text-sm text-slate-700 font-sans">
+                <div className="flex items-center space-x-2.5">
+                  <Phone className="w-4 h-4 text-secondary shrink-0" />
+                  <span className="font-medium">Call us: {siteConfig.phone}</span>
+                </div>
+                <div className="flex items-center space-x-2.5">
+                  <MapPin className="w-4 h-4 text-secondary shrink-0" />
+                  <span className="font-medium">{siteConfig.address}</span>
                 </div>
               </div>
             </div>
 
-            {/* Right Form Column */}
-            <div className="lg:col-span-7 bg-slate-50/80 p-8 rounded-3xl border border-slate-100 shadow-sm">
+            <div className="lg:col-span-7 bg-white p-8 sm:p-10 rounded-3xl border border-slate-200/80 shadow-lg flex flex-col justify-between h-full">
               {!submitted ? (
                 <form onSubmit={handleSubmit} className="space-y-4">
-                  <h3 className="font-flavors text-3xl text-primary mb-2">Schedule Your Visit</h3>
-                  <p className="text-xs text-slate-600 mb-6">
-                    Fill out this form and our admission counselor will call to confirm your scheduled slot.
-                  </p>
+                  <div className="mb-4">
+                    <h3 className="font-flavors text-3xl sm:text-4xl text-primary mb-1">Schedule Your Visit</h3>
+                    <p className="text-xs sm:text-sm text-slate-600 font-sans">
+                      Fill out this form and our admission counselor will call to confirm your scheduled slot.
+                    </p>
+                  </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
@@ -179,18 +182,18 @@ export default function BookTourPage() {
                     variant="accent"
                     size="lg"
                     disabled={loading}
-                    className="w-full font-bold shadow-md mt-2"
+                    className="w-full font-bold shadow-md hover:shadow-lg mt-3 bg-amber-500 hover:bg-amber-600 text-white rounded-full py-6 text-sm sm:text-base cursor-pointer"
                   >
                     {loading ? 'Submitting...' : 'Confirm Tour Request'}
                   </Button>
                 </form>
               ) : (
-                <div className="py-12 text-center space-y-4">
+                <div className="py-16 text-center space-y-4 my-auto">
                   <div className="w-16 h-16 rounded-full bg-green-100 text-green-600 flex items-center justify-center mx-auto shadow-inner">
                     <CheckCircle2 className="w-10 h-10" />
                   </div>
-                  <h3 className="font-flavors text-3xl text-primary">Tour Request Received!</h3>
-                  <p className="text-sm text-slate-600 max-w-sm mx-auto">
+                  <h3 className="font-flavors text-3xl sm:text-4xl text-primary">Tour Request Received!</h3>
+                  <p className="text-sm text-slate-700 max-w-sm mx-auto font-sans">
                     Thank you, <strong>{formData.parentName}</strong>. Our clinical team will contact you at <strong>{formData.phone}</strong> to confirm your visit.
                   </p>
                 </div>
@@ -202,4 +205,6 @@ export default function BookTourPage() {
       </section>
     </>
   );
-}
+};
+
+export default BookTourPage;

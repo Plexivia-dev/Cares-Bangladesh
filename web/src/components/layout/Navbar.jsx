@@ -13,7 +13,7 @@ const Navbar = ({ onOpenBookTour }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [programsDropdown, setProgramsDropdown] = useState(false);
-  const [logoUrl, setLogoUrl] = useState('/uploads/2024/09/CARES-Bangladesh-Logo-5__1_-removebg-preview.png');
+  const [logoUrl, setLogoUrl] = useState('/assets/img/logo.png');
   const pathname = usePathname();
 
   useEffect(() => {
@@ -78,31 +78,52 @@ const Navbar = ({ onOpenBookTour }) => {
                     <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
                   </Link>
 
-                  <div className="absolute top-full left-0 w-[520px] bg-white rounded-2xl shadow-2xl border border-slate-100 p-3 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 z-50">
-                    <div className="flex items-center justify-between px-2.5 py-1 mb-1 border-b border-slate-100">
-                      <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider font-sans">
-                        Therapy & Programs
-                      </span>
+                  <div className="absolute top-full left-0 w-[740px] bg-white rounded-3xl shadow-2xl border border-slate-100 p-5 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 z-50">
+                    <div className="flex items-center justify-between px-2 pb-3 mb-3 border-b border-slate-100">
+                      <div>
+                        <span className="text-xs font-bold text-primary tracking-wide font-sans block">
+                          Therapy & Clinical Programs
+                        </span>
+                        <span className="text-[11px] text-slate-500 font-sans">
+                          Tailored pediatric therapies for every child's growth
+                        </span>
+                      </div>
                       <Link
                         href="/our-programs-child-care-in-dhaka-bangladesh"
-                        className="text-[11px] font-bold text-secondary hover:text-primary transition-colors flex items-center space-x-1"
+                        className="text-xs font-bold text-secondary hover:text-primary transition-colors flex items-center space-x-1 font-sans"
                       >
-                        <span>View All</span>
+                        <span>View All Programs</span>
                         <span>&rarr;</span>
                       </Link>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-1 pt-1">
+                    <div className="grid grid-cols-2 gap-2.5">
                       {programs.map((prog) => (
                         <Link
                           key={prog.id}
                           href={`/${prog.slug}`}
-                          className="flex items-center space-x-2.5 px-3 py-2 rounded-xl hover:bg-primary/5 text-slate-700 hover:text-primary transition-colors group/item"
+                          className="flex items-center space-x-3 p-2 rounded-2xl bg-slate-50/60 hover:bg-amber-50/60 border border-slate-100/90 hover:border-amber-200 transition-all duration-200 group/item"
                         >
-                          <div className="w-1.5 h-1.5 rounded-full bg-accent group-hover/item:scale-125 group-hover/item:bg-primary transition-all shrink-0" />
-                          <span className="text-xs font-semibold leading-tight line-clamp-1">
-                            {prog.title}
-                          </span>
+                          <div className="w-13 h-13 rounded-xl overflow-hidden shrink-0 border border-slate-200/80 bg-slate-100 relative shadow-2xs">
+                            <img
+                              src={prog.bannerImage}
+                              alt={prog.title}
+                              className="w-full h-full object-cover group-hover/item:scale-110 transition-transform duration-300"
+                              onError={(e) => {
+                                e.currentTarget.onerror = null;
+                                e.currentTarget.src = '/assets/img/values.jpg';
+                              }}
+                            />
+                          </div>
+
+                          <div className="min-w-0 flex-1">
+                            <h4 className="text-xs font-bold text-slate-900 group-hover/item:text-primary transition-colors line-clamp-1 leading-snug">
+                              {prog.title}
+                            </h4>
+                            <p className="text-[11px] font-semibold text-amber-600 line-clamp-1 font-sans mt-0.5">
+                              {prog.badge}
+                            </p>
+                          </div>
                         </Link>
                       ))}
                     </div>

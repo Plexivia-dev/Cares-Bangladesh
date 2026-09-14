@@ -21,8 +21,10 @@ const LatestNews = () => {
     <section className="py-20 bg-slate-50/60 relative">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-14">
-          <div className="text-xs font-bold text-secondary uppercase tracking-wider font-sister">
-            What&apos;s new
+          <div>
+            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-sky-50 text-secondary border border-sky-200/80 text-xs font-extrabold uppercase tracking-wider font-sans shadow-2xs">
+              <span>What&apos;s New</span>
+            </div>
           </div>
           <h2 className="font-flavors text-4xl sm:text-5xl text-primary">
             Latest News

@@ -4,20 +4,19 @@ import React, { useState, useEffect } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 
-export default function PagePreloader() {
+// Route transition preloader overlay with spinning badge and animated status feedback
+const PagePreloader = () => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [loading, setLoading] = useState(true);
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    // Show preloader on route/pathname changes with a guaranteed minimum 1.2s duration
     setLoading(true);
     setIsVisible(true);
 
     const timer = setTimeout(() => {
       setLoading(false);
-      // Wait for fade-out transition before unmounting from visual tree
       const hideTimer = setTimeout(() => {
         setIsVisible(false);
       }, 400);
@@ -36,10 +35,7 @@ export default function PagePreloader() {
       }`}
     >
       <div className="relative flex flex-col items-center space-y-6 select-none">
-        
-        {/* Animated Brand Logo & Rings */}
         <div className="relative flex items-center justify-center">
-          {/* Pulsing Colorful Glow Rings */}
           <div className="absolute w-28 h-28 rounded-full bg-amber-400/20 animate-ping" />
           <div
             className="absolute w-24 h-24 rounded-full border-4 border-dashed border-amber-400 animate-spin"
@@ -47,21 +43,20 @@ export default function PagePreloader() {
           />
           <div className="absolute w-20 h-20 rounded-full border-2 border-secondary/40 animate-pulse" />
 
-          {/* Center Logo Icon */}
           <div className="relative w-16 h-16 rounded-full bg-white shadow-xl flex items-center justify-center p-2 border-2 border-amber-200">
             <Image
-              src="/uploads/2024/09/CARES-Bangladesh-Logo-5__1_-removebg-preview.png"
+              src="/assets/img/logo.png"
               alt="Cares Bangladesh Loading"
               width={56}
               height={56}
               className="object-contain animate-bounce"
               style={{ animationDuration: '1.2s' }}
+              unoptimized
               priority
             />
           </div>
         </div>
 
-        {/* Playful Loading Dots & Text */}
         <div className="text-center space-y-2">
           <div className="font-flavors text-2xl sm:text-3xl text-primary tracking-wide flex items-center justify-center space-x-1">
             <span>Loading Cares Bangladesh</span>
@@ -72,12 +67,13 @@ export default function PagePreloader() {
             </span>
           </div>
 
-          <p className="font-sister text-xs sm:text-sm text-amber-700 font-semibold tracking-wider">
+          <p className="font-sans text-xs sm:text-sm text-amber-800 font-bold uppercase tracking-widest">
             Accept. Understand. Love
           </p>
         </div>
-
       </div>
     </div>
   );
-}
+};
+
+export default PagePreloader;

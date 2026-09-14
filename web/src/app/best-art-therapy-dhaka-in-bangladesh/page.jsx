@@ -5,7 +5,6 @@ import PageHeader from '@/components/shared/PageHeader';
 import ContactWidget from '@/components/shared/ContactWidget';
 import FaqAccordion from '@/components/shared/FaqAccordion';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import { CheckCircle2, Sparkles, Calendar, ArrowRight, ShieldCheck, Heart } from 'lucide-react';
 import programs from '@/data/programs.json';
 import seoMetadata from '@/data/seoMetadata.json';
@@ -29,7 +28,8 @@ export async function generateMetadata() {
   };
 }
 
-export default function ServicePage() {
+// Specialized clinical program page detailing therapeutic approaches and parental guidance
+const ServicePage = () => {
   const prog = programs.find((p) => p.slug === currentSlug) || {"id":"art-therapy","title":"Art Therapy & Creative Expression","slug":"best-art-therapy-dhaka-in-bangladesh","shortDescription":"Therapeutic creative arts to foster emotional healing, self-expression, cognitive development, and stress relief in a nurturing space.","badge":"Creativity & Emotion","icon":"Palette","bannerImage":"/uploads/2025/01/Service-Banner_ART-Therapy.png","features":["Non-verbal emotional expression through painting, sculpting, and drawing","Boosts self-esteem, focus, and emotional regulation","Promotes fine motor dexterity and visual-spatial imagination","Therapeutic safe space guided by compassionate therapists"],"faqs":[{"question":"Does my child need to be good at art for Art Therapy?","answer":"Not at all! Art therapy is about the creative process and emotional expression, not artistic skill or creating a masterpiece."}]};
 
   return (
@@ -46,27 +46,24 @@ export default function ServicePage() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            
-            {/* Main Content */}
             <div className="lg:col-span-8 space-y-10">
-              {/* Banner Image */}
               <div className="relative h-72 sm:h-96 w-full rounded-3xl overflow-hidden shadow-xl border-4 border-slate-50">
                 <Image
                   src={prog.bannerImage}
                   alt={prog.title}
                   fill
                   priority
+                  unoptimized
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 800px"
                   className="object-cover"
                 />
                 <div className="absolute top-4 left-4">
-                  <Badge variant="accent" className="bg-accent text-primary-dark font-bold text-sm px-4 py-1.5 shadow-md">
+                  <span className="inline-flex items-center px-4 py-1.5 rounded-full text-xs sm:text-sm font-bold bg-white/95 text-slate-900 shadow-md backdrop-blur-md font-sans tracking-wide border border-white/60">
+                    <Sparkles className="w-3.5 h-3.5 text-amber-500 mr-1.5" />
                     {prog.badge}
-                  </Badge>
+                  </span>
                 </div>
               </div>
-
-              {/* Description */}
               <div className="space-y-4">
                 <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-secondary/10 text-secondary text-xs font-bold">
                   <Sparkles className="w-3.5 h-3.5" />
@@ -85,8 +82,6 @@ export default function ServicePage() {
                   At Cares Bangladesh, our specialized therapists work one-on-one with each individual to identify strengths, overcome challenges, and build long-term confidence. Our sessions incorporate scientifically validated protocols and sensory-friendly tools to ensure therapy is both enjoyable and profoundly effective.
                 </p>
               </div>
-
-              {/* Key Features / Advantages */}
               <div className="p-8 rounded-3xl bg-slate-50/80 border border-slate-100 space-y-5">
                 <h3 className="font-flavors text-2xl text-primary">What We Focus On:</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -123,8 +118,6 @@ export default function ServicePage() {
                 </Link>
               </div>
             </div>
-
-            {/* Sidebar */}
             <div className="lg:col-span-4 space-y-8 sticky top-24">
               <ContactWidget />
 
@@ -154,4 +147,6 @@ export default function ServicePage() {
       </section>
     </>
   );
-}
+};
+
+export default ServicePage;
