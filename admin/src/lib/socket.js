@@ -20,7 +20,7 @@ export function getSocketUrl() {
     } catch (_) {}
   }
 
-  return 'http://localhost:5000';
+  return 'http://localhost:5092';
 }
 
 export function getSocket() {

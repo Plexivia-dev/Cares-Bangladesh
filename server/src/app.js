@@ -41,6 +41,7 @@ export async function createApp() {
     "http://localhost:8005",
     "http://localhost:3000",
     "http://localhost:5173",
+    "http://localhost:5174",
   ];
 
   const envOrigins = env.ALLOWED_ORIGINS
