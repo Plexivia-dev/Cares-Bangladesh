@@ -20,7 +20,6 @@ const bootstrap = async () => {
     logger.info({ port, environment: env.NODE_ENV }, "Server listening");
   });
 
-  // Initialize Real-time IMAP Webmail Synchronizer
   if (env.IMAP_SYNC_ENABLED) {
     import("./services/imapSync.service.js")
       .then(({ startImapIdleListener }) => {
@@ -30,6 +29,16 @@ const bootstrap = async () => {
       })
       .catch((err) => {
         logger.error({ err }, "Could not load IMAP service");
+      });
+  }
+
+  if (env.R2_SYNC_ENABLED) {
+    import("./schedulers/dailyR2Sync.scheduler.js")
+      .then(({ scheduleNextDailySync }) => {
+        scheduleNextDailySync();
+      })
+      .catch((err) => {
+        logger.error({ err }, "Could not initialize Cloudflare R2 sync scheduler");
       });
   }
 

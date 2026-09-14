@@ -543,6 +543,8 @@ const PREDEFINED_COMMANDS = {
   "backup-full-download": { cmd: "bash", args: [path.join(__dirname, "create-backup.sh"), "full"], desc: "Generate Full Backup (DB + Assets)" },
   "backup-db-download": { cmd: "bash", args: [path.join(__dirname, "create-backup.sh"), "db"], desc: "Generate Database Only Dump (.gz)" },
   "backup-uploads-download": { cmd: "bash", args: [path.join(__dirname, "create-backup.sh"), "uploads"], desc: "Generate Uploads Archive (.tar.gz)" },
+  "backup-r2-daily": { cmd: "bash", args: ["/opt/live/scripts/daily-r2-backup.sh"], desc: "Execute Cloudflare R2 Daily Backup Now" },
+  "sync-uploads-r2": { cmd: "docker", args: ["exec", "cares-server", "node", "src/scripts/r2BackupCli.js", "sync-uploads"], desc: "Sync Uploads (Diff) to Cloudflare R2" },
   "docker-status": { cmd: "docker", args: ["compose", "ps"], desc: "Docker Containers Status" }
 };
 

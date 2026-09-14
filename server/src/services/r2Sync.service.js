@@ -3,12 +3,10 @@ import path from "path";
 import {
   ListObjectsV2Command,
   PutObjectCommand,
-  HeadObjectCommand,
 } from "@aws-sdk/client-s3";
 import { getR2Client } from "../config/r2.config.js";
 import { env } from "../config/env.js";
 import { R2SyncLogModel } from "../models/r2SyncLog.model.js";
-// [MISSING] import { LogModel } from "../models/log.model.js";
 import { logger } from "../config/logger.js";
 
 // Returns MIME content-type based on file extension
@@ -22,6 +20,8 @@ const getMimeType = (ext) => {
     ".svg": "image/svg+xml",
     ".avif": "image/avif",
     ".pdf": "application/pdf",
+    ".gz": "application/gzip",
+    ".tar.gz": "application/gzip",
   };
   return map[ext.toLowerCase()] || "application/octet-stream";
 };
@@ -45,14 +45,13 @@ const getAllLocalUploadFiles = async (dirPath, baseDir) => {
           const stats = await fs.promises.stat(fullPath);
           const relativeKey = path.relative(baseDir, fullPath).replace(/\\/g, "/");
           fileList.push({
-            key: relativeKey, // e.g. "uploads/2608/260813/product.webp"
+            key: relativeKey,
             fullPath,
             size: stats.size,
             mtime: stats.mtime,
             ext,
           });
         } catch {
-          // ignore stat errors
         }
       }
     }
@@ -90,6 +89,29 @@ export const listAllR2ObjectKeys = async (r2Client, bucketName, prefix = "upload
   return r2KeyMap;
 };
 
+// Uploads a database dump archive file to Cloudflare R2
+export const uploadDatabaseDumpToR2 = async (filePath, customFilename) => {
+  const r2Client = getR2Client();
+  if (!r2Client || !env.R2_BUCKET_NAME) {
+    throw new Error("Cloudflare R2 credentials or bucket name missing in environment");
+  }
+  const filename = customFilename || path.basename(filePath);
+  const key = `database/${filename}`;
+  const fileBuffer = await fs.promises.readFile(filePath);
+  const stats = await fs.promises.stat(filePath);
+
+  const putCommand = new PutObjectCommand({
+    Bucket: env.R2_BUCKET_NAME,
+    Key: key,
+    Body: fileBuffer,
+    ContentType: "application/gzip",
+  });
+
+  await r2Client.send(putCommand);
+  logger.info({ key, size: stats.size }, "[R2Sync] Database backup uploaded to Cloudflare R2");
+  return { key, size: stats.size, success: true };
+};
+
 // Performs synchronization between local uploads directory and Cloudflare R2 bucket
 export const syncUploadsToR2 = async (triggeredBy = "SCHEDULER") => {
   const startTime = Date.now();
@@ -114,10 +136,8 @@ export const syncUploadsToR2 = async (triggeredBy = "SCHEDULER") => {
     const uploadsDir = path.join(process.cwd(), "uploads");
     const localFiles = await getAllLocalUploadFiles(uploadsDir, process.cwd());
 
-    // Get remote R2 object map
     const r2KeyMap = await listAllR2ObjectKeys(r2Client, env.R2_BUCKET_NAME, "uploads/");
 
-    // Calculate files missing on R2
     const missingOnR2 = [];
     for (const local of localFiles) {
       const remoteObj = r2KeyMap.get(local.key);
@@ -129,7 +149,6 @@ export const syncUploadsToR2 = async (triggeredBy = "SCHEDULER") => {
     const syncedFiles = [];
     let syncedCount = 0;
 
-    // Upload missing files with controlled concurrency
     const CONCURRENCY = 5;
     for (let i = 0; i < missingOnR2.length; i += CONCURRENCY) {
       const batch = missingOnR2.slice(i, i + CONCURRENCY);
@@ -155,20 +174,10 @@ export const syncUploadsToR2 = async (triggeredBy = "SCHEDULER") => {
     syncLog.totalLocalFiles = localFiles.length;
     syncLog.totalR2Files = r2KeyMap.size + syncedCount;
     syncLog.syncedFilesCount = syncedCount;
-    syncLog.syncedFiles = syncedFiles.slice(0, 100); // store top 100 entries for history
+    syncLog.syncedFiles = syncedFiles.slice(0, 100);
     syncLog.durationMs = durationMs;
     syncLog.completedAt = new Date();
     await syncLog.save();
-
-    if (syncedCount > 0) {
-      await LogModel.create({
-        type: "created",
-        typeDid: "110",
-        description: `Cloudflare R2 Sync: Successfully uploaded ${syncedCount} missing media file(s) to R2 storage.`,
-        readStatus: false,
-        createdBy: triggeredBy,
-      });
-    }
 
     logger.info(
       { syncedCount, totalLocal: localFiles.length, durationMs },
