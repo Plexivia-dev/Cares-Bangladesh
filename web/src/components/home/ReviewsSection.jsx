@@ -8,20 +8,22 @@ import testimonials from '@/data/testimonials.json';
 // Client testimonials showcase sharing feedback and stories from parents
 const ReviewsSection = () => {
   return (
-    <section className="py-24 bg-[#fbf5e8] relative overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-10 w-full overflow-hidden leading-none pointer-events-none">
-        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-10 text-white fill-current">
-          <path d="M0,0 C300,90 600,-40 900,60 L1200,0 L1200,0 L0,0 Z"></path>
-        </svg>
+    <section className="py-24 relative overflow-hidden bg-[#fbf5e8]">
+      <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
+        <img
+          src="/assets/img/about-ai-04.jpg"
+          alt="Testimonials playful backdrop"
+          className="w-full h-full object-cover object-center opacity-90"
+        />
+        <div className="absolute inset-0 bg-amber-50/20" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-16">
-          <h2 className="font-flavors text-4xl sm:text-5xl text-primary">
+          <h2 className="font-flavors text-4xl sm:text-5xl text-primary drop-shadow-xs">
             Testimonials
           </h2>
-          <p className="text-slate-600 text-sm sm:text-base font-sans font-medium">
+          <p className="text-slate-700 text-sm sm:text-base font-sans font-semibold">
             What parents say about their journey with Cares Bangladesh
           </p>
         </div>
@@ -30,7 +32,7 @@ const ReviewsSection = () => {
           {testimonials.slice(0, 3).map((item) => (
             <div
               key={item.id}
-              className="bg-white p-7 rounded-3xl border border-amber-200/70 shadow-sm hover:shadow-xl transition-all flex flex-col justify-between"
+              className="bg-white/95 backdrop-blur-xs p-7 rounded-[2rem] border-2 border-amber-200/80 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
@@ -39,7 +41,7 @@ const ReviewsSection = () => {
                       <Star key={i} className="w-4 h-4 fill-amber-400" />
                     ))}
                   </div>
-                  <Quote className="w-6 h-6 text-amber-200" />
+                  <Quote className="w-6 h-6 text-amber-300" />
                 </div>
 
                 <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-sans mb-6">
@@ -59,13 +61,6 @@ const ReviewsSection = () => {
             </div>
           ))}
         </div>
-
-      </div>
-
-      <div className="absolute bottom-0 left-0 right-0 h-10 w-full overflow-hidden leading-none pointer-events-none">
-        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-10 text-white fill-current">
-          <path d="M0,0 C150,90 350,-40 500,60 C650,160 900,10 1200,40 L1200,120 L0,120 Z"></path>
-        </svg>
       </div>
     </section>
   );

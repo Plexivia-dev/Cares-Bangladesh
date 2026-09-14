@@ -13,43 +13,43 @@ const AdvantageSection = () => {
       num: '01.',
       title: 'Highly trained professionals',
       desc: 'Our team consists of specialized therapists from CRP, BUP, and DU who bring exceptional knowledge and provide high quality care.',
-      bg: 'bg-sky-50/80 border-sky-100 text-sky-900',
+      bg: 'bg-sky-50/90 border-sky-200/90 text-sky-950',
     },
     {
       num: '02.',
       title: 'Latest therapeutic techniques',
       desc: 'We provide innovative and effective approaches utilizing the latest advancements in pediatric therapy.',
-      bg: 'bg-amber-50/80 border-amber-100 text-amber-900',
+      bg: 'bg-amber-50/90 border-amber-200/90 text-amber-950',
     },
     {
       num: '03.',
       title: 'Maintaining global standards',
       desc: 'We ensure our assessment tools, protocols, and therapy programs adhere to international clinical standards.',
-      bg: 'bg-emerald-50/80 border-emerald-100 text-emerald-900',
+      bg: 'bg-emerald-50/90 border-emerald-200/90 text-emerald-950',
     },
     {
       num: '04.',
       title: 'Long term benefit',
       desc: 'We prioritize services that yield long-term developmental gains for continuous growth and life achievement.',
-      bg: 'bg-purple-50/80 border-purple-100 text-purple-900',
+      bg: 'bg-purple-50/90 border-purple-200/90 text-purple-950',
     },
     {
       num: '05.',
       title: 'Wide Range of Therapy Services',
       desc: 'We offer speech therapy, occupational therapy, ABA behavior plans, art therapy, preschool, and special education under one roof.',
-      bg: 'bg-pink-50/80 border-pink-100 text-pink-900',
+      bg: 'bg-pink-50/90 border-pink-200/90 text-pink-950',
     },
     {
       num: '06.',
       title: 'Individualized Care Programs',
       desc: 'Our care plans are customized for each child’s specific strengths and needs, ensuring impactful support.',
-      bg: 'bg-teal-50/80 border-teal-100 text-teal-900',
+      bg: 'bg-teal-50/90 border-teal-200/90 text-teal-950',
     },
   ];
 
   return (
     <>
-      <section className="py-20 bg-gradient-to-b from-sky-50/50 via-white to-slate-50/70 relative">
+      <section className="py-24 bg-white relative">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto space-y-3 mb-16">
             <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-amber-100/90 text-amber-900 border border-amber-200/80 text-xs font-extrabold uppercase tracking-wider font-sans shadow-2xs">
@@ -66,7 +66,7 @@ const AdvantageSection = () => {
             {advantages.map((adv, idx) => (
               <div
                 key={idx}
-                className={`p-7 rounded-[2rem] border shadow-xs hover:shadow-lg transition-all ${adv.bg}`}
+                className={`p-7 rounded-[2rem] border-2 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ${adv.bg}`}
               >
                 <div className="font-flavors text-2xl text-amber-600 font-bold mb-2">
                   {adv.num}
