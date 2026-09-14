@@ -56,6 +56,8 @@ services:
       - PORT=3000
       - NODE_ENV=production
       - INTERNAL_API_URL=http://server:5092
+    volumes:
+      - /opt/www/uploads:/app/public/uploads:ro
     ports:
       - "127.0.0.1:3000:3000"
     networks:
