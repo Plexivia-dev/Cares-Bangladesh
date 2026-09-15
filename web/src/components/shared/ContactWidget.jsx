@@ -4,7 +4,8 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import siteConfig from '@/data/siteConfig.json';
 
-export default function ContactWidget() {
+// Sidebar contact card displaying hotline, email, address, and booking button
+const ContactWidget = () => {
   return (
     <div className="bg-gradient-to-br from-primary/5 to-secondary/10 rounded-2xl p-6 border border-primary/15 shadow-sm space-y-5">
       <h3 className="font-flavors text-2xl text-primary">Need Assistance?</h3>
@@ -35,4 +36,6 @@ export default function ContactWidget() {
       </Link>
     </div>
   );
-}
+};
+
+export default ContactWidget;

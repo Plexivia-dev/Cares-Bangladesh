@@ -9,10 +9,13 @@ import { Sparkles, Calendar, CheckCircle2, Phone, Mail, MapPin } from 'lucide-re
 import siteConfig from '@/data/siteConfig.json';
 import programs from '@/data/programs.json';
 
+import { submitInquiry } from '@/lib/api';
+
 // Clinic visit booking page enabling parents to schedule an in-person assessment and consultation
 const BookTourPage = () => {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const [formData, setFormData] = useState({
     parentName: '',
     childName: '',
@@ -24,13 +27,22 @@ const BookTourPage = () => {
     notes: '',
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
+    setErrorMessage('');
+
+    const res = await submitInquiry({
+      ...formData,
+      source: 'book-a-tour-page',
+    });
+
+    setLoading(false);
+    if (res.success) {
       setSubmitted(true);
-    }, 600);
+    } else {
+      setErrorMessage(res.message || 'Unable to submit your request. Please try again or call us directly.');
+    }
   };
 
   return (
@@ -52,7 +64,7 @@ const BookTourPage = () => {
                   <span>Visit Cares Bangladesh</span>
                 </div>
 
-                <h2 className="font-flavors text-4xl sm:text-5xl text-primary leading-tight">
+                <h2 className="font-flavors text-3xl sm:text-4xl md:text-5xl text-primary leading-tight">
                   Take the First Step Towards Your Child's Growth
                 </h2>
 
@@ -61,7 +73,7 @@ const BookTourPage = () => {
                 </p>
 
                 <div className="p-6 rounded-2xl bg-white border border-slate-200/80 shadow-xs space-y-4">
-                  <h4 className="font-flavors text-2xl text-primary">What to Expect During Your Visit:</h4>
+                  <h4 className="font-flavors text-xl sm:text-2xl text-primary">What to Expect During Your Visit:</h4>
                   <ul className="space-y-2.5 text-xs sm:text-sm text-slate-700 font-sans">
                     <li className="flex items-center space-x-2.5">
                       <CheckCircle2 className="w-4 h-4 text-accent shrink-0" />
@@ -91,11 +103,11 @@ const BookTourPage = () => {
               </div>
             </div>
 
-            <div className="lg:col-span-7 bg-white p-8 sm:p-10 rounded-3xl border border-slate-200/80 shadow-lg flex flex-col justify-between h-full">
+            <div className="lg:col-span-7 bg-white p-6 sm:p-10 rounded-3xl border border-slate-200/80 shadow-lg flex flex-col justify-between h-full">
               {!submitted ? (
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="mb-4">
-                    <h3 className="font-flavors text-3xl sm:text-4xl text-primary mb-1">Schedule Your Visit</h3>
+                    <h3 className="font-flavors text-2xl sm:text-4xl text-primary mb-1">Schedule Your Visit</h3>
                     <p className="text-xs sm:text-sm text-slate-600 font-sans">
                       Fill out this form and our admission counselor will call to confirm your scheduled slot.
                     </p>
@@ -176,6 +188,12 @@ const BookTourPage = () => {
                       onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
                     />
                   </div>
+
+                  {errorMessage && (
+                    <div className="p-3.5 rounded-xl bg-red-50 border border-red-200 text-xs font-semibold text-red-700 font-sans">
+                      {errorMessage}
+                    </div>
+                  )}
 
                   <Button
                     type="submit"

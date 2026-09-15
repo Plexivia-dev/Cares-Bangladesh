@@ -91,6 +91,12 @@ const seedBlogs = async () => {
   if (validSlugs.length > 0) {
     await BlogModel.deleteMany({ slug: { $nin: validSlugs } });
   }
+  await BlogModel.deleteMany({
+    $or: [
+      { slug: { $regex: /^(test-post|test123123|test-|dummy-|temp-)/i } },
+      { title: { $regex: /^(test|dummy|sample\s*test)/i } },
+    ],
+  });
 
   for (const p of postList) {
     if (!p.slug || !p.title) continue;

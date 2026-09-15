@@ -14,9 +14,13 @@ import { Textarea } from '@/components/ui/textarea';
 import { CheckCircle2, Calendar, Phone, Mail, User, Sparkles } from 'lucide-react';
 import programs from '@/data/programs.json';
 
-export default function BookTourModal({ open, onOpenChange }) {
+import { submitInquiry } from '@/lib/api';
+
+// Modal dialog allowing users to schedule a clinical assessment and tour
+const BookTourModal = ({ open, onOpenChange }) => {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
   const [formData, setFormData] = useState({
     parentName: '',
     childName: '',
@@ -28,13 +32,22 @@ export default function BookTourModal({ open, onOpenChange }) {
     notes: '',
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => {
+    setErrorMsg('');
+    try {
+      const res = await submitInquiry({ ...formData, source: 'assessment-modal' });
+      if (res.success) {
+        setSubmitted(true);
+      } else {
+        setErrorMsg(res.message || 'Failed to submit. Please try again.');
+      }
+    } catch (err) {
+      setErrorMsg('An unexpected error occurred. Please try again or call us.');
+    } finally {
       setLoading(false);
-      setSubmitted(true);
-    }, 600);
+    }
   };
 
   const handleReset = () => {
@@ -147,6 +160,12 @@ export default function BookTourModal({ open, onOpenChange }) {
                 />
               </div>
 
+              {errorMsg && (
+                <div className="p-3 rounded-xl bg-red-50 border border-red-200 text-xs font-semibold text-red-700 font-sans">
+                  {errorMsg}
+                </div>
+              )}
+
               <Button
                 type="submit"
                 size="lg"
@@ -176,4 +195,6 @@ export default function BookTourModal({ open, onOpenChange }) {
       </DialogContent>
     </Dialog>
   );
-}
+};
+
+export default BookTourModal;

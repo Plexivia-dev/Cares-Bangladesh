@@ -88,12 +88,29 @@ export const getTeam = async () => {
     });
     if (!res.ok) return fallbackTeam;
     const json = await res.json();
-    if (json.status === 'success' && Array.isArray(json.data) && json.data.length > 0) {
-      return json.data;
+    if (json.status === 'success' && Array.isArray(json.data)) {
+      return json.data.length > 0 ? json.data : fallbackTeam;
     }
     return fallbackTeam;
   } catch (err) {
     return fallbackTeam;
+  }
+};
+
+// Fetches active home sliders with local fallback
+export const getHomeSliders = async () => {
+  try {
+    const res = await fetch(`${getApiBaseUrl()}/api/v1/home-slider/public`, {
+      next: { revalidate: 60 },
+    });
+    if (!res.ok) return [];
+    const json = await res.json();
+    if (json.status === 'success' && Array.isArray(json.data)) {
+      return json.data;
+    }
+    return [];
+  } catch (err) {
+    return [];
   }
 };
 
@@ -110,36 +127,38 @@ export const getBlogs = async (params = {}) => {
     const res = await fetch(`${getApiBaseUrl()}/api/v1/blogs/public?${query.toString()}`, {
       next: { revalidate: 30 },
     });
-    if (!res.ok) throw new Error('API request failed');
-    const json = await res.json();
-    if (json.status === 'success' && Array.isArray(json.data) && json.data.length > 0) {
-      return {
-        blogs: json.data,
-        pagination: json.pagination || {
-          total: json.data.length,
-          page,
-          limit,
-          totalPages: Math.ceil(json.data.length / limit) || 1,
-        },
-      };
+    if (res.ok) {
+      const json = await res.json();
+      if (json.status === 'success' && Array.isArray(json.data)) {
+        if (json.data.length > 0 || (search || (category && category !== 'All'))) {
+          return {
+            blogs: json.data,
+            pagination: json.pagination || {
+              total: json.data.length,
+              page,
+              limit,
+              totalPages: Math.ceil(json.data.length / limit) || 1,
+            },
+          };
+        }
+      }
     }
-    throw new Error('Empty API response');
-  } catch (err) {
-    const filtered = fallbackPosts.filter((p) => {
-      const matchSearch = !search || p.title.toLowerCase().includes(search.toLowerCase()) || (p.excerpt && p.excerpt.toLowerCase().includes(search.toLowerCase()));
-      const matchCat = !category || category === 'All' || (p.categories && p.categories.some((c) => (typeof c === 'string' ? c === category : c.name === category || c.slug === category)));
-      return matchSearch && matchCat;
-    });
+  } catch (err) {}
 
-    const total = filtered.length;
-    const totalPages = Math.ceil(total / limit) || 1;
-    const slice = filtered.slice((page - 1) * limit, page * limit);
+  const filtered = (fallbackPosts || []).filter((p) => {
+    const matchSearch = !search || p.title.toLowerCase().includes(search.toLowerCase()) || (p.excerpt && p.excerpt.toLowerCase().includes(search.toLowerCase()));
+    const matchCat = !category || category === 'All' || (p.categories && p.categories.some((c) => (typeof c === 'string' ? c === category : c.name === category || c.slug === category)));
+    return matchSearch && matchCat;
+  });
 
-    return {
-      blogs: slice,
-      pagination: { total, page, limit, totalPages },
-    };
-  }
+  const total = filtered.length;
+  const totalPages = Math.ceil(total / limit) || 1;
+  const slice = filtered.slice((page - 1) * limit, page * limit);
+
+  return {
+    blogs: slice,
+    pagination: { total, page, limit, totalPages },
+  };
 };
 
 // Fetches a single blog article by slug
@@ -164,7 +183,7 @@ export const getBlogBySlug = async (slug) => {
     decoded = decodeURIComponent(raw).toLowerCase();
   } catch (e) {}
 
-  const found = fallbackPosts.find((p) => {
+  const found = (fallbackPosts || []).find((p) => {
     if (!p.slug) return false;
     const s = p.slug.toLowerCase();
     let sDecoded = s;
@@ -191,7 +210,7 @@ export const getBlogCategories = async () => {
   } catch (err) {}
 
   const catSet = new Set(['All']);
-  fallbackPosts.forEach((p) => {
+  (fallbackPosts || []).forEach((p) => {
     if (Array.isArray(p.categories)) {
       p.categories.forEach((c) => {
         const name = typeof c === 'string' ? c : c.name || c.slug;
@@ -201,4 +220,24 @@ export const getBlogCategories = async () => {
   });
 
   return Array.from(catSet);
+};
+
+// Submits tour or assessment booking inquiry to backend
+export const submitInquiry = async (payload) => {
+  try {
+    const res = await fetch(`${getApiBaseUrl()}/api/v1/inquiries`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    });
+    const json = await res.json();
+    if (!res.ok || json.status !== 'success') {
+      throw new Error(json.message || 'Failed to submit inquiry');
+    }
+    return { success: true, data: json.data, message: json.message };
+  } catch (err) {
+    return { success: false, message: err.message || 'Submission failed' };
+  }
 };

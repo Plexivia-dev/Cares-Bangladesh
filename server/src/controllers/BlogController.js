@@ -9,6 +9,13 @@ export const getBlogs = async (req, res, next) => {
   }
 };
 
+// Helper to build test post exclusion filter
+const getClinicalBlogFilter = () => ({
+  isActive: true,
+  slug: { $not: /^(test-post|test123123|test-|dummy-|temp-)/i },
+  title: { $not: /^(test|dummy|sample\s*test)/i },
+});
+
 // Retrieves paginated and filtered list of active blogs for public storefront
 export const getActiveBlogs = async (req, res, next) => {
   try {
@@ -17,11 +24,15 @@ export const getActiveBlogs = async (req, res, next) => {
     const search = (req.query.search || "").trim();
     const category = (req.query.category || "").trim();
 
-    const query = { isActive: true };
+    const query = { ...getClinicalBlogFilter() };
     if (search) {
-      query.$or = [
-        { title: { $regex: search, $options: "i" } },
-        { excerpt: { $regex: search, $options: "i" } },
+      query.$and = [
+        {
+          $or: [
+            { title: { $regex: search, $options: "i" } },
+            { excerpt: { $regex: search, $options: "i" } },
+          ],
+        },
       ];
     }
     if (category && category !== "All") {
@@ -50,19 +61,25 @@ export const getActiveBlogs = async (req, res, next) => {
   }
 };
 
-// Retrieves list of distinct categories from published blogs
+// Retrieves list of distinct categories from published clinical blogs
 export const getBlogCategories = async (req, res, next) => {
   try {
-    const categories = await BlogModel.distinct("categories", { isActive: true });
+    const categories = await BlogModel.distinct("categories", getClinicalBlogFilter());
     res.json({ status: "success", data: categories.filter(Boolean) });
   } catch (error) {
     next(error);
   }
 };
 
+// Retrieves single blog by slug ensuring genuine clinical content
 export const getBlogBySlug = async (req, res, next) => {
   try {
-    const blog = await BlogModel.findOne({ slug: req.params.slug });
+    const slug = (req.params.slug || "").trim();
+    if (/^(test-post|test123123|test-|dummy-|temp-)/i.test(slug)) {
+      return res.status(404).json({ status: "error", message: "Blog not found" });
+    }
+
+    const blog = await BlogModel.findOne({ slug, isActive: true });
     if (!blog) return res.status(404).json({ status: "error", message: "Blog not found" });
     res.json({ status: "success", data: blog });
   } catch (error) {

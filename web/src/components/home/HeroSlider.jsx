@@ -5,18 +5,17 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Calendar, ArrowRight, ShieldCheck, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { getApiBaseUrl } from '@/lib/api';
+import { getHomeSliders } from '@/lib/api';
 
 // Hero presentation slider introducing personalized therapy services and immediate consultation CTA
 const HeroSlider = () => {
   const [slider, setSlider] = React.useState(null);
 
   React.useEffect(() => {
-    fetch(`${getApiBaseUrl()}/api/v1/home-slider/public`)
-      .then(res => res.json())
-      .then(data => {
-        if (data.status === 'success' && data.data?.length > 0) {
-          setSlider(data.data[0]);
+    getHomeSliders()
+      .then((data) => {
+        if (Array.isArray(data) && data.length > 0) {
+          setSlider(data[0]);
         }
       })
       .catch(() => {});
