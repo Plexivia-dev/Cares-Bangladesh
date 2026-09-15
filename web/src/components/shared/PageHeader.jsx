@@ -22,8 +22,8 @@ const PageHeader = ({ title, subtitle, breadcrumb = [], bgImage = '/assets/img/p
         className="object-cover object-center"
       />
 
-      <div className="container mx-auto relative z-10 text-center max-w-4xl space-y-3">
-        <h1 className="font-flavors text-4xl sm:text-5xl md:text-6xl text-primary tracking-wide leading-tight">
+      <div className="container mx-auto relative z-10 text-center max-w-4xl space-y-3 px-2 sm:px-4">
+        <h1 className="font-flavors text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-primary tracking-wide leading-snug sm:leading-tight">
           {title}
         </h1>
 

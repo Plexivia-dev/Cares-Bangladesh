@@ -18,30 +18,32 @@ export async function createApp() {
   app.set("trust proxy", true);
 
   const defaultOrigins = [
-    "https://decantrebd.com",
-    "https://www.decantrebd.com",
-    "https://dashboard.decantrebd.com",
-    "http://dashboard.decantrebd.com",
-    "https://service.decantrebd.com",
-    "https://server.decantrebd.com",
-    "https://engulfic.com",
-    "https://www.engulfic.com",
-    "https://dashboard.engulfic.com",
-    "https://server.engulfic.com",
-    "https://toyoland.shop",
-    "https://www.toyoland.shop",
-    "https://dashboard.toyoland.shop",
-    "https://server.toyoland.shop",
-    "https://kawaiikutir.shop",
-    "https://www.kawaiikutir.shop",
-    "https://admin.kawaiikutir.shop",
-    "https://dashboard.kawaiikutir.shop",
-    "https://server.kawaiikutir.shop",
-    "http://localhost:8001",
-    "http://localhost:8005",
+    "https://caresbd.com",
+    "https://www.caresbd.com",
+    "https://caresbangladesh.com",
+    "https://www.caresbangladesh.com",
+    "https://dashboard.caresbangladesh.com",
+    "https://admin.caresbangladesh.com",
+    "https://dashboard.caresbd.com",
+    "https://admin.caresbd.com",
+    "https://server.caresbd.com",
+    "https://api.caresbangladesh.com",
+    "https://cpanel.caresbangladesh.com",
+    "https://cpanel.caresbd.com",
     "http://localhost:3000",
+    "http://localhost:3001",
     "http://localhost:5173",
     "http://localhost:5174",
+    "http://localhost:8001",
+    "http://localhost:8005",
+    "http://localhost:8090",
+    "http://127.0.0.1:3000",
+    "http://127.0.0.1:3001",
+    "http://127.0.0.1:5173",
+    "http://127.0.0.1:5174",
+    "http://127.0.0.1:8001",
+    "http://127.0.0.1:8005",
+    "http://127.0.0.1:8090",
   ];
 
   const envOrigins = env.ALLOWED_ORIGINS
@@ -59,10 +61,8 @@ export async function createApp() {
       }
 
       const isKnownClientDomain =
-        origin.includes("toyoland") ||
-        origin.includes("kawaiikutir") ||
-        origin.includes("engulfic") ||
-        origin.includes("decantre") ||
+        origin.includes("caresbd") ||
+        origin.includes("caresbangladesh") ||
         origin.includes("localhost") ||
         origin.includes("127.0.0.1");
 
@@ -122,7 +122,7 @@ export async function createApp() {
       : ["dashboard"];
     const frontendKeywords = env.FRONTEND_DOMAIN_KEYWORDS
       ? env.FRONTEND_DOMAIN_KEYWORDS.split(",").map((kw) => kw.trim().toLowerCase())
-      : ["localhost", "decantrebd.com"];
+      : ["localhost", "caresbd.com", "caresbangladesh.com"];
 
     const isDashboard = dashboardKeywords.some((kw) => origin.includes(kw)) ||
       (req.originalUrl && req.originalUrl.includes("/dashboard/"));

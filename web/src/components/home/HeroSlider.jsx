@@ -22,10 +22,10 @@ const HeroSlider = () => {
       .catch(() => {});
   }, []);
 
-  const titleText = slider?.title || "Will Your Child";
+  const titleText = slider?.title || "Empowering Every Child's Unique Potential";
   const subtitleText = slider?.subtitle || "At Cares Bangladesh, we provide a warm, loving, and evidence-based environment where children with developmental, speech, and motor challenges achieve confidence and joy.";
   const imgUrl = slider?.imageUrl || "/assets/img/values.jpg";
-  const btnTxt = slider?.buttonText || "Schedule a Tour";
+  const btnTxt = slider?.buttonText || "Book An Assessment";
   const btnLnk = slider?.buttonLink || "/book-a-tour";
 
   return (
@@ -46,21 +46,22 @@ const HeroSlider = () => {
               <span>Dedicated & Compassionate</span>
             </div>
 
-            <h1 className="font-flavors text-4xl sm:text-5xl md:text-6xl text-primary leading-tight">
+            <h1 className="font-flavors text-3xl sm:text-5xl md:text-6xl text-primary leading-tight">
               {titleText.split(' ').map((word, i, arr) => 
                 i === arr.length - 1 || i === arr.length - 2 ? <span key={i} className="text-secondary">{word} </span> : <span key={i}>{word} </span>
               )}
             </h1>
 
-            <p className="text-slate-600 text-base sm:text-lg font-sans leading-relaxed max-w-xl mx-auto lg:mx-0">
+            <p className="text-slate-600 text-sm sm:text-base md:text-lg font-sans leading-relaxed max-w-xl mx-auto lg:mx-0">
               {subtitleText}
             </p>
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3 sm:gap-4 pt-1 sm:pt-2">
               <Link href={btnLnk} className="group">
-                <Button variant="accent" size="default" className="w-full sm:w-auto font-bold px-8 shadow-md hover:shadow-lg transition-all duration-300">
+                <Button size="lg" className="w-full sm:w-auto bg-secondary text-primary font-bold shadow-lg hover:bg-secondary/90 flex items-center justify-center space-x-2 rounded-full px-7">
+                  <Calendar className="w-4 h-4 text-primary" />
                   <span>{btnTxt}</span>
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4 h-4 text-primary group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
 

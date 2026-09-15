@@ -58,15 +58,15 @@ export default function BookTourModal({ open, onOpenChange }) {
         {!submitted ? (
           <>
             <DialogHeader className="space-y-2">
-              <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-accent/15 text-accent-orange text-xs font-bold w-fit mx-auto sm:mx-0">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>Book A Tour & Free Consultation</span>
+              <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-sky-100 text-primary text-xs font-bold w-fit mx-auto sm:mx-0">
+                <Sparkles className="w-3.5 h-3.5 text-secondary" />
+                <span>Book An Assessment & Consultation</span>
               </div>
-              <DialogTitle className="text-3xl text-primary font-flavors">
-                Schedule a Visit at Cares
+              <DialogTitle className="text-2xl sm:text-3xl text-primary font-flavors">
+                Schedule An Assessment at Cares
               </DialogTitle>
               <DialogDescription className="text-xs text-slate-600">
-                Fill out the form below and our clinical team will contact you to confirm your visit.
+                Fill out the form below and our clinical team will contact you to confirm your session.
               </DialogDescription>
             </DialogHeader>
 
@@ -149,21 +149,22 @@ export default function BookTourModal({ open, onOpenChange }) {
 
               <Button
                 type="submit"
-                variant="accent"
                 size="lg"
                 disabled={loading}
-                className="w-full font-bold shadow-md mt-2"
+                className="w-full font-bold shadow-md hover:shadow-lg mt-4 bg-secondary text-primary hover:bg-secondary/90 border border-primary/20 rounded-full py-6 text-sm sm:text-base cursor-pointer"
               >
-                {loading ? 'Submitting...' : 'Confirm Tour Request'}
+                {loading ? 'Submitting...' : 'Confirm Assessment Booking'}
               </Button>
             </form>
           </>
         ) : (
-          <div className="py-8 text-center space-y-4">
-            <div className="w-16 h-16 rounded-full bg-green-100 text-green-600 flex items-center justify-center mx-auto shadow-inner">
+          <div className="py-8 text-center space-y-3">
+            <div className="w-16 h-16 rounded-full bg-green-100 text-green-600 flex items-center justify-center mx-auto">
               <CheckCircle2 className="w-10 h-10" />
             </div>
-            <h3 className="font-flavors text-3xl text-primary">Thank You!</h3>
+            <DialogTitle className="text-2xl text-primary font-flavors">
+              Assessment Request Received!
+            </DialogTitle>
             <p className="text-sm text-slate-600 max-w-sm mx-auto">
               Your tour request has been received. Our team will contact you shortly at <strong>{formData.phone}</strong>.
             </p>

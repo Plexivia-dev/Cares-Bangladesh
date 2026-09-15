@@ -28,9 +28,9 @@ export default function ContactWidget() {
       </div>
 
       <Link href="/book-a-tour" className="block">
-        <Button variant="accent" size="default" className="w-full font-bold shadow-md">
-          <Calendar className="w-4 h-4 mr-2" />
-          Book A Tour
+        <Button size="default" className="w-full font-bold shadow-md bg-secondary text-primary hover:bg-secondary/90 border border-primary/20 flex items-center justify-center">
+          <Calendar className="w-4 h-4 mr-2 text-primary" />
+          <span>Book An Assessment</span>
         </Button>
       </Link>
     </div>

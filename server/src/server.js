@@ -14,7 +14,7 @@ const bootstrap = async () => {
   await connectDatabase();
 
   const app = await createApp();
-  const port = Number.parseInt(process.env.PORT ?? process.env.BACKEND_PORT ?? "4000", 10);
+  const port = Number.parseInt(env.PORT ?? process.env.PORT ?? process.env.BACKEND_PORT ?? "5092", 10);
 
   const server = app.listen(port, "0.0.0.0", () => {
     logger.info({ port, environment: env.NODE_ENV }, "Server listening");

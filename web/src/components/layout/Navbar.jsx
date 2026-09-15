@@ -146,17 +146,17 @@ const Navbar = ({ onOpenBookTour }) => {
 
         <div className="hidden sm:flex items-center space-x-3">
           <Link href="/book-a-tour">
-            <Button variant="accent" size="default" className="shadow-md hover:shadow-lg font-bold flex items-center space-x-2">
-              <Calendar className="w-4 h-4" />
-              <span>Book A Tour</span>
+            <Button size="default" className="shadow-md hover:shadow-lg font-bold flex items-center space-x-2 bg-secondary text-primary hover:bg-secondary/90 border border-primary/20">
+              <Calendar className="w-4 h-4 text-primary" />
+              <span>Book An Assessment</span>
             </Button>
           </Link>
         </div>
 
         <div className="lg:hidden flex items-center space-x-2">
           <Link href="/book-a-tour" className="sm:hidden">
-            <Button variant="accent" size="sm" className="text-xs px-3">
-              Book Tour
+            <Button size="sm" className="text-xs px-3 bg-secondary text-primary font-bold hover:bg-secondary/90">
+              Assessment
             </Button>
           </Link>
           <button
@@ -199,8 +199,8 @@ const Navbar = ({ onOpenBookTour }) => {
             ))}
             <div className="pt-4">
               <Link href="/book-a-tour" onClick={() => setMobileMenuOpen(false)} className="w-full">
-                <Button variant="accent" size="lg" className="w-full font-bold shadow-md">
-                  Book A Tour & Assessment
+                <Button size="lg" className="w-full font-bold shadow-md bg-secondary text-primary hover:bg-secondary/90 border border-primary/20">
+                  Book An Assessment
                 </Button>
               </Link>
             </div>

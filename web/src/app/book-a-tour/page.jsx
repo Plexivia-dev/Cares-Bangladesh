@@ -36,9 +36,9 @@ const BookTourPage = () => {
   return (
     <>
       <PageHeader
-        title="Book A Tour & Assessment"
+        title="Book An Assessment"
         subtitle="Experience our welcoming environment and consult with our therapy specialists"
-        breadcrumb={[{ name: 'Book A Tour' }]}
+        breadcrumb={[{ name: 'Book An Assessment' }]}
       />
 
       <section className="py-20 bg-white">
@@ -179,12 +179,11 @@ const BookTourPage = () => {
 
                   <Button
                     type="submit"
-                    variant="accent"
                     size="lg"
                     disabled={loading}
-                    className="w-full font-bold shadow-md hover:shadow-lg mt-3 bg-amber-500 hover:bg-amber-600 text-white rounded-full py-6 text-sm sm:text-base cursor-pointer"
+                    className="w-full font-bold shadow-md hover:shadow-lg mt-3 bg-secondary text-primary hover:bg-secondary/90 border border-primary/20 rounded-full py-6 text-sm sm:text-base cursor-pointer"
                   >
-                    {loading ? 'Submitting...' : 'Confirm Tour Request'}
+                    {loading ? 'Submitting...' : 'Confirm Assessment Request'}
                   </Button>
                 </form>
               ) : (

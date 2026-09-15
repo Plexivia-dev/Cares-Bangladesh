@@ -42,20 +42,35 @@
   * {
     @apply border-border;
   }
+  html {
+    overflow-x: hidden;
+    max-width: 100vw;
+    width: 100%;
+  }
   body {
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-montserrat), 'Montserrat', system-ui, -apple-system, sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
+    overflow-x: hidden;
+    max-width: 100vw;
+    width: 100%;
+    position: relative;
   }
 
   h1, h2 {
     font-family: var(--font-flavors), 'Flavors', cursive, sans-serif;
     color: #004460;
+    line-height: 1.25;
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 
   h3, h4, h5, h6 {
     font-family: var(--font-montserrat), 'Montserrat', system-ui, -apple-system, sans-serif;
     color: #004460;
+    line-height: 1.35;
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 }
 
