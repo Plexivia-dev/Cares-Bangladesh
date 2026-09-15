@@ -95,7 +95,7 @@ const RootLayout = async ({ children }) => {
         </Suspense>
         <TopBar />
         <Navbar />
-        <main className="flex-grow w-full max-w-full overflow-x-clip">
+        <main className="flex-grow w-full max-w-full overflow-x-hidden">
           {children}
         </main>
         <Footer />
