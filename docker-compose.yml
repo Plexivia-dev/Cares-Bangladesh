@@ -38,7 +38,7 @@ services:
       context: ./admin
       dockerfile: Dockerfile
       args:
-        - VITE_API_BASE_URL=https://server.caresbd.com
+        - VITE_API_BASE_URL=https://api.caresbangladesh.com
     container_name: cares-admin
     restart: always
     ports:

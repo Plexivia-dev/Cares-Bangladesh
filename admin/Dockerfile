@@ -12,7 +12,7 @@ RUN npm ci
 
 COPY . .
 
-ARG VITE_API_BASE_URL=https://server.caresbd.com
+ARG VITE_API_BASE_URL=https://api.caresbangladesh.com
 ENV VITE_API_BASE_URL=$VITE_API_BASE_URL
 
 RUN npm run build
