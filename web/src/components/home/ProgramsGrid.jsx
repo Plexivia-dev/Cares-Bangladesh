@@ -115,9 +115,9 @@ const ProgramsGrid = () => {
 
         <div className="text-center mt-16">
           <Link href="/book-a-tour">
-            <Button size="default" className="rounded-full font-bold shadow-lg hover:shadow-2xl px-8 text-base bg-secondary text-primary hover:bg-secondary/90 border border-primary/20 transition-all hover:scale-105">
+            <Button variant="accent" size="default" className="rounded-full font-bold shadow-lg hover:shadow-2xl px-8 text-base transition-all hover:scale-105">
               <span>Book An Assessment For Your Child</span>
-              <ArrowRight className="w-5 h-5 ml-2 text-primary" />
+              <ArrowRight className="w-5 h-5 ml-2 text-white" />
             </Button>
           </Link>
         </div>

@@ -167,10 +167,11 @@ const BookTourModal = ({ open, onOpenChange }) => {
               )}
 
               <Button
+                variant="accent"
                 type="submit"
                 size="lg"
                 disabled={loading}
-                className="w-full font-bold shadow-md hover:shadow-lg mt-4 bg-secondary text-primary hover:bg-secondary/90 border border-primary/20 rounded-full py-6 text-sm sm:text-base cursor-pointer"
+                className="w-full font-bold shadow-md hover:shadow-lg mt-4 rounded-full py-6 text-sm sm:text-base cursor-pointer"
               >
                 {loading ? 'Submitting...' : 'Confirm Assessment Booking'}
               </Button>

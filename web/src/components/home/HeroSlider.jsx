@@ -57,10 +57,10 @@ const HeroSlider = () => {
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3 sm:gap-4 pt-1 sm:pt-2">
               <Link href={btnLnk} className="group">
-                <Button size="lg" className="w-full sm:w-auto bg-secondary text-primary font-bold shadow-lg hover:bg-secondary/90 flex items-center justify-center space-x-2 rounded-full px-7">
-                  <Calendar className="w-4 h-4 text-primary" />
+                <Button variant="accent" size="lg" className="w-full sm:w-auto font-bold shadow-lg flex items-center justify-center space-x-2 rounded-full px-7">
+                  <Calendar className="w-4 h-4 text-white" />
                   <span>{btnTxt}</span>
-                  <ArrowRight className="w-4 h-4 text-primary group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
 
