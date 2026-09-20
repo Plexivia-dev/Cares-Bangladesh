@@ -27,13 +27,12 @@ export const login = async (req, res, next) => {
       return res.status(400).json({ status: "error", message: "Email and password are required" });
     }
 
-    if (!turnstileToken) {
-      return res.status(400).json({ status: "error", message: "Captcha verification is required" });
-    }
-
-    // Verify Turnstile Token
     const turnstileSecret = env.TURNSTILE_SECRET_KEY;
     if (turnstileSecret) {
+      if (!turnstileToken) {
+        return res.status(400).json({ status: "error", message: "Captcha verification is required" });
+      }
+
       const formData = new URLSearchParams();
       formData.append('secret', turnstileSecret);
       formData.append('response', turnstileToken);

@@ -775,17 +775,15 @@ export function SharedLoginPage({
           href="https://plexivia.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-zinc-900/90 hover:bg-zinc-800 border border-zinc-700/80 shadow-2xl backdrop-blur-md transition-all group"
+          className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-zinc-900/90 hover:bg-zinc-800 border border-zinc-700/80 shadow-2xl backdrop-blur-md transition-all group"
           title="Developed by Plexivia"
         >
           <span className="text-[11px] font-semibold tracking-wider text-zinc-400 group-hover:text-zinc-200 whitespace-nowrap">
             Powered by
           </span>
-          <img
-            src="https://api.monsuralitravels.com/uploads/assets/plexivia.webp"
-            alt="Plexivia"
-            className="h-5 sm:h-6 w-auto object-contain transition-transform group-hover:scale-105"
-          />
+          <span className="text-[11px] font-bold tracking-wider text-sky-400 group-hover:text-sky-300 transition-colors">
+            Plexivia
+          </span>
         </a>
       </div>
     </div>
