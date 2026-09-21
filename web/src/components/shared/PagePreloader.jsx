@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
+import { getBranding } from '@/lib/api';
 
 // Route transition preloader overlay with spinning badge and animated status feedback
 const PagePreloader = () => {
@@ -9,6 +10,15 @@ const PagePreloader = () => {
   const searchParams = useSearchParams();
   const [loading, setLoading] = useState(true);
   const [isVisible, setIsVisible] = useState(true);
+  const [logoUrl, setLogoUrl] = useState('/uploads/2024/09/CARES-Bangladesh-Logo-5__1_-removebg-preview.png');
+
+  useEffect(() => {
+    getBranding().then((branding) => {
+      if (branding?.logoUrl) {
+        setLogoUrl(branding.logoUrl);
+      }
+    });
+  }, []);
 
   useEffect(() => {
     setLoading(true);
@@ -44,11 +54,11 @@ const PagePreloader = () => {
 
           <div className="relative w-16 h-16 rounded-full bg-white shadow-xl flex items-center justify-center p-2 border-2 border-amber-200">
             <img
-              src="/assets/img/logo.png"
+              src={logoUrl}
               alt="Cares Bangladesh Loading"
               onError={(e) => {
                 e.currentTarget.onerror = null;
-                e.currentTarget.src = '/assets/img/logo.svg';
+                e.currentTarget.src = '/assets/img/logo.png';
               }}
               className="w-12 h-12 object-contain animate-bounce"
               style={{ animationDuration: '1.2s' }}
