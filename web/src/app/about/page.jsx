@@ -128,7 +128,7 @@ const AboutPage = () => {
           <div className="text-center mt-12">
             <Link href="/speech-language-therapy-therapist">
               <Button variant="default" size="lg" className="rounded-full font-bold px-8 shadow-md">
-                <span>View All 19 Clinical Specialists</span>
+                <span>{team.length > 0 ? `View All ${team.length} Clinical Specialists` : 'View All Clinical Specialists'}</span>
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>

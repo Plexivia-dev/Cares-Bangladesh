@@ -169,5 +169,32 @@
     "bio": "B.Ed., M.Sp.Ed – University of Dhaka.",
     "image": "/uploads/2025/03/staff-1.jpeg",
     "isLeadership": false
+  },
+  {
+    "id": "6ab0e7b0ab51a554b45f2fec",
+    "name": "Sweety Rani Das",
+    "role": "Behavior Therapist",
+    "category": "ABA/ Behavior Therapist",
+    "bio": "Psychology (Honours & Master’s), BBGGC.",
+    "image": "/uploads/2609/260921/image_sweety-rani-das_1789978543435.webp",
+    "isLeadership": false
+  },
+  {
+    "id": "6ab0e7b0ab51a554b45f2fef",
+    "name": "Pinakee Biswas Upoma",
+    "role": "Behavior Therapist",
+    "category": "ABA/ Behavior Therapist",
+    "bio": "Honours & Master’s in Psychology, Eden Mohila College.",
+    "image": "/uploads/2609/260921/image_pinakee-biswas-upoma_1789978544108.webp",
+    "isLeadership": false
+  },
+  {
+    "id": "6ab0e7b0ab51a554b45f2ff2",
+    "name": "Md Mozahidul Islam Leo",
+    "role": "Behavior Therapist",
+    "category": "ABA/ Behavior Therapist",
+    "bio": "B.Ed. (Hons), M.Ed. in Special Education, IER, University of Dhaka.",
+    "image": "/uploads/2609/260921/image_md-mozahidul-islam-leo_1789978544501.webp",
+    "isLeadership": false
   }
 ]
