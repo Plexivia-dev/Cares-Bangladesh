@@ -54,15 +54,6 @@
     "isLeadership": false
   },
   {
-    "id": "1193",
-    "name": "Iftekharul Islam Shuvo",
-    "role": "Senior Occupational Therapist",
-    "category": "Occupational Therapist",
-    "bio": "B.Sc. in Occupational Therapy – CRP.",
-    "image": "/uploads/2019/09/Iftekharul-Islam-Shuvo.jpg",
-    "isLeadership": false
-  },
-  {
     "id": "2309",
     "name": "Arefa Aktar",
     "role": "Occupational Therapist (OT)",
@@ -90,15 +81,6 @@
     "isLeadership": false
   },
   {
-    "id": "1189",
-    "name": "Iskander Hossain",
-    "role": "Speech and Language Therapist",
-    "category": "Speech and Language Therapist",
-    "bio": "B.Sc. in Speech and Language Therapy – CRP.",
-    "image": "/uploads/2019/09/Iskander-Hossain.jpg",
-    "isLeadership": false
-  },
-  {
     "id": "1190",
     "name": "Nurul Islam Nahid",
     "role": "Speech and Language Therapist",
@@ -117,15 +99,6 @@
     "isLeadership": false
   },
   {
-    "id": "2302",
-    "name": "Shakila Shova",
-    "role": "Speech and Language Pathologist",
-    "category": "Speech and Language Therapist",
-    "bio": "BSS in DU, MSS in DU.",
-    "image": "/uploads/2025/09/WhatsApp-Image-2025-09-16-at-8.21.33-PM.jpeg",
-    "isLeadership": false
-  },
-  {
     "id": "2314",
     "name": "Amit Das",
     "role": "Clinical Speech & Language Therapist",
@@ -141,33 +114,6 @@
     "category": "Speech and Language Therapist",
     "bio": "B.Sc. in Speech and Language Therapy – CRP.",
     "image": "/uploads/2025/09/WhatsApp-Image-2025-09-16-at-2.12.05-PM.jpeg",
-    "isLeadership": false
-  },
-  {
-    "id": "2318",
-    "name": "Sabekun Naher Athila",
-    "role": "Audiologist & Speech Language Pathologist",
-    "category": "Speech and Language Therapist",
-    "bio": "Specially trained from CMH, Proyash, BMU, NIENT.",
-    "image": "/uploads/2025/10/WhatsApp-Image-2025-10-14-at-12.40.01-PM.jpeg",
-    "isLeadership": false
-  },
-  {
-    "id": "1197",
-    "name": "Israt Jahan Sara",
-    "role": "ABA/ Behavior Therapist",
-    "category": "ABA/ Behavior Therapist",
-    "bio": "B.Sc. and MS in Psychology – University of Dhaka.",
-    "image": "/uploads/2019/09/Israt-Jahan-Sara.jpg",
-    "isLeadership": false
-  },
-  {
-    "id": "2097",
-    "name": "Md Mohibbullah Al Maruf",
-    "role": "Behavior Therapist",
-    "category": "ABA/ Behavior Therapist",
-    "bio": "B.Ed., M.Sp.Ed – University of Dhaka.",
-    "image": "/uploads/2025/03/staff-1.jpeg",
     "isLeadership": false
   },
   {

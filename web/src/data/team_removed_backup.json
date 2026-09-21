@@ -1,0 +1,74 @@
+[
+  {
+    "name": "Iftekharul Islam Shuvo",
+    "bio": "B.Sc. in Occupational Therapy – CRP.",
+    "category": "Occupational Therapist",
+    "createdAt": "2026-09-13T19:06:49.622Z",
+    "image": "/uploads/2019/09/Iftekharul-Islam-Shuvo.jpg",
+    "isLeadership": false,
+    "order": 6,
+    "role": "Senior Occupational Therapist",
+    "updatedAt": "2026-09-13T19:06:49.622Z",
+    "id": "6aa6f449454b17c61818015e"
+  },
+  {
+    "name": "Iskander Hossain",
+    "bio": "B.Sc. in Speech and Language Therapy – CRP.",
+    "category": "Speech and Language Therapist",
+    "createdAt": "2026-09-13T19:06:49.633Z",
+    "image": "/uploads/2019/09/Iskander-Hossain.jpg",
+    "isLeadership": false,
+    "order": 10,
+    "role": "Speech and Language Therapist",
+    "updatedAt": "2026-09-13T19:06:49.633Z",
+    "id": "6aa6f449454b17c618180166"
+  },
+  {
+    "name": "Shakila Shova",
+    "bio": "BSS in DU, MSS in DU.",
+    "category": "Speech and Language Therapist",
+    "createdAt": "2026-09-13T19:06:49.638Z",
+    "image": "/uploads/2025/09/WhatsApp-Image-2025-09-16-at-8.21.33-PM.jpeg",
+    "isLeadership": false,
+    "order": 13,
+    "role": "Speech and Language Pathologist",
+    "updatedAt": "2026-09-13T19:06:49.638Z",
+    "id": "6aa6f449454b17c61818016c"
+  },
+  {
+    "name": "Sabekun Naher Athila",
+    "bio": "Specially trained from CMH, Proyash, BMU, NIENT.",
+    "category": "Speech and Language Therapist",
+    "createdAt": "2026-09-13T19:06:49.643Z",
+    "image": "/uploads/2025/10/WhatsApp-Image-2025-10-14-at-12.40.01-PM.jpeg",
+    "isLeadership": false,
+    "order": 16,
+    "role": "Audiologist & Speech Language Pathologist",
+    "updatedAt": "2026-09-13T19:06:49.643Z",
+    "id": "6aa6f449454b17c618180172"
+  },
+  {
+    "name": "Israt Jahan Sara",
+    "bio": "B.Sc. and MS in Psychology – University of Dhaka.",
+    "category": "ABA/ Behavior Therapist",
+    "createdAt": "2026-09-13T19:06:49.645Z",
+    "image": "/uploads/2019/09/Israt-Jahan-Sara.jpg",
+    "isLeadership": false,
+    "order": 17,
+    "role": "ABA/ Behavior Therapist",
+    "updatedAt": "2026-09-13T19:06:49.645Z",
+    "id": "6aa6f449454b17c618180174"
+  },
+  {
+    "name": "Md Mohibbullah Al Maruf",
+    "bio": "B.Ed., M.Sp.Ed – University of Dhaka.",
+    "category": "ABA/ Behavior Therapist",
+    "createdAt": "2026-09-13T19:06:49.647Z",
+    "image": "/uploads/2025/03/staff-1.jpeg",
+    "isLeadership": false,
+    "order": 18,
+    "role": "Behavior Therapist",
+    "updatedAt": "2026-09-13T19:06:49.647Z",
+    "id": "6aa6f449454b17c618180176"
+  }
+]
